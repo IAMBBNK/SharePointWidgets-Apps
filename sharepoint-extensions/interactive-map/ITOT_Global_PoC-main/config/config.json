@@ -1,0 +1,27 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "map-itot-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/mapItot/MapItotWebPart.js",
+          "manifest": "./src/webparts/mapItot/MapItotWebPart.manifest.json"
+        }
+      ]
+    },
+    "map-predictive-maintenance-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/mapPredictiveMaintenance/MapPredictiveMaintenanceWebPart.js",
+          "manifest": "./src/webparts/mapPredictiveMaintenance/MapPredictiveMaintenanceWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "MapItotWebPartStrings": "lib/webparts/mapItot/loc/{locale}.js",
+    "MapPredictiveMaintenanceWebPartStrings": "lib/webparts/mapPredictiveMaintenance/loc/{locale}.js"
+  }
+}

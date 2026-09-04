@@ -1,0 +1,21 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "d5e6f7a8-b9c0-4123-def0-345678901234",
+  "alias": "MapPredictiveMaintenanceWebPart",
+  "componentType": "WebPart",
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart", "TeamsPersonalApp", "TeamsTab", "SharePointFullPage"],
+  "supportsThemeVariants": true,
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "group": { "default": "Advanced" },
+    "title": { "default": "ITOT Predictive Maintenance Map" },
+    "description": { "default": "Map of Predictive Maintenance items from the Predictive Maintenance list" },
+    "officeFabricIconFontName": "MapPin",
+    "properties": {
+      "description": "ITOT Predictive Maintenance Map"
+    }
+  }]
+}
