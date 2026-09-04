@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Site Master Data Update Form</title>
+
+    <script src="https://mdigital.sharepoint.com/sites/ITOTCommunityHub/SiteAssets/ExternalLibs/jquery371.min.js"></script>
+    <script src="https://mdigital.sharepoint.com/sites/ITOTCommunityHub/SiteAssets/scripts/siteMasterDataForm.js?v=18"></script>
+    <style>
+      .smd-form-widget {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 20px;
+        color: #1f1f1f;
+        box-sizing: border-box;
+      }
+
+      .smd-form-widget *,
+      .smd-form-widget *::before,
+      .smd-form-widget *::after {
+        box-sizing: border-box;
+      }
+
+      .smd-form-widget .smd-header {
+        padding-bottom: 18px;
+        border-bottom: 1px solid #e3e3e3;
+        margin-bottom: 24px;
+      }
+
+      .smd-form-widget .smd-title {
+        color: #0f69af;
+        font-size: 22px;
+        font-weight: 700;
+        margin: 0;
+      }
+
+      .smd-form-widget .smd-subtitle {
+        color: #666;
+        font-size: 14px;
+        margin: 8px 0 0 0;
+        line-height: 1.5;
+      }
+
+      .smd-form-widget .smd-user-line {
+        color: #444;
+        font-size: 13px;
+        margin: 10px 0 0 0;
+      }
+
+      .smd-form-widget .error-banner {
+        background-color: #fdecea;
+        color: #b00020;
+        border: 1px solid #f5c2c7;
+        border-radius: 6px;
+        padding: 12px 16px;
+        margin: 0 0 16px 0;
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      .smd-form-widget .success-banner {
+        background-color: #e8f5e9;
+        color: #1b5e20;
+        border: 1px solid #a5d6a7;
+        border-radius: 6px;
+        padding: 16px 20px;
+        margin: 0 0 16px 0;
+        font-size: 15px;
+        font-weight: 600;
+        line-height: 1.5;
+      }
+
+      .smd-form-widget .info-banner {
+        background-color: #f0f7fc;
+        color: #0f69af;
+        border: 1px solid #b3d4ec;
+        border-radius: 6px;
+        padding: 12px 16px;
+        margin: 0 0 16px 0;
+        font-size: 14px;
+      }
+
+      .smd-form-widget .smd-diag-list {
+        margin: 10px 0 0 0;
+        padding-left: 20px;
+        font-weight: 400;
+        font-size: 13px;
+        line-height: 1.45;
+      }
+
+      .smd-form-widget .smd-diag-list li {
+        margin-bottom: 6px;
+      }
+
+      .smd-form-widget .smd-diag-hint {
+        margin: 10px 0 0 0;
+        font-size: 12px;
+        font-weight: 400;
+        color: #555;
+        line-height: 1.4;
+      }
+
+      .smd-form-widget .smd-diag-hint code {
+        font-size: 12px;
+        background: #e8eef3;
+        padding: 1px 4px;
+        border-radius: 3px;
+      }
+
+      .smd-form-widget .smd-diag-banner {
+        margin-bottom: 16px;
+      }
+
+      .smd-form-widget .error-banner .smd-diag-list {
+        color: #8a1c1c;
+      }
+
+      .smd-form-widget .is-hidden {
+        display: none !important;
+      }
+
+      .smd-form-widget .smd-loading {
+        color: #666;
+        font-size: 14px;
+        padding: 24px 0;
+      }
+
+      .smd-form-widget .smd-site-picker {
+        margin-bottom: 24px;
+        padding: 16px 18px 18px;
+        background: #f8fafc;
+        border: 1px solid #e3e3e3;
+        border-radius: 10px;
+      }
+
+      .smd-form-widget .smd-site-picker-title {
+        display: block;
+        font-size: 14px;
+        font-weight: 700;
+        color: #0f69af;
+        margin: 0 0 4px 0;
+      }
+
+      .smd-form-widget .smd-site-picker-hint {
+        margin: 0 0 14px 0;
+        font-size: 13px;
+        color: #666;
+        line-height: 1.4;
+      }
+
+      .smd-form-widget .smd-site-list {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 10px 12px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      @media (max-width: 720px) {
+        .smd-form-widget .smd-site-list {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .smd-form-widget .smd-site-card {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 10px;
+        width: 100%;
+        text-align: left;
+        padding: 12px 14px;
+        border: 1px solid #cfd6dd;
+        border-radius: 8px;
+        background: #fff;
+        cursor: pointer;
+        font-family: inherit;
+        transition: border-color 0.15s ease, box-shadow 0.15s ease,
+          background-color 0.15s ease;
+      }
+
+      .smd-form-widget .smd-site-card:hover {
+        border-color: #0f69af;
+        box-shadow: 0 2px 8px rgba(15, 105, 175, 0.12);
+      }
+
+      .smd-form-widget .smd-site-card.is-selected {
+        border-color: #0f69af;
+        background: #f0f7fc;
+        box-shadow: 0 0 0 2px rgba(15, 105, 175, 0.18);
+      }
+
+      .smd-form-widget .smd-site-card-main {
+        min-width: 0;
+        flex: 1 1 auto;
+      }
+
+      .smd-form-widget .smd-site-card-name {
+        display: block;
+        font-size: 14px;
+        font-weight: 600;
+        color: #1f1f1f;
+        line-height: 1.35;
+        word-break: break-word;
+      }
+
+      .smd-form-widget .smd-site-card-meta {
+        display: block;
+        margin-top: 4px;
+        font-size: 12px;
+        color: #777;
+      }
+
+      .smd-form-widget .smd-status-pill {
+        flex: 0 0 auto;
+        display: inline-block;
+        padding: 4px 8px;
+        border-radius: 999px;
+        font-size: 11px;
+        font-weight: 700;
+        line-height: 1.3;
+        white-space: nowrap;
+        max-width: 46%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .smd-form-widget .smd-status-pill--done {
+        background: #e8f5e9;
+        color: #1b5e20;
+        border: 1px solid #a5d6a7;
+      }
+
+      .smd-form-widget .smd-status-pill--open {
+        background: #fff8e1;
+        color: #8a5a00;
+        border: 1px solid #ffe082;
+      }
+
+      .smd-form-widget .smd-status-pill--unknown {
+        background: #f0f0f0;
+        color: #555;
+        border: 1px solid #ddd;
+      }
+
+      .smd-form-widget .smd-site-legend {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 12px;
+        font-size: 12px;
+        color: #666;
+      }
+
+      .smd-form-widget .smd-site-legend span {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .smd-form-widget .smd-site-legend .smd-status-pill {
+        max-width: none;
+      }
+
+      .smd-form-widget .smd-section {
+        margin-bottom: 28px;
+        padding: 0;
+        background: #fff;
+        border: 1px solid #e0e6eb;
+        border-radius: 10px;
+        overflow: visible;
+        box-shadow: 0 1px 2px rgba(15, 40, 70, 0.04);
+      }
+
+      .smd-form-widget .smd-section-header {
+        padding: 14px 20px 12px;
+        background: #eef4f9;
+        border-bottom: 1px solid #d5e0ea;
+        border-left: 4px solid #0f69af;
+        border-radius: 10px 10px 0 0;
+      }
+
+      .smd-form-widget .smd-section--people .smd-section-header {
+        background: #f3f6f4;
+        border-left-color: #2e7d62;
+      }
+
+      .smd-form-widget .smd-section--maturity .smd-section-header {
+        background: #f7f3ee;
+        border-left-color: #b56a2b;
+      }
+
+      .smd-form-widget .smd-section--counts .smd-section-header {
+        background: #f0f2f8;
+        border-left-color: #4a5a9a;
+      }
+
+      .smd-form-widget .section-title {
+        color: #0f69af;
+        font-size: 16px;
+        font-weight: 700;
+        margin: 0;
+        letter-spacing: 0.01em;
+      }
+
+      .smd-form-widget .smd-section--people .section-title {
+        color: #1f6b52;
+      }
+
+      .smd-form-widget .smd-section--maturity .section-title {
+        color: #8a4f1f;
+      }
+
+      .smd-form-widget .smd-section--counts .section-title {
+        color: #3a4a82;
+      }
+
+      .smd-form-widget .section-hint {
+        color: #5a6570;
+        font-size: 13px;
+        margin: 4px 0 0 0;
+        line-height: 1.45;
+      }
+
+      .smd-form-widget .smd-section .smd-grid {
+        padding: 18px 20px 20px;
+        background: #fff;
+        border-radius: 0 0 10px 10px;
+        overflow: visible;
+      }
+
+      .smd-form-widget .smd-section--people {
+        position: relative;
+        z-index: 6;
+      }
+
+      .smd-form-widget .smd-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 16px 24px;
+        align-items: stretch;
+      }
+
+      @media (max-width: 720px) {
+        .smd-form-widget .smd-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .smd-form-widget .smd-field {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        min-width: 0;
+        height: 100%;
+      }
+
+      .smd-form-widget .smd-field--full {
+        grid-column: 1 / -1;
+      }
+
+      .smd-form-widget .smd-field-label {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        min-height: 2.75em;
+        gap: 2px;
+        flex-shrink: 0;
+      }
+
+      .smd-form-widget .smd-field-label label {
+        font-size: 13px;
+        font-weight: 600;
+        color: #333;
+        line-height: 1.35;
+        margin: 0;
+      }
+
+      .smd-form-widget .smd-field .field-hint {
+        display: block;
+        font-size: 11px;
+        color: #888;
+        font-weight: 400;
+        line-height: 1.3;
+      }
+
+      .smd-form-widget .smd-field input[type="text"],
+      .smd-form-widget .smd-field input[type="number"],
+      .smd-form-widget .smd-field select,
+      .smd-form-widget .smd-field textarea,
+      .smd-form-widget .smd-field .pp-host,
+      .smd-form-widget .smd-field .pp-wrap {
+        width: 100%;
+        min-height: 42px;
+      }
+
+      /* Grow control area so paired fields match height when one has chips/content */
+      .smd-form-widget .smd-field > input,
+      .smd-form-widget .smd-field > select,
+      .smd-form-widget .smd-field > textarea,
+      .smd-form-widget .smd-field > .pp-host {
+        flex: 1 1 auto;
+      }
+
+      .smd-form-widget .smd-field .pp-host {
+        display: flex;
+        flex-direction: column;
+        min-height: 42px;
+      }
+
+      .smd-form-widget .smd-field .pp-wrap {
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        min-height: 100%;
+      }
+
+      .smd-form-widget .smd-field select {
+        min-height: 42px;
+        height: auto;
+        align-self: stretch;
+      }
+
+      .smd-form-widget .smd-field input[type="text"],
+      .smd-form-widget .smd-field input[type="number"],
+      .smd-form-widget .smd-field select,
+      .smd-form-widget .smd-field textarea {
+        padding: 10px 12px;
+        border: 1px solid #cfd6dd;
+        border-radius: 6px;
+        font-size: 14px;
+        font-family: inherit;
+        background: #fff;
+        color: #1f1f1f;
+        box-sizing: border-box;
+      }
+
+      .smd-form-widget .smd-field textarea {
+        min-height: 72px;
+        resize: vertical;
+      }
+
+      .smd-form-widget .smd-field input:focus,
+      .smd-form-widget .smd-field select:focus,
+      .smd-form-widget .smd-field textarea:focus {
+        outline: none;
+        border-color: #0f69af;
+        box-shadow: 0 0 0 2px rgba(15, 105, 175, 0.15);
+      }
+
+      .smd-form-widget .smd-actions {
+        position: sticky;
+        bottom: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        padding: 14px 0 8px;
+        margin-top: 8px;
+        background: linear-gradient(
+          to top,
+          #fff 0%,
+          #fff 72%,
+          rgba(255, 255, 255, 0)
+        );
+        border-top: 1px solid #e3e3e3;
+        z-index: 40;
+      }
+
+      .smd-form-widget .smd-actions-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        align-items: center;
+      }
+
+      .smd-form-widget .smd-save-status:empty {
+        display: none;
+      }
+
+      .smd-form-widget .smd-save-status .error-banner,
+      .smd-form-widget .smd-save-status .success-banner {
+        margin: 0;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+        animation: smd-status-pop 0.35s ease-out;
+      }
+
+      .smd-form-widget .smd-save-status .error-banner {
+        max-height: 180px;
+        overflow-y: auto;
+      }
+
+      @keyframes smd-status-pop {
+        from {
+          opacity: 0;
+          transform: translateY(8px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .smd-form-widget .smd-btn {
+        appearance: none;
+        border: none;
+        border-radius: 6px;
+        padding: 12px 22px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        font-family: inherit;
+      }
+
+      .smd-form-widget .smd-btn:disabled {
+        opacity: 0.55;
+        cursor: not-allowed;
+      }
+
+      .smd-form-widget .smd-btn--primary {
+        background: #0f69af;
+        color: #fff;
+      }
+
+      .smd-form-widget .smd-btn--primary:hover:not(:disabled) {
+        background: #0c5a96;
+      }
+
+      .smd-form-widget .smd-btn--secondary {
+        background: #fff;
+        color: #333;
+        border: 1px solid #cfd6dd;
+      }
+
+      .smd-form-widget .smd-btn--secondary:hover:not(:disabled) {
+        background: #f5f7fa;
+      }
+
+      /* People picker */
+      .smd-form-widget .pp-wrap {
+        border: 1px solid #cfd6dd;
+        border-radius: 6px;
+        padding: 8px;
+        background: #fff;
+        position: relative;
+      }
+
+      .smd-form-widget .pp-wrap:focus-within {
+        border-color: #0f69af;
+        box-shadow: 0 0 0 2px rgba(15, 105, 175, 0.15);
+      }
+
+      .smd-form-widget .pp-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-bottom: 6px;
+      }
+
+      .smd-form-widget .pp-chips:empty {
+        display: none;
+        margin: 0;
+      }
+
+      .smd-form-widget .pp-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 4px 8px 4px 10px;
+        background: #e8f1f8;
+        color: #0f69af;
+        border-radius: 16px;
+        font-size: 13px;
+        font-weight: 600;
+        max-width: 100%;
+      }
+
+      .smd-form-widget .pp-chip-text {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .smd-form-widget .pp-chip-remove {
+        appearance: none;
+        border: none;
+        background: transparent;
+        color: #0f69af;
+        cursor: pointer;
+        font-size: 16px;
+        line-height: 1;
+        padding: 0 2px;
+        font-weight: 700;
+      }
+
+      .smd-form-widget .pp-input {
+        width: 100%;
+        border: none !important;
+        outline: none !important;
+        box-shadow: none !important;
+        padding: 6px 4px !important;
+        font-size: 14px;
+        font-family: inherit;
+        background: transparent;
+      }
+
+      .smd-form-widget .pp-suggestions {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 100%;
+        margin-top: 4px;
+        background: #fff;
+        border: 1px solid #cfd6dd;
+        border-radius: 6px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
+        max-height: 220px;
+        overflow-y: auto;
+        z-index: 100;
+      }
+
+      .smd-form-widget .pp-wrap.pp-open-up .pp-suggestions {
+        top: auto;
+        bottom: 100%;
+        margin-top: 0;
+        margin-bottom: 4px;
+      }
+
+      .smd-form-widget .pp-suggestion {
+        display: block;
+        width: 100%;
+        text-align: left;
+        padding: 10px 12px;
+        border: none;
+        background: #fff;
+        cursor: pointer;
+        font-family: inherit;
+        font-size: 13px;
+        color: #1f1f1f;
+      }
+
+      .smd-form-widget .pp-suggestion:hover,
+      .smd-form-widget .pp-suggestion.is-active {
+        background: #f0f7fc;
+      }
+
+      .smd-form-widget .pp-suggestion-email {
+        display: block;
+        color: #666;
+        font-size: 12px;
+        margin-top: 2px;
+      }
+
+      .smd-form-widget .pp-empty {
+        padding: 10px 12px;
+        color: #888;
+        font-size: 13px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="smd-form-widget" id="smdFormWidget">
+      <div class="smd-header">
+        <h1 class="smd-title">Site Master Data Update</h1>
+        <p class="smd-subtitle">
+          Review and update site master data for sites where you are Site Data
+          Admin, Site Head, or Digital Lead / SPOC. Saving marks Review
+          Status as Completed / Updated.
+        </p>
+        <p class="smd-user-line is-hidden" id="smdUserLine"></p>
+      </div>
+
+      <div id="smdError"></div>
+      <div id="smdSuccess"></div>
+      <div id="smdDiag"></div>
+      <div id="smdInfo"></div>
+
+      <div class="smd-loading" id="smdLoading">Loading your sites…</div>
+
+      <div class="smd-site-picker is-hidden" id="smdSitePicker">
+        <div class="smd-site-picker-title" id="smdSitePickerTitle">
+          Your sites
+        </div>
+        <p class="smd-site-picker-hint">
+          Select a site to edit. Review status shows which sites are already
+          completed.
+        </p>
+        <div class="smd-site-list" id="smdSiteList" role="list"></div>
+        <div class="smd-site-legend">
+          <span>
+            <span class="smd-status-pill smd-status-pill--done">Completed / Updated</span>
+            done
+          </span>
+          <span>
+            <span class="smd-status-pill smd-status-pill--open">Pending</span>
+            not completed yet
+          </span>
+        </div>
+      </div>
+
+      <form id="smdForm" class="is-hidden" novalidate>
+        <div class="smd-section smd-section--general">
+          <div class="smd-section-header">
+            <h2 class="section-title">General site information</h2>
+            <p class="section-hint">Core identity and location details for the site.</p>
+          </div>
+          <div class="smd-grid" id="smdSectionGeneral"></div>
+        </div>
+
+        <div class="smd-section smd-section--people">
+          <div class="smd-section-header">
+            <h2 class="section-title">People &amp; roles</h2>
+            <p class="section-hint">
+              Search Active Directory for each role. Hints show whether one or
+              multiple people are allowed (from the list column settings).
+            </p>
+          </div>
+          <div class="smd-grid" id="smdSectionPeople"></div>
+        </div>
+
+        <div class="smd-section smd-section--maturity">
+          <div class="smd-section-header">
+            <h2 class="section-title">Maturity &amp; assessments</h2>
+            <p class="section-hint">Roadmap, digital maturity, DPI and assessment statuses.</p>
+          </div>
+          <div class="smd-grid" id="smdSectionMaturity"></div>
+        </div>
+
+        <div class="smd-section smd-section--counts">
+          <div class="smd-section-header">
+            <h2 class="section-title">OT applications</h2>
+            <p class="section-hint">OT inventory and DPI migration counts.</p>
+          </div>
+          <div class="smd-grid" id="smdSectionCounts"></div>
+        </div>
+
+        <div class="smd-actions">
+          <div class="smd-save-status" id="smdSaveStatus" aria-live="polite"></div>
+          <div class="smd-actions-buttons">
+            <button type="button" class="smd-btn smd-btn--primary" id="smdSaveBtn">
+              Save changes
+            </button>
+            <button type="button" class="smd-btn smd-btn--secondary" id="smdResetBtn">
+              Revert changes
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

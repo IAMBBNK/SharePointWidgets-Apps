@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OT Integration Survey</title>
+
+    <script src="https://mdigital.sharepoint.com/sites/ITOTCommunityHub/SiteAssets/ExternalLibs/jquery371.min.js"></script>
+<script src="https://mdigital.sharepoint.com/sites/ITOTCommunityHub/SiteAssets/scripts/survey_tool.js"></script>
+    <style>
+      .survey-widget {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        color: #1f1f1f;
+        box-sizing: border-box;
+      }
+
+      .survey-widget *,
+      .survey-widget *::before,
+      .survey-widget *::after {
+        box-sizing: border-box;
+      }
+
+      .survey-widget .survey-header {
+        padding-bottom: 18px;
+        border-bottom: 1px solid #e3e3e3;
+        margin-bottom: 24px;
+      }
+
+      .survey-widget .survey-title {
+        color: #0f69af;
+        font-size: 22px;
+        font-weight: 700;
+        margin: 0;
+      }
+
+      .survey-widget .survey-subtitle {
+        color: #666;
+        font-size: 14px;
+        margin: 8px 0 0 0;
+        line-height: 1.5;
+      }
+
+      .survey-widget .intro-section {
+        margin-bottom: 28px;
+        padding: 18px 20px;
+        background: #f5f9fc;
+        border: 1px solid #d5e4f0;
+        border-radius: 8px;
+      }
+
+      .survey-widget .intro-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 20px;
+        margin: 0 0 14px 0;
+        font-size: 13px;
+        color: #444;
+      }
+
+      .survey-widget .intro-meta strong {
+        color: #0f69af;
+      }
+
+      .survey-widget .intro-request-id {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 4px 10px;
+        border-radius: 999px;
+        background: #e8f2fa;
+        color: #0f69af;
+        font-weight: 700;
+        font-size: 12px;
+        letter-spacing: 0.02em;
+      }
+
+      .survey-widget .intro-block {
+        margin: 0 0 14px 0;
+      }
+
+      .survey-widget .intro-block:last-child {
+        margin-bottom: 0;
+      }
+
+      .survey-widget .intro-block h3 {
+        margin: 0 0 6px 0;
+        font-size: 14px;
+        font-weight: 700;
+        color: #0f69af;
+      }
+
+      .survey-widget .intro-block p,
+      .survey-widget .intro-privacy {
+        margin: 0;
+        font-size: 13px;
+        line-height: 1.55;
+        color: #444;
+      }
+
+      .survey-widget .intro-privacy a {
+        color: #0f69af;
+        font-weight: 600;
+        text-decoration: underline;
+      }
+
+      .survey-widget .intro-privacy a:hover {
+        color: #0d5a96;
+      }
+
+      .survey-widget .error-banner {
+        background-color: #fdecea;
+        color: #b00020;
+        border: 1px solid #f5c2c7;
+        border-radius: 6px;
+        padding: 12px 16px;
+        margin: 0 0 16px 0;
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      .survey-widget .success-banner {
+        background-color: #e8f5e9;
+        color: #1b5e20;
+        border: 1px solid #a5d6a7;
+        border-radius: 6px;
+        padding: 16px 20px;
+        font-size: 15px;
+        font-weight: 600;
+        line-height: 1.5;
+      }
+
+      .survey-widget .is-hidden {
+        display: none;
+      }
+
+      .survey-widget #surveyForm.is-hidden {
+        display: none;
+      }
+
+      .survey-widget .survey-section {
+        margin-bottom: 32px;
+      }
+
+      .survey-widget .section-title {
+        color: #0f69af;
+        font-size: 17px;
+        font-weight: 700;
+        margin: 0 0 8px 0;
+      }
+
+      .survey-widget .section-hint {
+        color: #666;
+        font-size: 13px;
+        margin: 0 0 16px 0;
+        line-height: 1.45;
+      }
+
+      .survey-widget .milestone-summary {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 16px;
+      }
+
+      .survey-widget .summary-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 14px;
+        border-radius: 20px;
+        font-size: 13px;
+        font-weight: 600;
+      }
+
+      .survey-widget .summary-chip--best {
+        background-color: #e8f5e9;
+        color: #2e7d32;
+        border: 1px solid #a5d6a7;
+      }
+
+      .survey-widget .summary-chip--worst {
+        background-color: #fff3e0;
+        color: #e65100;
+        border: 1px solid #ffcc80;
+      }
+
+      .survey-widget .milestone-rank-board {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin-bottom: 24px;
+      }
+
+      .survey-widget .rank-slot {
+        min-height: 88px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        padding: 10px 12px;
+        background: #f8fafc;
+        border: 2px dashed #cfd6dd;
+        border-radius: 8px;
+        transition: border-color 0.15s ease, background-color 0.15s ease;
+      }
+
+      .survey-widget .rank-slot.is-filled {
+        background: #fff;
+        border-style: solid;
+      }
+
+      .survey-widget .rank-slot.is-drag-over {
+        border-color: #0f69af;
+        background-color: #f0f7fc;
+      }
+
+      .survey-widget .rank-slot-label {
+        font-size: 12px;
+        font-weight: 700;
+        color: #666;
+        letter-spacing: 0.02em;
+      }
+
+      .survey-widget .rank-slot-label--best {
+        color: #2e7d32;
+      }
+
+      .survey-widget .rank-slot-label--worst {
+        color: #e65100;
+      }
+
+      .survey-widget .rank-slot-dropzone {
+        flex: 1;
+        min-height: 56px;
+        width: 100%;
+        display: flex;
+        align-items: stretch;
+      }
+
+      .survey-widget .rank-slot .milestone-chip {
+        width: 100%;
+        flex: 1;
+        min-height: 56px;
+      }
+
+      .survey-widget .rank-slot-placeholder {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        min-height: 56px;
+        font-size: 13px;
+        color: #999;
+        font-style: italic;
+      }
+
+      .survey-widget .milestone-pool-section {
+        padding-top: 8px;
+        border-top: 1px solid #e3e3e3;
+      }
+
+      .survey-widget .pool-hint {
+        color: #666;
+        font-size: 13px;
+        margin: 0 0 12px 0;
+        line-height: 1.45;
+      }
+
+      .survey-widget .milestone-pool {
+        list-style: none;
+        margin: 0;
+        padding: 12px;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-rows: repeat(2, minmax(64px, auto));
+        gap: 10px;
+        background: #f3f6f8;
+        border: 1px solid #dde3ea;
+        border-radius: 8px;
+        min-height: 148px;
+        transition: border-color 0.15s ease, background-color 0.15s ease;
+      }
+
+      .survey-widget .milestone-pool > li {
+        margin: 0;
+        min-width: 0;
+        display: flex;
+      }
+
+      .survey-widget .milestone-pool.is-drag-over {
+        border-color: #0f69af;
+        background-color: #f0f7fc;
+      }
+
+      .survey-widget .milestone-pool-empty {
+        grid-column: 1 / -1;
+        grid-row: 1 / -1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 13px;
+        color: #999;
+        font-style: italic;
+      }
+
+      .survey-widget .milestone-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 14px;
+        background: #fff;
+        border: 1px solid #cfd6dd;
+        border-radius: 8px;
+        cursor: grab;
+        transition: box-shadow 0.15s ease, border-color 0.15s ease;
+        user-select: none;
+        box-sizing: border-box;
+      }
+
+      .survey-widget .milestone-pool .milestone-chip {
+        width: 100%;
+        min-height: 64px;
+      }
+
+      .survey-widget .milestone-chip:hover {
+        border-color: #0f69af;
+        box-shadow: 0 2px 8px rgba(15, 105, 175, 0.12);
+      }
+
+      .survey-widget .milestone-chip.is-dragging {
+        opacity: 0.55;
+        cursor: grabbing;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      .survey-widget .milestone-drag-handle {
+        color: #999;
+        font-size: 18px;
+        line-height: 1;
+        flex-shrink: 0;
+      }
+
+      .survey-widget .milestone-label {
+        flex: 1;
+        min-width: 0;
+        font-size: 14px;
+        font-weight: 600;
+        color: #1f1f1f;
+        line-height: 1.35;
+      }
+
+      .survey-widget .feedback-fields {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .survey-widget .field-group {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .survey-widget .field-group label {
+        font-size: 13px;
+        font-weight: 600;
+        color: #444;
+      }
+
+      .survey-widget .field-group textarea,
+      .survey-widget .field-group input[type="email"],
+      .survey-widget .field-group select {
+        width: 100%;
+        padding: 10px 12px;
+        border: 1px solid #cfd6dd;
+        border-radius: 6px;
+        font-family: inherit;
+        font-size: 14px;
+        line-height: 1.45;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .survey-widget .field-group textarea {
+        min-height: 88px;
+        resize: vertical;
+      }
+
+      .survey-widget .field-group select {
+        appearance: none;
+        -webkit-appearance: none;
+        background-color: #fff;
+        background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='%230f69af' d='M5.3 7.7a1 1 0 0 1 1.4 0L10 11l3.3-3.3a1 1 0 1 1 1.4 1.4l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 0 1 0-1.4Z'/></svg>");
+        background-repeat: no-repeat;
+        background-position: right 10px center;
+        background-size: 16px;
+        padding-right: 36px;
+        cursor: pointer;
+      }
+
+      .survey-widget .field-group textarea:focus,
+      .survey-widget .field-group input[type="email"]:focus,
+      .survey-widget .field-group select:focus {
+        outline: none;
+        border-color: #0f69af;
+        box-shadow: 0 0 0 3px rgba(15, 105, 175, 0.15);
+      }
+
+      .survey-widget .field-group textarea.is-invalid,
+      .survey-widget .field-group input.is-invalid,
+      .survey-widget .field-group select.is-invalid {
+        border-color: #b00020;
+      }
+
+      .survey-widget .contact-fields {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+
+      .survey-widget .field-group--full {
+        grid-column: 1 / -1;
+      }
+
+      @media (max-width: 700px) {
+        .survey-widget .contact-fields {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .survey-widget .field-error {
+        font-size: 12px;
+        color: #b00020;
+        font-weight: 600;
+      }
+
+      .survey-widget .consent-box {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+        padding: 14px 16px;
+        background: #f5f9fc;
+        border: 1px solid #d6e6f2;
+        border-radius: 8px;
+        margin-bottom: 4px;
+      }
+
+      .survey-widget .consent-box input[type="checkbox"] {
+        margin-top: 3px;
+        width: 18px;
+        height: 18px;
+        flex-shrink: 0;
+        accent-color: #0f69af;
+        cursor: pointer;
+      }
+
+      .survey-widget .consent-box label {
+        font-size: 14px;
+        font-weight: 500;
+        color: #333;
+        line-height: 1.5;
+        cursor: pointer;
+      }
+
+      .survey-widget .consent-box label .consent-title {
+        display: block;
+        font-weight: 700;
+        color: #0f69af;
+        margin-bottom: 4px;
+      }
+
+      .survey-widget .submit-row {
+        padding-top: 8px;
+        border-top: 1px solid #e3e3e3;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+      .survey-widget .submit-row #errorContainer:empty {
+        display: none;
+      }
+
+      .survey-widget .submit-row .error-banner {
+        margin: 0;
+        width: 100%;
+      }
+
+      .survey-widget .submit-btn {
+        background-color: #0f69af;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        padding: 12px 28px;
+        font-size: 15px;
+        font-weight: 600;
+        font-family: inherit;
+        cursor: pointer;
+        transition: background-color 0.2s ease, opacity 0.2s ease;
+      }
+
+      .survey-widget .submit-btn:hover:not(:disabled) {
+        background-color: #0d5a96;
+      }
+
+      .survey-widget .submit-btn:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+
+      .survey-widget .extra-feedback-container {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .survey-widget .extra-feedback-entries {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .survey-widget .extra-feedback-entries.is-hidden {
+        display: none;
+      }
+
+      .survey-widget .extra-feedback-entry {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+        padding: 14px 16px;
+        background: #f8fafc;
+        border: 1px solid #dde3ea;
+        border-radius: 8px;
+      }
+
+      .survey-widget .extra-feedback-entry-milestone {
+        flex-shrink: 0;
+        min-width: 44px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: #e8f2fa;
+        color: #0f69af;
+        font-size: 13px;
+        font-weight: 700;
+        text-align: center;
+      }
+
+      .survey-widget .extra-feedback-entry-text {
+        flex: 1;
+        margin: 0;
+        font-size: 14px;
+        line-height: 1.5;
+        color: #333;
+        white-space: pre-wrap;
+      }
+
+      .survey-widget .extra-feedback-entry-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        flex-shrink: 0;
+      }
+
+      .survey-widget .extra-feedback-edit-btn {
+        padding: 6px 10px;
+        border: 1px solid #cfd6dd;
+        border-radius: 6px;
+        background: #fff;
+        color: #0f69af;
+        font-size: 12px;
+        font-weight: 600;
+        font-family: inherit;
+        cursor: pointer;
+      }
+
+      .survey-widget .extra-feedback-edit-btn:hover {
+        border-color: #0f69af;
+        background: #e8f2fa;
+      }
+
+      .survey-widget .extra-feedback-remove-btn {
+        flex-shrink: 0;
+        width: 32px;
+        height: 32px;
+        padding: 0;
+        border: 1px solid #cfd6dd;
+        border-radius: 6px;
+        background: #fff;
+        color: #666;
+        font-size: 18px;
+        line-height: 1;
+        cursor: pointer;
+      }
+
+      .survey-widget .extra-feedback-remove-btn:hover {
+        border-color: #b00020;
+        color: #b00020;
+        background: #fff5f5;
+      }
+
+      .survey-widget .extra-feedback-composer {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding: 16px;
+        background: #fff;
+        border: 1px solid #cfd6dd;
+        border-radius: 8px;
+      }
+
+      .survey-widget .extra-feedback-composer.is-hidden {
+        display: none;
+      }
+
+      .survey-widget .extra-feedback-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .survey-widget .secondary-btn {
+        background: #fff;
+        color: #0f69af;
+        border: 1px solid #0f69af;
+        border-radius: 6px;
+        padding: 10px 18px;
+        font-size: 14px;
+        font-weight: 600;
+        font-family: inherit;
+        cursor: pointer;
+        transition: background-color 0.2s ease, color 0.2s ease;
+      }
+
+      .survey-widget .secondary-btn:hover:not(:disabled) {
+        background: #e8f2fa;
+      }
+
+      .survey-widget .secondary-btn:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+
+      .survey-widget .ghost-btn {
+        background: transparent;
+        color: #666;
+        border: 1px solid #cfd6dd;
+        border-radius: 6px;
+        padding: 10px 18px;
+        font-size: 14px;
+        font-weight: 600;
+        font-family: inherit;
+        cursor: pointer;
+      }
+
+      .survey-widget .ghost-btn:hover {
+        background: #f3f6f8;
+      }
+
+      @media (max-width: 600px) {
+        .survey-widget {
+          padding: 12px;
+        }
+
+        .survey-widget .milestone-rank-board {
+          grid-template-columns: 1fr;
+        }
+
+        .survey-widget .milestone-pool {
+          grid-template-columns: 1fr;
+          grid-template-rows: auto;
+        }
+
+        .survey-widget .milestone-pool .milestone-chip {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="survey-widget" id="surveyWidget">
+      <header class="survey-header">
+        <h1 class="survey-title">OT System Integration — Feedback Survey</h1>
+        <p class="survey-subtitle">
+          Help us improve the OT System Integration process by ranking how well each milestone was achieved on your project, then sharing specific feedback on what worked well and what could be done better. Your responses are used to identify strengths and priorities for improvement across sites.
+        </p>
+      </header>
+
+      <section class="intro-section" aria-labelledby="section-intro-title">
+        <div class="intro-meta">
+          <span class="intro-request-id" title="Legal / privacy request ID">
+            Request ID: <span id="surveyRequestId">LE00XXX</span>
+          </span>
+        </div>
+
+        <div class="intro-block">
+          <h3 id="section-intro-title">Purpose of this survey</h3>
+          <p id="surveyPurposeText">
+            This survey collects feedback on how well OT System Integration milestones were achieved, so we can identify strengths, improvement areas, and priorities for future integrations across Merck sites.
+          </p>
+        </div>
+
+        <div class="intro-block">
+          <h3>Contact person</h3>
+          <p>
+            <strong id="surveyContactName">[Contact person]</strong>
+            (<a id="surveyContactEmailLink" href="mailto:">[contact email]</a>)
+          </p>
+        </div>
+
+        <div class="intro-block">
+          <h3>Retention of personal data</h3>
+          <p id="surveyRetentionText">
+            Personal data provided in this survey (for example your role and, if you consent, your email for follow-up) will be retained only as long as we consider working with you on this topic, or until you object, unless overriding legitimate grounds apply under Article 21 (1) GDPR.
+          </p>
+        </div>
+
+        <div class="intro-block">
+          <h3>Privacy notice</h3>
+          <p class="intro-privacy" id="surveyPrivacyNote">
+            Participation in the survey is voluntary. If you wish to participate,
+            <span id="surveyControllerName">[insert name of the Merck subsidiary and address]</span>
+            will use your personal data in order to perform the survey and to contact you in case of follow-up questions.
+            The legal basis for processing is Article 6 (1) f) EU-GDPR, where the legitimate interest of us is to better understand your requirements and needs in order to improve our services.
+            According to Article 21 (1) EU-GDPR you have the right to object to the use of your data (based on Article 6 (1) f) EU-GDPR) with effect for the future by sending your objection to
+            <a id="surveyObjectionEmailLink" href="mailto:">[insert email address of survey team]</a>.
+            We will keep your data as long as we consider working with you or until your legitimate objection, if there are no overriding and legitimate reasons for the processing within the meaning of Article 21 (1) GDPR.
+            We may involve service providers in order to provide the survey to you, which are obliged to comply with applicable data protection regulations.
+            You can find further information about data protection at Merck and your rights
+            <a
+              id="surveyPrivacyStatementLink"
+              href="https://www.merckgroup.com/en/privacy-statement.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Data Privacy Statement</a
+            >.
+          </p>
+        </div>
+      </section>
+
+      <div id="successContainer" class="is-hidden"></div>
+
+      <form id="surveyForm" novalidate>
+        <section class="survey-section" aria-labelledby="section-contact-title">
+          <h2 class="section-title" id="section-contact-title">1. Your details</h2>
+          <p class="section-hint">
+            Select your role so we can understand feedback in the right context. Sharing your email for a possible follow-up is optional — you can choose that at the end of the survey.
+          </p>
+
+          <div class="contact-fields">
+            <div class="field-group field-group--full">
+              <label for="contactRole">Your role</label>
+              <select id="contactRole" name="contactRole" required disabled>
+                <option value="">Loading…</option>
+              </select>
+              <span class="field-error" id="contactRoleError" hidden></span>
+            </div>
+          </div>
+        </section>
+
+        <section class="survey-section" aria-labelledby="section-rank-title">
+          <h2 class="section-title" id="section-rank-title">2. Rank the milestones</h2>
+          <p class="section-hint">
+            Rank all six milestones based on how effectively they were delivered in your experience. Drag each milestone from the pool below into one of the six slots — <strong>#1 is best performed</strong>, <strong>#6 needs the most improvement</strong>. The left column covers ranks 1–3, the right column covers ranks 4–6. You can move milestones between slots or return them to the pool until you are happy with the order. All six slots must be filled before you can submit.
+          </p>
+
+          <div class="milestone-summary">
+            <span class="summary-chip summary-chip--best" id="bestMilestoneChip">Best: —</span>
+            <span class="summary-chip summary-chip--worst" id="worstMilestoneChip">Worst: —</span>
+          </div>
+
+          <div class="milestone-rank-board" id="milestoneRankBoard" aria-label="Milestone ranking slots"></div>
+
+          <div class="milestone-pool-section">
+            <p class="pool-hint">These are the six milestones available for ranking. Drag each one into a slot above. Each card shows the milestone code and name (for example, M1: Service Design).</p>
+            <ul class="milestone-pool" id="milestonePool" role="list" aria-label="Available milestones"></ul>
+          </div>
+        </section>
+
+        <section class="survey-section" aria-labelledby="section-best-title">
+          <h2 class="section-title" id="section-best-title">
+            3. What went well? <span id="bestSectionMilestone"></span>
+          </h2>
+          <p class="section-hint">
+            Focus on the milestone you ranked <strong>#1 (best)</strong>. Describe what went well — for example, clear communication, smooth handovers, good tooling, strong collaboration, or timely delivery. Be as specific as you can so others can learn from what worked on your project.
+          </p>
+
+          <div class="feedback-fields">
+            <div class="field-group">
+              <label for="bestFeedback">Your feedback</label>
+              <textarea id="bestFeedback" name="bestFeedback" rows="6" required placeholder="What went well…"></textarea>
+              <span class="field-error" id="bestFeedbackError" hidden></span>
+            </div>
+          </div>
+        </section>
+
+        <section class="survey-section" aria-labelledby="section-worst-title">
+          <h2 class="section-title" id="section-worst-title">
+            4. What needs improvement? <span id="worstSectionMilestone"></span>
+          </h2>
+          <p class="section-hint">
+            Focus on the milestone you ranked <strong>#6 (lowest)</strong>. Describe what did not work well or what should be improved — for example, delays, unclear requirements, missing documentation, or gaps in support. Concrete examples help us prioritize the right improvements for future integrations.
+          </p>
+
+          <div class="feedback-fields">
+            <div class="field-group">
+              <label for="worstFeedback">Your feedback</label>
+              <textarea id="worstFeedback" name="worstFeedback" rows="6" required placeholder="What needs improvement…"></textarea>
+              <span class="field-error" id="worstFeedbackError" hidden></span>
+            </div>
+          </div>
+        </section>
+
+        <section class="survey-section" aria-labelledby="section-extra-title">
+          <h2 class="section-title" id="section-extra-title">5. Additional feedback (optional)</h2>
+          <p class="section-hint">
+            Optionally add feedback for any other milestones not already covered above. Click <strong>Give more feedback</strong> to add another entry, select the milestone, and enter your comments. You can add multiple entries, edit them with <strong>Edit</strong>, or remove them before submitting. This section is not required.
+          </p>
+
+          <div class="extra-feedback-container" id="extraFeedbackContainer">
+            <div class="extra-feedback-entries" id="extraFeedbackEntries" aria-live="polite"></div>
+
+            <div class="extra-feedback-composer is-hidden" id="extraFeedbackComposer">
+              <div class="field-group">
+                <label for="extraFeedbackMilestone">Milestone</label>
+                <select id="extraFeedbackMilestone" name="extraFeedbackMilestone">
+                  <option value="">Select milestone…</option>
+                </select>
+                <span class="field-error" id="extraFeedbackMilestoneError" hidden></span>
+              </div>
+              <div class="field-group">
+                <label for="extraFeedbackText">Your feedback</label>
+                <textarea id="extraFeedbackText" name="extraFeedbackText" rows="4" placeholder="Share your feedback for this milestone…"></textarea>
+                <span class="field-error" id="extraFeedbackTextError" hidden></span>
+              </div>
+              <div class="extra-feedback-actions">
+                <button type="button" class="secondary-btn" id="saveExtraFeedbackBtn">Add feedback</button>
+                <button type="button" class="ghost-btn" id="cancelExtraFeedbackBtn">Cancel</button>
+              </div>
+            </div>
+
+            <button type="button" class="secondary-btn" id="addExtraFeedbackBtn">Give more feedback</button>
+          </div>
+        </section>
+
+        <section class="survey-section" aria-labelledby="section-consent-title">
+          <h2 class="section-title" id="section-consent-title">6. Optional follow-up</h2>
+          <div class="consent-box">
+            <input type="checkbox" id="consentFollowUp" name="consentFollowUp" />
+            <label for="consentFollowUp">
+              <span class="consent-title">Yes, you may contact me about my feedback</span>
+              Allow my email address to be stored with this response so the OT System Integration team can reach out afterward with a few more detailed questions about my experience — helping us understand what worked well and where we can improve the process for future projects. This is completely optional.
+            </label>
+          </div>
+        </section>
+
+        <div class="submit-row">
+          <div id="errorContainer"></div>
+          <button type="submit" class="submit-btn" id="submitSurvey">Submit feedback</button>
+        </div>
+      </form>
+    </div>
+
+    
+  </body>
+</html>

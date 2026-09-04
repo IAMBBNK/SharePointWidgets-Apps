@@ -1,0 +1,23 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/build/serve.schema.json",
+  "port": 4321,
+  "https": true,
+  "serveConfigurations": {
+    "default": {
+      "pageUrl": "https://mdigital.sharepoint.com/sites/ITOTCommunityHub/SitePages/Home.aspx",
+      "customActions": {
+        "7c4e8f2a-1b3d-4e5f-9a6b-2c8d0e1f3a5b": {
+          "location": "ClientSideExtension.ApplicationCustomizer",
+          "properties": {
+            "trackingListTitle": "Page View Tracking",
+            "trackingListSiteUrl": "https://mdigital.sharepoint.com/sites/ITOTCommunityHub",
+            "sourceQueryParam": "source",
+            "trackNewsOnly": false,
+            "defaultSource": "direct",
+            "dedupeInSession": true
+          }
+        }
+      }
+    }
+  }
+}

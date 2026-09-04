@@ -1,0 +1,146 @@
+<div id="portfolioCoeContainer"></div>
+
+<style>
+  /* Base table layout */
+  #portfolioCoeContainer .portfolio-table {
+    border-collapse: separate;
+    border-spacing: 8px 8px;
+    width: 100%;
+    max-width: 1200px;
+    border: none;
+    table-layout: fixed;
+  }
+
+  #portfolioCoeContainer th,
+  #portfolioCoeContainer td {
+    padding: 10px;
+    border: none;
+    text-align: center;
+    border-radius: 8px;
+    word-break: break-word;
+  }
+
+  #portfolioCoeContainer tr:nth-child(1) {
+    font-weight: bold;
+  }
+
+  #portfolioCoeContainer tr th:first-child,
+  #portfolioCoeContainer tr td:first-child {
+    background: #0c5aa1;
+    color: white;
+    width: 12.5%;
+  }
+
+  #portfolioCoeContainer tr th:not(:first-child),
+  #portfolioCoeContainer tr td:not(:first-child) {
+    width: 12.5%;
+  }
+
+  #portfolioCoeContainer tr:nth-child(1) td {
+    color: white;
+  }
+
+  #portfolioCoeContainer tr:nth-child(1) td:nth-child(6),
+  #portfolioCoeContainer tr:nth-child(1) td:nth-child(7),
+  #portfolioCoeContainer tr:nth-child(1) td:nth-child(8) {
+    color: #0f69af;
+  }
+
+  #portfolioCoeContainer tr:nth-child(1) td:nth-child(2) {
+    background: #f38ac0;
+  }
+  #portfolioCoeContainer tr:nth-child(n + 2) td:nth-child(2) {
+    background: #f9cfe3;
+  }
+
+  #portfolioCoeContainer tr:nth-child(1) td:nth-child(3) {
+    background: #9072cf;
+  }
+  #portfolioCoeContainer tr:nth-child(n + 2) td:nth-child(3) {
+    background: #d7cdf6;
+  }
+
+  #portfolioCoeContainer tr:nth-child(1) td:nth-child(4) {
+    background: #4ea9f0;
+  }
+  #portfolioCoeContainer tr:nth-child(n + 2) td:nth-child(4) {
+    background: #c7e2fa;
+  }
+
+  #portfolioCoeContainer tr:nth-child(1) td:nth-child(5) {
+    background: #7fdae3;
+  }
+  #portfolioCoeContainer tr:nth-child(n + 2) td:nth-child(5) {
+    background: #d9f3f3;
+  }
+
+  #portfolioCoeContainer tr:nth-child(1) td:nth-child(6) {
+    background: #4de8a3;
+  }
+  #portfolioCoeContainer tr:nth-child(n + 2) td:nth-child(6) {
+    background: #cdf1d9;
+  }
+
+  #portfolioCoeContainer tr:nth-child(1) td:nth-child(7) {
+    background: #c9e196;
+  }
+  #portfolioCoeContainer tr:nth-child(n + 2) td:nth-child(7) {
+    background: #ebf0ce;
+  }
+
+  #portfolioCoeContainer tr:nth-child(1) td:nth-child(8) {
+    background: #ffde84;
+  }
+  #portfolioCoeContainer tr:nth-child(n + 2) td:nth-child(8) {
+    background: #fff7d9;
+  }
+
+  #portfolioCoeContainer .portfolio-load-error {
+    color: #b00020;
+    font-weight: 600;
+    padding: 12px;
+  }
+
+  .portfolio-person-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .portfolio-profile-pic-wrapper {
+    position: relative;
+    width: 36px;
+    height: 36px;
+    margin-bottom: 4px;
+  }
+
+  .portfolio-profile-pic {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .portfolio-name-text {
+    line-height: 1.2;
+    text-align: center;
+    font-weight: 600;
+    word-break: break-word;
+  }
+
+  .portfolio-person-link {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .portfolio-person-link:hover .portfolio-name-text {
+    text-decoration: underline;
+  }
+</style>
+
+<script src="https://mdigital.sharepoint.com/sites/ITOTCommunityHub/SiteAssets/scripts/itot-governance-model/portfolio-management.js">
+</script>

@@ -1,0 +1,261 @@
+<div id="buttonContainer">
+    <button
+      id="flipButton"
+      style="
+        margin-bottom: 15px;
+        padding: 8px 16px;
+        background: #0c5aa1;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+      "
+    >
+      Show Backups
+    </button>
+  </div>
+  <div id="listContainer"></div>
+  
+  <script src="https://mdigital.sharepoint.com/sites/ITOTCommunityHub/SiteAssets/scripts/itot-governance-model/governance-bodies.js">
+  </script>
+  
+  <style>
+    #buttonContainer {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 10px;
+      padding: 0px 10px 0px 0px;
+    }
+  
+    #listContainer table {
+      border-collapse: separate !important;
+      border-spacing: 7px;
+      width: 100%;
+      max-width: 1200px;
+      border: none;
+    }
+  
+    #listContainer thead tr {
+      background: #0c5aa1;
+      color: white;
+      font-weight: bold;
+      border: none;
+      font-size: 14px;
+    }
+  
+    #listContainer thead th {
+      border-radius: 10px;
+      padding: 5px 12px;
+      vertical-align: middle;
+      text-align: center;
+      border: none;
+      position: relative;
+    }
+  
+    #listContainer thead th:nth-child(2) {
+      width: 250px;
+    }
+  
+    #listContainer thead th:not(:nth-child(2)) {
+      width: 120px;
+    }
+  
+    #listContainer thead th span.members {
+      display: block;
+      font-weight: normal;
+      font-size: 11px;
+      text-decoration: underline;
+      margin-top: 6px;
+    }
+  
+    #listContainer tbody tr td:first-child {
+      font-weight: bold;
+      color: white;
+      padding-left: 15px;
+      border-radius: 10px;
+      width: 70px;
+      text-align: center;
+      vertical-align: middle;
+      font-size: 16px;
+    }
+  
+    #listContainer tbody tr:nth-child(1) td:first-child {
+      background: #f38ac0;
+    }
+    #listContainer tbody tr:nth-child(2) td:first-child {
+      background: #9072cf;
+    }
+    #listContainer tbody tr:nth-child(3) td:first-child {
+      background: #4ea9f0;
+    }
+    #listContainer tbody tr:nth-child(4) td:first-child {
+      background: #7fdae3;
+    }
+    #listContainer tbody tr:nth-child(5) td:first-child {
+      background: #4de8a3;
+      color: #0f69af;
+    }
+    #listContainer tbody tr:nth-child(6) td:first-child {
+      background: #c9e196;
+      color: #0f69af;
+    }
+    #listContainer tbody tr:nth-child(7) td:first-child {
+      background: #ffde84;
+      color: #0f69af;
+    }
+
+    #listContainer tbody tr:nth-child(1) td:not(:first-child) {
+      background: #f9cfe3;
+      border-radius: 10px;
+    }
+    #listContainer tbody tr:nth-child(2) td:not(:first-child) {
+      background: #d7cdf6;
+      border-radius: 10px;
+    }
+    #listContainer tbody tr:nth-child(3) td:not(:first-child) {
+      background: #c7e2fa;
+      border-radius: 10px;
+    }
+    #listContainer tbody tr:nth-child(4) td:not(:first-child) {
+      background: #d9f3f3;
+      border-radius: 10px;
+    }
+    #listContainer tbody tr:nth-child(5) td:not(:first-child) {
+      background: #cdf1d9;
+      border-radius: 10px;
+    }
+    #listContainer tbody tr:nth-child(6) td:not(:first-child) {
+      background: #ebf0ce;
+      border-radius: 10px;
+    }
+    #listContainer tbody tr:nth-child(7) td:not(:first-child) {
+      background: #fff7d9;
+      border-radius: 10px;
+    }
+
+    #listContainer td,
+    #listContainer th {
+      padding: 0px 10px;
+      border: none;
+      text-align: center;
+      font-weight: 600;
+    }
+  
+    .profile-pic-wrapper {
+      position: relative;
+      width: 36px;
+      height: 36px;
+      margin-bottom: 4px;
+    }
+  
+    .profile-pic {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+    }
+  
+    .person-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .person-link {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      color: inherit;
+    }
+  
+    .name-text {
+      line-height: 1.2;
+      text-align: center;
+      font-weight: 600;
+      word-break: break-word;
+    }
+  
+    .person-link:hover .name-text {
+      text-decoration: underline;
+    }
+  
+    .td-grid-1,
+    .td-grid-2,
+    .td-grid-3 {
+      display: grid;
+      width: 100%;
+      gap: 4px;
+    }
+  
+    .td-grid-1 {
+      grid-template-columns: 100%;
+    }
+    .td-grid-2 {
+      grid-template-columns: 50% 50%;
+    }
+    .td-grid-3 {
+      grid-template-columns: 33% 33% 33%;
+    }
+  
+    .td-grid-1 > div,
+    .td-grid-2 > div,
+    .td-grid-3 > div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      min-height: 80px;
+    }
+  
+    .coe-cell {
+      position: relative;
+      overflow: hidden;
+    }
+  
+    .coe-flip-card {
+      width: 100%;
+      height: 100%;
+      perspective: 1500px;
+      position: relative;
+    }
+  
+    .coe-flip-inner {
+      width: 100%;
+      height: 100%;
+      transition: transform 0.7s;
+      transform-style: preserve-3d;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  
+    .coe-flip-inner.flipped {
+      transform: rotateY(180deg);
+    }
+  
+    .coe-front,
+    .coe-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 8px;
+      box-sizing: border-box;
+      background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 80px;
+    }
+  
+    .coe-back {
+      transform: translate(-50%, -50%) rotateY(180deg);
+    }
+  </style>
+  

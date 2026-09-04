@@ -1,0 +1,7138 @@
+{
+	"learnedLexemes": [
+		{
+			"text": "è l'una",
+			"translations": [
+				"it's one o'clock",
+				"it is one o'clock"
+			]
+		},
+		{
+			"text": "coda",
+			"translations": [
+				"tail",
+				"queue",
+				"line",
+				"end"
+			]
+		},
+		{
+			"text": "dritto",
+			"translations": [
+				"straight",
+				"straight ahead"
+			]
+		},
+		{
+			"text": "come",
+			"translations": [
+				"how",
+				"like",
+				"as",
+				"what"
+			]
+		},
+		{
+			"text": "a destra",
+			"translations": [
+				"to the right",
+				"on the right"
+			]
+		},
+		{
+			"text": "arrivare",
+			"translations": [
+				"to arrive",
+				"arrive",
+				"arrives",
+				"arrived"
+			]
+		},
+		{
+			"text": "sono le",
+			"translations": [
+				"it's",
+				"they are"
+			]
+		},
+		{
+			"text": "dodici",
+			"translations": [
+				"twelve"
+			]
+		},
+		{
+			"text": "scuse",
+			"translations": [
+				"excuse me",
+				"sorry",
+				"apologies"
+			]
+		},
+		{
+			"text": "scusi",
+			"translations": [
+				"excuse me"
+			]
+		},
+		{
+			"text": "che ore sono",
+			"translations": [
+				"what time is it"
+			]
+		},
+		{
+			"text": "scarico",
+			"translations": [
+				"dead",
+				"drainpipe",
+				"I dump",
+				"I unload",
+				"out of power"
+			]
+		},
+		{
+			"text": "meno",
+			"translations": [
+				"less",
+				"minus"
+			]
+		},
+		{
+			"text": "finalmente",
+			"translations": [
+				"finally"
+			]
+		},
+		{
+			"text": "preferisco",
+			"translations": [
+				"prefer",
+				"I like best",
+				"I like better"
+			]
+		},
+		{
+			"text": "utile",
+			"translations": [
+				"handy",
+				"profit",
+				"income",
+				"useful",
+				"helpful"
+			]
+		},
+		{
+			"text": "marche",
+			"translations": [
+				"brands",
+				"march"
+			]
+		},
+		{
+			"text": "economiche",
+			"translations": [
+				"cheap",
+				"economic",
+				"economics",
+				"economical"
+			]
+		},
+		{
+			"text": "più",
+			"translations": [
+				"most",
+				"plus",
+				"more",
+				"over",
+				"again"
+			]
+		},
+		{
+			"text": "quell'",
+			"translations": [
+				"that",
+				"what",
+				"those"
+			]
+		},
+		{
+			"text": "blu",
+			"translations": [
+				"blue"
+			]
+		},
+		{
+			"text": "spendere",
+			"translations": [
+				"gone",
+				"went",
+				"going"
+			]
+		},
+		{
+			"text": "quella",
+			"translations": [
+				"that",
+				"what",
+				"those",
+				"that's"
+			]
+		},
+		{
+			"text": "banco",
+			"translations": [
+				"bar",
+				"desk"
+			]
+		},
+		{
+			"text": "bianco",
+			"translations": [
+				"blanc",
+				"white",
+				"bianco"
+			]
+		},
+		{
+			"text": "penna",
+			"translations": [
+				"pen"
+			]
+		},
+		{
+			"text": "inutile",
+			"translations": [
+				"useless",
+				"unhelpful",
+				"unnecessary"
+			]
+		},
+		{
+			"text": "cartolina",
+			"translations": [
+				"postcard"
+			]
+		},
+		{
+			"text": "quello",
+			"translations": [
+				"that",
+				"what",
+				"those",
+				"that's"
+			]
+		},
+		{
+			"text": "verde",
+			"translations": [
+				"green"
+			]
+		},
+		{
+			"text": "brutto",
+			"translations": [
+				"bad",
+				"ugly",
+				"poor",
+				"worse",
+				"nasty"
+			]
+		},
+		{
+			"text": "bambola",
+			"translations": [
+				"doll"
+			]
+		},
+		{
+			"text": "souvenir",
+			"translations": [
+				"mementos",
+				"souvenirs",
+				"souvenir"
+			]
+		},
+		{
+			"text": "qualche",
+			"translations": [
+				"any",
+				"some",
+				"a few"
+			]
+		},
+		{
+			"text": "quel",
+			"translations": [
+				"that",
+				"what"
+			]
+		},
+		{
+			"text": "vendere",
+			"translations": [
+				"sold",
+				"shop",
+				"sell",
+				"stock",
+				"carry"
+			]
+		},
+		{
+			"text": "carino",
+			"translations": [
+				"kind",
+				"nice",
+				"cute",
+				"lovely",
+				"pretty"
+			]
+		},
+		{
+			"text": "chiama",
+			"translations": [
+				"calls",
+				"rings",
+				"names",
+				"phones",
+				"'s name"
+			]
+		},
+		{
+			"text": "compra",
+			"translations": [
+				"buy",
+				"buys",
+				"bought",
+				"he purchases",
+				"you purchase"
+			]
+		},
+		{
+			"text": "spazzatura",
+			"translations": [
+				"trash"
+			]
+		},
+		{
+			"text": "mazza",
+			"translations": [
+				"bat",
+				"club"
+			]
+		},
+		{
+			"text": "disgustoso",
+			"translations": [
+				"sick",
+				"gross",
+				"grossest",
+				"disgusting"
+			]
+		},
+		{
+			"text": "dolce",
+			"translations": [
+				"soft",
+				"cake",
+				"mild",
+				"sweet",
+				"candy"
+			]
+		},
+		{
+			"text": "marco",
+			"translations": [
+				"mark",
+				"I brand",
+				"I emphasize",
+				"Marco"
+			]
+		},
+		{
+			"text": "pulite",
+			"translations": [
+				"wash",
+				"clean",
+				"you clear up",
+				"you clear out",
+				"you do the housework"
+			]
+		},
+		{
+			"text": "apri",
+			"translations": [
+				"open",
+				"clear",
+				"unlock",
+				"you undo",
+				"you head"
+			]
+		},
+		{
+			"text": "tutto",
+			"translations": [
+				"everything"
+			]
+		},
+		{
+			"text": "aprite",
+			"translations": [
+				"open",
+				"clear"
+			]
+		},
+		{
+			"text": "sporco",
+			"translations": [
+				"mark",
+				"used",
+				"soil",
+				"lousy",
+				"dirty"
+			]
+		},
+		{
+			"text": "burro",
+			"translations": [
+				"butter"
+			]
+		},
+		{
+			"text": "nello",
+			"translations": [
+				"in",
+				"on",
+				"to",
+				"by",
+				"inside"
+			]
+		},
+		{
+			"text": "metti",
+			"translations": [
+				"keep",
+				"place"
+			]
+		},
+		{
+			"text": "forno",
+			"translations": [
+				"oven",
+				"ovens",
+				"bakery",
+				"baker’s shop"
+			]
+		},
+		{
+			"text": "palle",
+			"translations": [
+				"ball",
+				"shot",
+				"balls"
+			]
+		},
+		{
+			"text": "prato",
+			"translations": [
+				"lea",
+				"lawn",
+				"grass",
+				"meadow"
+			]
+		},
+		{
+			"text": "mettete",
+			"translations": [
+				"keep",
+				"place",
+				"you put on",
+				"you put up",
+				"you put in"
+			]
+		},
+		{
+			"text": "nella",
+			"translations": [
+				"to",
+				"in",
+				"by",
+				"into",
+				"whole"
+			]
+		},
+		{
+			"text": "kilo",
+			"translations": [
+				"kilo"
+			]
+		},
+		{
+			"text": "pentola",
+			"translations": [
+				"pot",
+				"pan",
+				"pots",
+				"potful",
+				"casserole"
+			]
+		},
+		{
+			"text": "farina",
+			"translations": [
+				"flour"
+			]
+		},
+		{
+			"text": "comprate",
+			"translations": [
+				"buy",
+				"square"
+			]
+		},
+		{
+			"text": "ricetta",
+			"translations": [
+				"method",
+				"remedy",
+				"recipe",
+				"recipes",
+				"prescription"
+			]
+		},
+		{
+			"text": "lavare",
+			"translations": [
+				"to wash"
+			]
+		},
+		{
+			"text": "vacche",
+			"translations": [
+				"cows"
+			]
+		},
+		{
+			"text": "fanno",
+			"translations": [
+				"they do",
+				"they make",
+				"do",
+				"make"
+			]
+		},
+		{
+			"text": "bicchiere",
+			"translations": [
+				"glass",
+				"goblets"
+			]
+		},
+		{
+			"text": "sua",
+			"translations": [
+				"her",
+				"his",
+				"its",
+				"hers",
+				"your"
+			]
+		},
+		{
+			"text": "chiamare",
+			"translations": [
+				"to call"
+			]
+		},
+		{
+			"text": "mamma",
+			"translations": [
+				"mom"
+			]
+		},
+		{
+			"text": "ammiro",
+			"translations": [
+				"admire"
+			]
+		},
+		{
+			"text": "tua",
+			"translations": [
+				"'s",
+				"your",
+				"yours"
+			]
+		},
+		{
+			"text": "papà",
+			"translations": [
+				"dad",
+				"daddy"
+			]
+		},
+		{
+			"text": "tuo",
+			"translations": [
+				"your",
+				"yours"
+			]
+		},
+		{
+			"text": "cugina",
+			"translations": [
+				"cousin"
+			]
+		},
+		{
+			"text": "canzone",
+			"translations": [
+				"song",
+				"entries",
+				"epic poem",
+				"canzone"
+			]
+		},
+		{
+			"text": "mia",
+			"translations": [
+				"my",
+				"mine",
+				"mia"
+			]
+		},
+		{
+			"text": "sa",
+			"translations": [
+				"knows",
+				"know",
+				"he knows",
+				"she knows"
+			]
+		},
+		{
+			"text": "mio",
+			"translations": [
+				"my",
+				"mine"
+			]
+		},
+		{
+			"text": "giro",
+			"translations": [
+				"run",
+				"runs",
+				"walk",
+				"turn",
+				"walks"
+			]
+		},
+		{
+			"text": "cugino",
+			"translations": [
+				"cousin"
+			]
+		},
+		{
+			"text": "invitato",
+			"translations": [
+				"asked",
+				"guest",
+				"invited",
+				"requested"
+			]
+		},
+		{
+			"text": "gare",
+			"translations": [
+				"races"
+			]
+		},
+		{
+			"text": "aprile",
+			"translations": [
+				"April"
+			]
+		},
+		{
+			"text": "razzo",
+			"translations": [
+				"jet",
+				"flare",
+				"rocket",
+				"missile",
+				"firework"
+			]
+		},
+		{
+			"text": "devono",
+			"translations": [
+				"need",
+				"must",
+				"have to"
+			]
+		},
+		{
+			"text": "so",
+			"translations": [
+				"know",
+				"knew"
+			]
+		},
+		{
+			"text": "organizzare",
+			"translations": [
+				"to organize"
+			]
+		},
+		{
+			"text": "evento",
+			"translations": [
+				"event"
+			]
+		},
+		{
+			"text": "dormono",
+			"translations": [
+				"sleep"
+			]
+		},
+		{
+			"text": "edificio",
+			"translations": [
+				"building"
+			]
+		},
+		{
+			"text": "Portogallo",
+			"translations": [
+				"Portugal"
+			]
+		},
+		{
+			"text": "partono",
+			"translations": [
+				"leave",
+				"they depart",
+				"they get off"
+			]
+		},
+		{
+			"text": "pronto",
+			"translations": [
+				"hello",
+				"quick",
+				"right",
+				"agile",
+				"ready"
+			]
+		},
+		{
+			"text": "geloso",
+			"translations": [
+				"jealous",
+				"possessive"
+			]
+		},
+		{
+			"text": "preferite",
+			"translations": [
+				"favorite",
+				"you prefer"
+			]
+		},
+		{
+			"text": "dormite",
+			"translations": [
+				"be asleep",
+				"you sleep",
+				"you sit back",
+				"you are asleep"
+			]
+		},
+		{
+			"text": "Germania",
+			"translations": [
+				"Germany"
+			]
+		},
+		{
+			"text": "tedeschi",
+			"translations": [
+				"German",
+				"Germans"
+			]
+		},
+		{
+			"text": "ostello",
+			"translations": [
+				"hostel"
+			]
+		},
+		{
+			"text": "Francia",
+			"translations": [
+				"France"
+			]
+		},
+		{
+			"text": "vedono",
+			"translations": [
+				"saw",
+				"see",
+				"view",
+				"seen",
+				"told"
+			]
+		},
+		{
+			"text": "prendono",
+			"translations": [
+				"hit",
+				"set",
+				"take",
+				"have"
+			]
+		},
+		{
+			"text": "paese",
+			"translations": [
+				"town",
+				"village",
+				"country"
+			]
+		},
+		{
+			"text": "francesi",
+			"translations": [
+				"French",
+				"French-speaking"
+			]
+		},
+		{
+			"text": "aereo",
+			"translations": [
+				"plane",
+				"planes",
+				"aerial",
+				"airplane",
+				"airplanes"
+			]
+		},
+		{
+			"text": "prendete",
+			"translations": [
+				"take",
+				"took",
+				"grab"
+			]
+		},
+		{
+			"text": "vedete",
+			"translations": [
+				"see",
+				"try",
+				"saw",
+				"view",
+				"seen"
+			]
+		},
+		{
+			"text": "viaggio",
+			"translations": [
+				"run",
+				"trip",
+				"runs",
+				"tour",
+				"travel"
+			]
+		},
+		{
+			"text": "prendiamo",
+			"translations": [
+				"take",
+				"took",
+				"we get",
+				"we grab"
+			]
+		},
+		{
+			"text": "marzo",
+			"translations": [
+				"March"
+			]
+		},
+		{
+			"text": "paesi",
+			"translations": [
+				"towns",
+				"cities",
+				"countries"
+			]
+		},
+		{
+			"text": "Europa",
+			"translations": [
+				"Europe"
+			]
+		},
+		{
+			"text": "europeo",
+			"translations": [
+				"European"
+			]
+		},
+		{
+			"text": "televisione",
+			"translations": [
+				"television"
+			]
+		},
+		{
+			"text": "guardate",
+			"translations": [
+				"watch",
+				"look to",
+				"look up",
+				"look at",
+				"look on"
+			]
+		},
+		{
+			"text": "calcio",
+			"translations": [
+				"soccer"
+			]
+		},
+		{
+			"text": "bacio",
+			"translations": [
+				"kiss",
+				"perfect",
+				"excellent"
+			]
+		},
+		{
+			"text": "guardiamo",
+			"translations": [
+				"look",
+				"watch",
+				"we keep watch on"
+			]
+		},
+		{
+			"text": "molta",
+			"translations": [
+				"very",
+				"many",
+				"much",
+				"a lot of",
+				"at the utmost"
+			]
+		},
+		{
+			"text": "mangiate",
+			"translations": [
+				"eat",
+				"you are eating"
+			]
+		},
+		{
+			"text": "siate",
+			"translations": [
+				"be",
+				"you are"
+			]
+		},
+		{
+			"text": "pane",
+			"translations": [
+				"bread"
+			]
+		},
+		{
+			"text": "mangiano",
+			"translations": [
+				"eat",
+				"they are eating"
+			]
+		},
+		{
+			"text": "già",
+			"translations": [
+				"yet",
+				"right",
+				"before",
+				"already",
+				"by then"
+			]
+		},
+		{
+			"text": "vino",
+			"translations": [
+				"wine"
+			]
+		},
+		{
+			"text": "quante",
+			"translations": [
+				"how",
+				"many",
+				"what",
+				"quantum",
+				"quantity"
+			]
+		},
+		{
+			"text": "parliamo",
+			"translations": [
+				"we talk",
+				"we speak",
+				"we are speaking"
+			]
+		},
+		{
+			"text": "guasto",
+			"translations": [
+				"worse",
+				"broken",
+				"failures",
+				"malfunction"
+			]
+		},
+		{
+			"text": "parlate",
+			"translations": [
+				"talk",
+				"speak",
+				"you tell",
+				"you mention",
+				"you address"
+			]
+		},
+		{
+			"text": "lingua",
+			"translations": [
+				"tongue",
+				"language",
+				"modern languages"
+			]
+		},
+		{
+			"text": "lavorano",
+			"translations": [
+				"work",
+				"they knit",
+				"they knead",
+				"they cultivate",
+				"they are working"
+			]
+		},
+		{
+			"text": "durante",
+			"translations": [
+				"for",
+				"during"
+			]
+		},
+		{
+			"text": "quasi",
+			"translations": [
+				"near",
+				"about",
+				"nearly",
+				"almost",
+				"nearest"
+			]
+		},
+		{
+			"text": "lavorate",
+			"translations": [
+				"work",
+				"you knead",
+				"you cultivate"
+			]
+		},
+		{
+			"text": "alla settimana",
+			"translations": [
+				"a week"
+			]
+		},
+		{
+			"text": "studiate",
+			"translations": [
+				"study"
+			]
+		},
+		{
+			"text": "di pomeriggio",
+			"translations": [
+				"in the afternoon"
+			]
+		},
+		{
+			"text": "dovete",
+			"translations": [
+				"you must",
+				"you have to"
+			]
+		},
+		{
+			"text": "raggio",
+			"translations": [
+				"ray",
+				"beam",
+				"spoke",
+				"range",
+				"radius"
+			]
+		},
+		{
+			"text": "studiamo",
+			"translations": [
+				"study",
+				"consider",
+				"we examine",
+				"we work out",
+				"we think up"
+			]
+		},
+		{
+			"text": "possono",
+			"translations": [
+				"can",
+				"they'll",
+				"they may",
+				"they are able to",
+				"they are allowed to"
+			]
+		},
+		{
+			"text": "centro commerciale",
+			"translations": [
+				"mall"
+			]
+		},
+		{
+			"text": "fare shopping",
+			"translations": [
+				"to go shopping"
+			]
+		},
+		{
+			"text": "stadio",
+			"translations": [
+				"stadium"
+			]
+		},
+		{
+			"text": "annoiato",
+			"translations": [
+				"bored"
+			]
+		},
+		{
+			"text": "artisti",
+			"translations": [
+				"master",
+				"artist",
+				"artists",
+				"artists'"
+			]
+		},
+		{
+			"text": "artista",
+			"translations": [
+				"artist"
+			]
+		},
+		{
+			"text": "dipinto",
+			"translations": [
+				"painting",
+				"depicted",
+				"portrayed"
+			]
+		},
+		{
+			"text": "statua",
+			"translations": [
+				"statue"
+			]
+		},
+		{
+			"text": "edifici",
+			"translations": [
+				"edifices",
+				"buildings",
+				"structures"
+			]
+		},
+		{
+			"text": "buchi",
+			"translations": [
+				"holes",
+				"breaks"
+			]
+		},
+		{
+			"text": "potete",
+			"translations": [
+				"you can",
+				"you are able to",
+				"you are allowed to"
+			]
+		},
+		{
+			"text": "via",
+			"translations": [
+				"off",
+				"got",
+				"way",
+				"away",
+				"road"
+			]
+		},
+		{
+			"text": "monumento",
+			"translations": [
+				"monument"
+			]
+		},
+		{
+			"text": "vi piacciono",
+			"translations": [
+				"do you like"
+			]
+		},
+		{
+			"text": "febbraio",
+			"translations": [
+				"February"
+			]
+		},
+		{
+			"text": "vi piace",
+			"translations": [
+				"you like"
+			]
+		},
+		{
+			"text": "volete",
+			"translations": [
+				"want",
+				"like",
+				"mean",
+				"take",
+				"need"
+			]
+		},
+		{
+			"text": "busto",
+			"translations": [
+				"stay"
+			]
+		},
+		{
+			"text": "cultura",
+			"translations": [
+				"culture",
+				"learning",
+				"knowledge",
+				"education",
+				"cultivation"
+			]
+		},
+		{
+			"text": "ci piace",
+			"translations": [
+				"we like"
+			]
+		},
+		{
+			"text": "vogliamo",
+			"translations": [
+				"want",
+				"we take"
+			]
+		},
+		{
+			"text": "ci piacciono",
+			"translations": [
+				"we like"
+			]
+		},
+		{
+			"text": "parte",
+			"translations": [
+				"way",
+				"part",
+				"role",
+				"goes",
+				"side"
+			]
+		},
+		{
+			"text": "pino",
+			"translations": [
+				"pine"
+			]
+		},
+		{
+			"text": "arte",
+			"translations": [
+				"art"
+			]
+		},
+		{
+			"text": "piacciono",
+			"translations": [
+				"like",
+				"likes",
+				"are liked"
+			]
+		},
+		{
+			"text": "divertiti",
+			"translations": [
+				"have fun"
+			]
+		},
+		{
+			"text": "buona fortuna",
+			"translations": [
+				"good luck",
+				"good fortune",
+				"best of luck"
+			]
+		},
+		{
+			"text": "attento",
+			"translations": [
+				"wary",
+				"alert",
+				"close",
+				"caring",
+				"careful"
+			]
+		},
+		{
+			"text": "preoccupato",
+			"translations": [
+				"worried"
+			]
+		},
+		{
+			"text": "zona",
+			"translations": [
+				"zone",
+				"area",
+				"patch",
+				"region",
+				"regions"
+			]
+		},
+		{
+			"text": "le piacciono",
+			"translations": [
+				"she likes"
+			]
+		},
+		{
+			"text": "ristoranti",
+			"translations": [
+				"diners",
+				"restore",
+				"refresh",
+				"restaurant",
+				"restaurants"
+			]
+		},
+		{
+			"text": "le piace",
+			"translations": [
+				"she likes"
+			]
+		},
+		{
+			"text": "pranzare",
+			"translations": [
+				"to have lunch"
+			]
+		},
+		{
+			"text": "piaccio",
+			"translations": [
+				"like"
+			]
+		},
+		{
+			"text": "animali",
+			"translations": [
+				"brute",
+				"animal",
+				"animals"
+			]
+		},
+		{
+			"text": "natura",
+			"translations": [
+				"nature"
+			]
+		},
+		{
+			"text": "gli piacciono",
+			"translations": [
+				"he likes",
+				"they like"
+			]
+		},
+		{
+			"text": "gli piace",
+			"translations": [
+				"he likes",
+				"they like"
+			]
+		},
+		{
+			"text": "uccello",
+			"translations": [
+				"bird",
+				"birds"
+			]
+		},
+		{
+			"text": "disegnare",
+			"translations": [
+				"to draw"
+			]
+		},
+		{
+			"text": "legno",
+			"translations": [
+				"wood"
+			]
+		},
+		{
+			"text": "cucinare",
+			"translations": [
+				"to cook"
+			]
+		},
+		{
+			"text": "piace",
+			"translations": [
+				"like",
+				"likes"
+			]
+		},
+		{
+			"text": "cinema",
+			"translations": [
+				"movie theater"
+			]
+		},
+		{
+			"text": "viaggiare",
+			"translations": [
+				"to travel"
+			]
+		},
+		{
+			"text": "com'è",
+			"translations": [
+				"how's",
+				"what’s",
+				"how is",
+				"what is",
+				"as it is"
+			]
+		},
+		{
+			"text": "intelligente",
+			"translations": [
+				"intelligent"
+			]
+		},
+		{
+			"text": "gesso",
+			"translations": [
+				"chalk"
+			]
+		},
+		{
+			"text": "fa",
+			"translations": [
+				"does",
+				"makes",
+				"do",
+				"make",
+				"is"
+			]
+		},
+		{
+			"text": "coppa",
+			"translations": [
+				"pot",
+				"cup",
+				"pan",
+				"pots",
+				"bowl"
+			]
+		},
+		{
+			"text": "appuntamento",
+			"translations": [
+				"date",
+				"appointment"
+			]
+		},
+		{
+			"text": "biondo",
+			"translations": [
+				"fair",
+				"blond",
+				"blonde",
+				"fair-haired"
+			]
+		},
+		{
+			"text": "abbiamo bisogno di",
+			"translations": [
+				"need"
+			]
+		},
+		{
+			"text": "guidare",
+			"translations": [
+				"to drive"
+			]
+		},
+		{
+			"text": "patente",
+			"translations": [
+				"driver's license"
+			]
+		},
+		{
+			"text": "ebbi",
+			"translations": [
+				"kept",
+				"wear",
+				"have",
+				"held",
+				"offered"
+			]
+		},
+		{
+			"text": "se",
+			"translations": [
+				"if"
+			]
+		},
+		{
+			"text": "fotografia",
+			"translations": [
+				"photo",
+				"picture",
+				"photograph",
+				"photography"
+			]
+		},
+		{
+			"text": "riunioni",
+			"translations": [
+				"meeting",
+				"reunion",
+				"meetings",
+				"reunions",
+				"gathering"
+			]
+		},
+		{
+			"text": "internet",
+			"translations": [
+				"internet"
+			]
+		},
+		{
+			"text": "cellulare",
+			"translations": [
+				"cell phone"
+			]
+		},
+		{
+			"text": "hanno bisogno di",
+			"translations": [
+				"need"
+			]
+		},
+		{
+			"text": "le sue",
+			"translations": [
+				"her",
+				"his",
+				"hers",
+				"your"
+			]
+		},
+		{
+			"text": "dobbiamo",
+			"translations": [
+				"we've",
+				"we're",
+				"we owe",
+				"we must",
+				"we need to"
+			]
+		},
+		{
+			"text": "aprire",
+			"translations": [
+				"to open"
+			]
+		},
+		{
+			"text": "soldi",
+			"translations": [
+				"money"
+			]
+		},
+		{
+			"text": "dollaro",
+			"translations": [
+				"buck",
+				"clam",
+				"dollar"
+			]
+		},
+		{
+			"text": "marocchino",
+			"translations": [
+				"Moroccan"
+			]
+		},
+		{
+			"text": "mesi",
+			"translations": [
+				"month",
+				"months",
+				"months'",
+				"monthly pay"
+			]
+		},
+		{
+			"text": "tratto",
+			"translations": [
+				"lengths",
+				"stretch"
+			]
+		},
+		{
+			"text": "cercano",
+			"translations": [
+				"find",
+				"seek",
+				"look",
+				"found",
+				"search for"
+			]
+		},
+		{
+			"text": "cerca",
+			"translations": [
+				"looks for",
+				"searches",
+				"find",
+				"look for"
+			]
+		},
+		{
+			"text": "contratto",
+			"translations": [
+				"got",
+				"caught",
+				"contract",
+				"I negotiate"
+			]
+		},
+		{
+			"text": "occhi",
+			"translations": [
+				"eyes"
+			]
+		},
+		{
+			"text": "parlano",
+			"translations": [
+				"talk",
+				"speak"
+			]
+		},
+		{
+			"text": "i suoi",
+			"translations": [
+				"her",
+				"his",
+				"your",
+				"hers"
+			]
+		},
+		{
+			"text": "indiano",
+			"translations": [
+				"Indian"
+			]
+		},
+		{
+			"text": "passaporto",
+			"translations": [
+				"passport"
+			]
+		},
+		{
+			"text": "visto",
+			"translations": [
+				"saw",
+				"met",
+				"see",
+				"visa",
+				"seen"
+			]
+		},
+		{
+			"text": "contanti",
+			"translations": [
+				"cash",
+				"have",
+				"count",
+				"matter"
+			]
+		},
+		{
+			"text": "portare",
+			"translations": [
+				"to bring"
+			]
+		},
+		{
+			"text": "avere",
+			"translations": [
+				"to have",
+				"have",
+				"has",
+				"had"
+			]
+		},
+		{
+			"text": "costare",
+			"translations": [
+				"cost"
+			]
+		},
+		{
+			"text": "possiamo",
+			"translations": [
+				"can",
+				"we are able to"
+			]
+		},
+		{
+			"text": "le loro",
+			"translations": [
+				"their",
+				"theirs"
+			]
+		},
+		{
+			"text": "passa",
+			"translations": [
+				"passes",
+				"pass",
+				"goes by",
+				"spends"
+			]
+		},
+		{
+			"text": "i loro",
+			"translations": [
+				"their",
+				"theirs"
+			]
+		},
+		{
+			"text": "ingredienti",
+			"translations": [
+				"element",
+				"ingredient",
+				"ingredients"
+			]
+		},
+		{
+			"text": "provare",
+			"translations": [
+				"to try"
+			]
+		},
+		{
+			"text": "prosciutto",
+			"translations": [
+				"ham"
+			]
+		},
+		{
+			"text": "senza",
+			"translations": [
+				"except",
+				"without",
+				"out of"
+			]
+		},
+		{
+			"text": "pezzo",
+			"translations": [
+				"cut",
+				"part",
+				"scrap",
+				"piece",
+				"lengths"
+			]
+		},
+		{
+			"text": "taglia",
+			"translations": [
+				"cut",
+				"size",
+				"stop",
+				"break",
+				"breaks"
+			]
+		},
+		{
+			"text": "formaggio",
+			"translations": [
+				"cheese"
+			]
+		},
+		{
+			"text": "salame",
+			"translations": [
+				"pepperoni"
+			]
+		},
+		{
+			"text": "bottiglia",
+			"translations": [
+				"bottle"
+			]
+		},
+		{
+			"text": "birra",
+			"translations": [
+				"beer"
+			]
+		},
+		{
+			"text": "pomodoro",
+			"translations": [
+				"tomato"
+			]
+		},
+		{
+			"text": "gamma",
+			"translations": [
+				"sweep",
+				"assortment"
+			]
+		},
+		{
+			"text": "vorremmo",
+			"translations": [
+				"like",
+				"want",
+				"we'd",
+				"liked",
+				"wanted"
+			]
+		},
+		{
+			"text": "ordinare",
+			"translations": [
+				"to order"
+			]
+		},
+		{
+			"text": "la loro",
+			"translations": [
+				"their",
+				"theirs"
+			]
+		},
+		{
+			"text": "prenotazione",
+			"translations": [
+				"reservation"
+			]
+		},
+		{
+			"text": "persone",
+			"translations": [
+				"people",
+				"person",
+				"persona",
+				"peoples"
+			]
+		},
+		{
+			"text": "cenare",
+			"translations": [
+				"to have dinner"
+			]
+		},
+		{
+			"text": "centri",
+			"translations": [
+				"centers"
+			]
+		},
+		{
+			"text": "in centro",
+			"translations": [
+				"downtown"
+			]
+		},
+		{
+			"text": "vorrebbero",
+			"translations": [
+				"like",
+				"want",
+				"liked",
+				"they would wish",
+				"they would need"
+			]
+		},
+		{
+			"text": "il loro",
+			"translations": [
+				"their",
+				"theirs"
+			]
+		},
+		{
+			"text": "pizza",
+			"translations": [
+				"pizzas",
+				"pizza"
+			]
+		},
+		{
+			"text": "le nostre",
+			"translations": [
+				"our",
+				"ours"
+			]
+		},
+		{
+			"text": "iniziano",
+			"translations": [
+				"enter",
+				"they start",
+				"they begin"
+			]
+		},
+		{
+			"text": "lezioni",
+			"translations": [
+				"lessons",
+				"classes",
+				"lectures"
+			]
+		},
+		{
+			"text": "quattro",
+			"translations": [
+				"four"
+			]
+		},
+		{
+			"text": "interessanti",
+			"translations": [
+				"juicy",
+				"intriguing",
+				"interesting"
+			]
+		},
+		{
+			"text": "passi",
+			"translations": [
+				"pass",
+				"steps",
+				"you pass"
+			]
+		},
+		{
+			"text": "mostri",
+			"translations": [
+				"show",
+				"present",
+				"monsters",
+				"you exhibit",
+				"you point to"
+			]
+		},
+		{
+			"text": "letteratura",
+			"translations": [
+				"literature"
+			]
+		},
+		{
+			"text": "musica",
+			"translations": [
+				"music"
+			]
+		},
+		{
+			"text": "i nostri",
+			"translations": [
+				"our",
+				"ours"
+			]
+		},
+		{
+			"text": "professori",
+			"translations": [
+				"teachers",
+				"professors",
+				"professors'"
+			]
+		},
+		{
+			"text": "mostre",
+			"translations": [
+				"exhibitions"
+			]
+		},
+		{
+			"text": "matematica",
+			"translations": [
+				"math"
+			]
+		},
+		{
+			"text": "storia",
+			"translations": [
+				"history"
+			]
+		},
+		{
+			"text": "le vostre",
+			"translations": [
+				"your",
+				"yours"
+			]
+		},
+		{
+			"text": "quali",
+			"translations": [
+				"as",
+				"who",
+				"that",
+				"whom",
+				"when"
+			]
+		},
+		{
+			"text": "materia",
+			"translations": [
+				"course",
+				"matter",
+				"subject",
+				"subjects",
+				"substance"
+			]
+		},
+		{
+			"text": "preferito",
+			"translations": [
+				"pets",
+				"favorite",
+				"favourite",
+				"preferred",
+				"preferable"
+			]
+		},
+		{
+			"text": "chiavi",
+			"translations": [
+				"keys"
+			]
+		},
+		{
+			"text": "i vostri",
+			"translations": [
+				"your",
+				"yours"
+			]
+		},
+		{
+			"text": "chilo",
+			"translations": [
+				"kilo"
+			]
+		},
+		{
+			"text": "odio",
+			"translations": [
+				"hate",
+				"hatred",
+				"I detest"
+			]
+		},
+		{
+			"text": "armadio",
+			"translations": [
+				"closet"
+			]
+		},
+		{
+			"text": "libro",
+			"translations": [
+				"book",
+				"books"
+			]
+		},
+		{
+			"text": "frigorifero",
+			"translations": [
+				"fridge",
+				"refrigerator",
+				"refrigerators"
+			]
+		},
+		{
+			"text": "università",
+			"translations": [
+				"university"
+			]
+		},
+		{
+			"text": "la vostra",
+			"translations": [
+				"your",
+				"yours"
+			]
+		},
+		{
+			"text": "ragazze",
+			"translations": [
+				"girls"
+			]
+		},
+		{
+			"text": "il vostro",
+			"translations": [
+				"your",
+				"yours"
+			]
+		},
+		{
+			"text": "dormitorio",
+			"translations": [
+				"dorm"
+			]
+		},
+		{
+			"text": "benvenuti",
+			"translations": [
+				"welcome"
+			]
+		},
+		{
+			"text": "calde",
+			"translations": [
+				"hot",
+				"hotf",
+				"warm"
+			]
+		},
+		{
+			"text": "felice",
+			"translations": [
+				"happy"
+			]
+		},
+		{
+			"text": "fiori",
+			"translations": [
+				"club",
+				"flower",
+				"flowers"
+			]
+		},
+		{
+			"text": "fiore",
+			"translations": [
+				"bloom",
+				"flower"
+			]
+		},
+		{
+			"text": "anello",
+			"translations": [
+				"ring",
+				"bands",
+				"rings"
+			]
+		},
+		{
+			"text": "stanco",
+			"translations": [
+				"tired",
+				"overtired"
+			]
+		},
+		{
+			"text": "tuono",
+			"translations": [
+				"roar",
+				"sound",
+				"rumble",
+				"thunder"
+			]
+		},
+		{
+			"text": "ceno",
+			"translations": [
+				"I eat dinner",
+				"I have dinner"
+			]
+		},
+		{
+			"text": "eleganti",
+			"translations": [
+				"fancy",
+				"elegant"
+			]
+		},
+		{
+			"text": "le tue",
+			"translations": [
+				"your",
+				"yours"
+			]
+		},
+		{
+			"text": "nonna",
+			"translations": [
+				"grandma",
+				"grandmother"
+			]
+		},
+		{
+			"text": "buono",
+			"translations": [
+				"kind",
+				"full",
+				"best",
+				"nice",
+				"good"
+			]
+		},
+		{
+			"text": "ricevimento",
+			"translations": [
+				"reception"
+			]
+		},
+		{
+			"text": "i tuoi",
+			"translations": [
+				"your",
+				"yours"
+			]
+		},
+		{
+			"text": "elegante",
+			"translations": [
+				"elegant"
+			]
+		},
+		{
+			"text": "zio",
+			"translations": [
+				"uncle"
+			]
+		},
+		{
+			"text": "zii",
+			"translations": [
+				"uncles"
+			]
+		},
+		{
+			"text": "nonno",
+			"translations": [
+				"grandpa",
+				"grandfather"
+			]
+		},
+		{
+			"text": "sposo",
+			"translations": [
+				"groom"
+			]
+		},
+		{
+			"text": "le mie",
+			"translations": [
+				"my",
+				"mine"
+			]
+		},
+		{
+			"text": "della",
+			"translations": [
+				"'s",
+				"of",
+				"in",
+				"than",
+				"some"
+			]
+		},
+		{
+			"text": "moschea",
+			"translations": [
+				"mosque"
+			]
+		},
+		{
+			"text": "amiche",
+			"translations": [
+				"friends",
+				"girlfriends"
+			]
+		},
+		{
+			"text": "sposa",
+			"translations": [
+				"bride",
+				"you marry",
+				"it marries",
+				"he marries",
+				"you embrace"
+			]
+		},
+		{
+			"text": "zia",
+			"translations": [
+				"aunt"
+			]
+		},
+		{
+			"text": "genitori",
+			"translations": [
+				"folks",
+				"parents"
+			]
+		},
+		{
+			"text": "tristi",
+			"translations": [
+				"sad",
+				"gloomy",
+				"unhappy"
+			]
+		},
+		{
+			"text": "maggio",
+			"translations": [
+				"May"
+			]
+		},
+		{
+			"text": "vogliono",
+			"translations": [
+				"want",
+				"wants"
+			]
+		},
+		{
+			"text": "amici",
+			"translations": [
+				"friends"
+			]
+		},
+		{
+			"text": "i miei",
+			"translations": [
+				"my",
+				"mine"
+			]
+		},
+		{
+			"text": "matrimonio",
+			"translations": [
+				"match",
+				"wedding",
+				"marriage"
+			]
+		},
+		{
+			"text": "cinque",
+			"translations": [
+				"five"
+			]
+		},
+		{
+			"text": "suolo",
+			"translations": [
+				"soil",
+				"earth"
+			]
+		},
+		{
+			"text": "insieme",
+			"translations": [
+				"together"
+			]
+		},
+		{
+			"text": "quanti",
+			"translations": [
+				"as",
+				"how many"
+			]
+		},
+		{
+			"text": "scrivere",
+			"translations": [
+				"to write"
+			]
+		},
+		{
+			"text": "email",
+			"translations": [
+				"email"
+			]
+		},
+		{
+			"text": "inviare",
+			"translations": [
+				"to send"
+			]
+		},
+		{
+			"text": "riunione",
+			"translations": [
+				"meeting"
+			]
+		},
+		{
+			"text": "documento",
+			"translations": [
+				"papers",
+				"document",
+				"documents"
+			]
+		},
+		{
+			"text": "bagni",
+			"translations": [
+				"bathrooms"
+			]
+		},
+		{
+			"text": "aria",
+			"translations": [
+				"air",
+				"wind",
+				"look",
+				"breeze",
+				"looking"
+			]
+		},
+		{
+			"text": "scrivania",
+			"translations": [
+				"desk"
+			]
+		},
+		{
+			"text": "sedia",
+			"translations": [
+				"seat",
+				"chair",
+				"seats"
+			]
+		},
+		{
+			"text": "signor",
+			"translations": [
+				"Mr."
+			]
+		},
+		{
+			"text": "curriculum",
+			"translations": [
+				"resume"
+			]
+		},
+		{
+			"text": "quinto",
+			"translations": [
+				"fifth",
+				"Quintus"
+			]
+		},
+		{
+			"text": "undici",
+			"translations": [
+				"eleven"
+			]
+		},
+		{
+			"text": "colloquio",
+			"translations": [
+				"interview"
+			]
+		},
+		{
+			"text": "aspettare",
+			"translations": [
+				"to wait"
+			]
+		},
+		{
+			"text": "sci",
+			"translations": [
+				"ski",
+				"skis"
+			]
+		},
+		{
+			"text": "vanno",
+			"translations": [
+				"they go",
+				"go"
+			]
+		},
+		{
+			"text": "sciare",
+			"translations": [
+				"to ski"
+			]
+		},
+		{
+			"text": "nevica",
+			"translations": [
+				"snow",
+				"snows"
+			]
+		},
+		{
+			"text": "gennaio",
+			"translations": [
+				"January"
+			]
+		},
+		{
+			"text": "cappotto",
+			"translations": [
+				"coat",
+				"coats",
+				"overcoat"
+			]
+		},
+		{
+			"text": "inverno",
+			"translations": [
+				"winter"
+			]
+		},
+		{
+			"text": "leggere",
+			"translations": [
+				"to read"
+			]
+		},
+		{
+			"text": "uso",
+			"translations": [
+				"used",
+				"uses",
+				"customs",
+				"exercise",
+				"I run"
+			]
+		},
+		{
+			"text": "balla",
+			"translations": [
+				"dance"
+			]
+		},
+		{
+			"text": "rileggi",
+			"translations": [
+				"reread"
+			]
+		},
+		{
+			"text": "settembre",
+			"translations": [
+				"September"
+			]
+		},
+		{
+			"text": "piove",
+			"translations": [
+				"rains"
+			]
+		},
+		{
+			"text": "ombrello",
+			"translations": [
+				"gamp",
+				"shelter",
+				"umbrella"
+			]
+		},
+		{
+			"text": "zucca",
+			"translations": [
+				"squash",
+				"pumpkin"
+			]
+		},
+		{
+			"text": "mappa",
+			"translations": [
+				"map",
+				"plan",
+				"maps",
+				"picture"
+			]
+		},
+		{
+			"text": "dicembre",
+			"translations": [
+				"December"
+			]
+		},
+		{
+			"text": "fa freddo",
+			"translations": [
+				"it's cold"
+			]
+		},
+		{
+			"text": "sto",
+			"translations": [
+				"be",
+				"I'm",
+				"stay",
+				"I am",
+				"I feel"
+			]
+		},
+		{
+			"text": "bevo",
+			"translations": [
+				"drink"
+			]
+		},
+		{
+			"text": "zuppa",
+			"translations": [
+				"soup"
+			]
+		},
+		{
+			"text": "acqua",
+			"translations": [
+				"water"
+			]
+		},
+		{
+			"text": "andate",
+			"translations": [
+				"gone",
+				"went",
+				"going"
+			]
+		},
+		{
+			"text": "luglio",
+			"translations": [
+				"July"
+			]
+		},
+		{
+			"text": "fa caldo",
+			"translations": [
+				"it's hot"
+			]
+		},
+		{
+			"text": "fate",
+			"translations": [
+				"do",
+				"made",
+				"make",
+				"have",
+				"keep"
+			]
+		},
+		{
+			"text": "facci",
+			"translations": [
+				"Make"
+			]
+		},
+		{
+			"text": "giugno",
+			"translations": [
+				"June"
+			]
+		},
+		{
+			"text": "fuori",
+			"translations": [
+				"outside"
+			]
+		},
+		{
+			"text": "nel",
+			"translations": [
+				"in",
+				"at",
+				"on",
+				"to",
+				"by"
+			]
+		},
+		{
+			"text": "c'è il sole",
+			"translations": [
+				"it is sunny",
+				"there is sunshine",
+				"the sun is out",
+				"the sun is shining"
+			]
+		},
+		{
+			"text": "giusto",
+			"translations": [
+				"even",
+				"just",
+				"fair",
+				"true",
+				"uses"
+			]
+		},
+		{
+			"text": "facciamo",
+			"translations": [
+				"made",
+				"make",
+				"lets",
+				"keep"
+			]
+		},
+		{
+			"text": "un altro",
+			"translations": [
+				"another"
+			]
+		},
+		{
+			"text": "aiuto",
+			"translations": [
+				"help"
+			]
+		},
+		{
+			"text": "subito",
+			"translations": [
+				"immediately"
+			]
+		},
+		{
+			"text": "fantasma",
+			"translations": [
+				"ghost"
+			]
+		},
+		{
+			"text": "posto",
+			"translations": [
+				"job",
+				"set",
+				"site",
+				"spot",
+				"seat"
+			]
+		},
+		{
+			"text": "grido",
+			"translations": [
+				"scream"
+			]
+		},
+		{
+			"text": "ha paura",
+			"translations": [
+				"is scared",
+				"is afraid",
+				"are afraid"
+			]
+		},
+		{
+			"text": "un'altra",
+			"translations": [
+				"another",
+				"one more",
+				"one other"
+			]
+		},
+		{
+			"text": "sente",
+			"translations": [
+				"feels",
+				"hears",
+				"feel",
+				"hear"
+			]
+		},
+		{
+			"text": "uomo",
+			"translations": [
+				"man"
+			]
+		},
+		{
+			"text": "dorme",
+			"translations": [
+				"sleep",
+				"sleeps",
+				"are asleep"
+			]
+		},
+		{
+			"text": "senno",
+			"translations": [
+				"mind"
+			]
+		},
+		{
+			"text": "senti",
+			"translations": [
+				"feel",
+				"hear",
+				"heard",
+				"listen",
+				"you smell"
+			]
+		},
+		{
+			"text": "dormi",
+			"translations": [
+				"you sleep",
+				"be asleep",
+				"you sit back",
+				"you are asleep",
+				"you go to bed"
+			]
+		},
+		{
+			"text": "hai paura",
+			"translations": [
+				"you're scared"
+			]
+		},
+		{
+			"text": "donna",
+			"translations": [
+				"woman",
+				"skirts"
+			]
+		},
+		{
+			"text": "spaventoso",
+			"translations": [
+				"ugly",
+				"scary",
+				"spooky",
+				"frightening"
+			]
+		},
+		{
+			"text": "dormo",
+			"translations": [
+				"sleep",
+				"I am asleep"
+			]
+		},
+		{
+			"text": "sento",
+			"translations": [
+				"hear",
+				"heard",
+				"I feel",
+				"I taste",
+				"I smell"
+			]
+		},
+		{
+			"text": "quanto",
+			"translations": [
+				"so",
+				"as",
+				"how",
+				"really",
+				"however much"
+			]
+		},
+		{
+			"text": "ho paura",
+			"translations": [
+				"I'm scared",
+				"I am afraid",
+				"I'm afraid"
+			]
+		},
+		{
+			"text": "voce",
+			"translations": [
+				"voice"
+			]
+		},
+		{
+			"text": "vicino alla",
+			"translations": [
+				"next to the"
+			]
+		},
+		{
+			"text": "strappi",
+			"translations": [
+				"rip"
+			]
+		},
+		{
+			"text": "di notte",
+			"translations": [
+				"at night"
+			]
+		},
+		{
+			"text": "rumori",
+			"translations": [
+				"din",
+				"noise",
+				"sound",
+				"noises"
+			]
+		},
+		{
+			"text": "dormire",
+			"translations": [
+				"to sleep"
+			]
+		},
+		{
+			"text": "rumore",
+			"translations": [
+				"noise"
+			]
+		},
+		{
+			"text": "sentire",
+			"translations": [
+				"to feel",
+				"to hear",
+				"feel",
+				"hear"
+			]
+		},
+		{
+			"text": "strano",
+			"translations": [
+				"odd",
+				"weird",
+				"goofy",
+				"strange",
+				"weirder"
+			]
+		},
+		{
+			"text": "sette",
+			"translations": [
+				"seven"
+			]
+		},
+		{
+			"text": "retto",
+			"translations": [
+				"held",
+				"right",
+				"square",
+				"squares",
+				"straight"
+			]
+		},
+		{
+			"text": "te",
+			"translations": [
+				"yourself",
+				"to your place",
+				"in your house",
+				"to your house",
+				"in your place"
+			]
+		},
+		{
+			"text": "raso",
+			"translations": [
+				"short"
+			]
+		},
+		{
+			"text": "aperitivo",
+			"translations": [
+				"aperitif"
+			]
+		},
+		{
+			"text": "museo",
+			"translations": [
+				"museum",
+				"museums"
+			]
+		},
+		{
+			"text": "prende",
+			"translations": [
+				"takes",
+				"take"
+			]
+		},
+		{
+			"text": "curato",
+			"translations": [
+				"neat",
+				"tidy",
+				"curate",
+				"priest",
+				"treated"
+			]
+		},
+		{
+			"text": "vede",
+			"translations": [
+				"sees",
+				"see",
+				"he sees",
+				"she sees"
+			]
+		},
+		{
+			"text": "all'una",
+			"translations": [
+				"at one",
+				"at 1 o'clock"
+			]
+		},
+		{
+			"text": "parchi",
+			"translations": [
+				"parks"
+			]
+		},
+		{
+			"text": "famoso",
+			"translations": [
+				"famous",
+				"renowned",
+				"well-known"
+			]
+		},
+		{
+			"text": "prendi",
+			"translations": [
+				"gain",
+				"took",
+				"take",
+				"you get",
+				"you set"
+			]
+		},
+		{
+			"text": "nove",
+			"translations": [
+				"nine"
+			]
+		},
+		{
+			"text": "vedi",
+			"translations": [
+				"see",
+				"you meet"
+			]
+		},
+		{
+			"text": "negozi",
+			"translations": [
+				"shops",
+				"store",
+				"stores",
+				"shoppe",
+				"business"
+			]
+		},
+		{
+			"text": "castello",
+			"translations": [
+				"castle",
+				"castles",
+				"forecastle"
+			]
+		},
+		{
+			"text": "alle",
+			"translations": [
+				"al",
+				"as",
+				"at",
+				"to",
+				"for"
+			]
+		},
+		{
+			"text": "vedo",
+			"translations": [
+				"saw",
+				"see",
+				"seen",
+				"told",
+				"I meet"
+			]
+		},
+		{
+			"text": "prendo",
+			"translations": [
+				"take",
+				"have",
+				"took",
+				"bring"
+			]
+		},
+		{
+			"text": "cado",
+			"translations": [
+				"strike"
+			]
+		},
+		{
+			"text": "otto",
+			"translations": [
+				"eight"
+			]
+		},
+		{
+			"text": "vedere",
+			"translations": [
+				"to see",
+				"see",
+				"sees",
+				"saw",
+				"seen"
+			]
+		},
+		{
+			"text": "prendere",
+			"translations": [
+				"to take",
+				"take",
+				"takes",
+				"took",
+				"taken"
+			]
+		},
+		{
+			"text": "medici",
+			"translations": [
+				"doctors",
+				"medical"
+			]
+		},
+		{
+			"text": "vicino al",
+			"translations": [
+				"near the",
+				"next to the"
+			]
+		},
+		{
+			"text": "mattina",
+			"translations": [
+				"morning"
+			]
+		},
+		{
+			"text": "stiamo",
+			"translations": [
+				"be",
+				"are",
+				"stay",
+				"we’re",
+				"we're"
+			]
+		},
+		{
+			"text": "cuciniamo",
+			"translations": [
+				"cook",
+				"we fix"
+			]
+		},
+		{
+			"text": "regali",
+			"translations": [
+				"gifts",
+				"presents",
+				"you give away"
+			]
+		},
+		{
+			"text": "panettone",
+			"translations": [
+				"panettone"
+			]
+		},
+		{
+			"text": "Natale",
+			"translations": [
+				"Christmas"
+			]
+		},
+		{
+			"text": "viaggiamo",
+			"translations": [
+				"we travel"
+			]
+		},
+		{
+			"text": "in spiaggia",
+			"translations": [
+				"on the beach",
+				"at the beach",
+				"in the beach area",
+				"going to the beach"
+			]
+		},
+		{
+			"text": "reggia",
+			"translations": [
+				"palaces"
+			]
+		},
+		{
+			"text": "lavoriamo",
+			"translations": [
+				"work",
+				"we knead",
+				"we cultivate"
+			]
+		},
+		{
+			"text": "agosto",
+			"translations": [
+				"August"
+			]
+		},
+		{
+			"text": "caldo",
+			"translations": [
+				"hot",
+				"warm",
+				"cozier",
+				"friendly",
+				"full-blooded"
+			]
+		},
+		{
+			"text": "mangiamo",
+			"translations": [
+				"eat",
+				"we are eating"
+			]
+		},
+		{
+			"text": "cioccolato",
+			"translations": [
+				"chocolate"
+			]
+		},
+		{
+			"text": "squalo",
+			"translations": [
+				"shark"
+			]
+		},
+		{
+			"text": "cerchiamo",
+			"translations": [
+				"find",
+				"look",
+				"found",
+				"we seek"
+			]
+		},
+		{
+			"text": "uova",
+			"translations": [
+				"eggs"
+			]
+		},
+		{
+			"text": "compriamo",
+			"translations": [
+				"square",
+				"we buy",
+				"we purchase",
+				"we are buying"
+			]
+		},
+		{
+			"text": "Pasqua",
+			"translations": [
+				"Easter"
+			]
+		},
+		{
+			"text": "festeggiamo",
+			"translations": [
+				"we're",
+				"we celebrate"
+			]
+		},
+		{
+			"text": "fuochi d'artificio",
+			"translations": [
+				"fireworks"
+			]
+		},
+		{
+			"text": "andiamo",
+			"translations": [
+				"gone",
+				"went",
+				"let’s",
+				"going"
+			]
+		},
+		{
+			"text": "Capodanno",
+			"translations": [
+				"New Year's"
+			]
+		},
+		{
+			"text": "concerto",
+			"translations": [
+				"gig",
+				"shows",
+				"concert",
+				"performance"
+			]
+		},
+		{
+			"text": "rossi",
+			"translations": [
+				"red",
+				"reddest",
+				"Rossi"
+			]
+		},
+		{
+			"text": "passiamo",
+			"translations": [
+				"we pass",
+				"pass",
+				"we spend"
+			]
+		},
+		{
+			"text": "bambini",
+			"translations": [
+				"boys",
+				"kids",
+				"babies",
+				"children"
+			]
+		},
+		{
+			"text": "importante",
+			"translations": [
+				"important"
+			]
+		},
+		{
+			"text": "importanti",
+			"translations": [
+				"big",
+				"major",
+				"mattered",
+				"important",
+				"prominent"
+			]
+		},
+		{
+			"text": "famiglia",
+			"translations": [
+				"stock",
+				"family"
+			]
+		},
+		{
+			"text": "applicazione",
+			"translations": [
+				"app"
+			]
+		},
+		{
+			"text": "lezione",
+			"translations": [
+				"class",
+				"moral",
+				"lesson",
+				"lecture"
+			]
+		},
+		{
+			"text": "parla",
+			"translations": [
+				"talk",
+				"speak",
+				"talks",
+				"speaks",
+				"is talking"
+			]
+		},
+		{
+			"text": "a volte",
+			"translations": [
+				"sometimes"
+			]
+		},
+		{
+			"text": "pomeriggio",
+			"translations": [
+				"afternoon"
+			]
+		},
+		{
+			"text": "usa",
+			"translations": [
+				"use",
+				"uses",
+				"wears",
+				"exercise",
+				"it runs"
+			]
+		},
+		{
+			"text": "cibo",
+			"translations": [
+				"food"
+			]
+		},
+		{
+			"text": "lava",
+			"translations": [
+				"wash",
+				"washes",
+				"showers",
+				"he cleans",
+				"it cleans"
+			]
+		},
+		{
+			"text": "giallo",
+			"translations": [
+				"yellow"
+			]
+		},
+		{
+			"text": "sera",
+			"translations": [
+				"evening"
+			]
+		},
+		{
+			"text": "mangia",
+			"translations": [
+				"eat",
+				"eats"
+			]
+		},
+		{
+			"text": "cita",
+			"translations": [
+				"names"
+			]
+		},
+		{
+			"text": "mangio",
+			"translations": [
+				"eat",
+				"I am eating"
+			]
+		},
+		{
+			"text": "giorno",
+			"translations": [
+				"day"
+			]
+		},
+		{
+			"text": "cucino",
+			"translations": [
+				"cook",
+				"I am cooking"
+			]
+		},
+		{
+			"text": "giorni",
+			"translations": [
+				"days"
+			]
+		},
+		{
+			"text": "lavo",
+			"translations": [
+				"wash",
+				"cleanse",
+				"I clean",
+				"I brush"
+			]
+		},
+		{
+			"text": "lavanderia",
+			"translations": [
+				"cleaner",
+				"laundry",
+				"dry-cleaner"
+			]
+		},
+		{
+			"text": "piatti",
+			"translations": [
+				"pan",
+				"flat",
+				"dull",
+				"plate",
+				"plates"
+			]
+		},
+		{
+			"text": "ratto",
+			"translations": [
+				"rat"
+			]
+		},
+		{
+			"text": "cucini",
+			"translations": [
+				"cook",
+				"cooking"
+			]
+		},
+		{
+			"text": "lavi",
+			"translations": [
+				"wash",
+				"shower"
+			]
+		},
+		{
+			"text": "piangi",
+			"translations": [
+				"cry",
+				"you mourn for",
+				"you grieve for"
+			]
+		},
+		{
+			"text": "carne",
+			"translations": [
+				"meat"
+			]
+		},
+		{
+			"text": "mangi",
+			"translations": [
+				"eat",
+				"eats"
+			]
+		},
+		{
+			"text": "stare",
+			"translations": [
+				"be",
+				"was",
+				"fits",
+				"stay",
+				"kept"
+			]
+		},
+		{
+			"text": "studiare",
+			"translations": [
+				"to study"
+			]
+		},
+		{
+			"text": "lavorare",
+			"translations": [
+				"to work"
+			]
+		},
+		{
+			"text": "parlare",
+			"translations": [
+				"we're",
+				"talk",
+				"speak",
+				"talked",
+				"speech"
+			]
+		},
+		{
+			"text": "benvenuto",
+			"translations": [
+				"welcome"
+			]
+		},
+		{
+			"text": "ha bisogno di",
+			"translations": [
+				"you need",
+				"needs"
+			]
+		},
+		{
+			"text": "forse",
+			"translations": [
+				"maybe"
+			]
+		},
+		{
+			"text": "vorrebbe",
+			"translations": [
+				"like",
+				"want",
+				"liked",
+				"wanted",
+				"would wish"
+			]
+		},
+		{
+			"text": "comunque",
+			"translations": [
+				"anyway"
+			]
+		},
+		{
+			"text": "parco",
+			"translations": [
+				"park"
+			]
+		},
+		{
+			"text": "può",
+			"translations": [
+				"can",
+				"he can",
+				"she can"
+			]
+		},
+		{
+			"text": "invece",
+			"translations": [
+				"instead"
+			]
+		},
+		{
+			"text": "giovedì",
+			"translations": [
+				"Thursday"
+			]
+		},
+		{
+			"text": "vive",
+			"translations": [
+				"live",
+				"alive",
+				"lives",
+				"you experience",
+				"it experiences"
+			]
+		},
+		{
+			"text": "ho sonno",
+			"translations": [
+				"I'm sleepy",
+				"I am tired",
+				"I am sleepy"
+			]
+		},
+		{
+			"text": "occupato",
+			"translations": [
+				"busy",
+				"held"
+			]
+		},
+		{
+			"text": "lavora",
+			"translations": [
+				"work",
+				"works"
+			]
+		},
+		{
+			"text": "cure",
+			"translations": [
+				"care",
+				"worry",
+				"treatment",
+				"carefulness",
+				"edited by"
+			]
+		},
+		{
+			"text": "mercoledì",
+			"translations": [
+				"Wednesday"
+			]
+		},
+		{
+			"text": "ho sete",
+			"translations": [
+				"I'm thirsty",
+				"I am thirsty"
+			]
+		},
+		{
+			"text": "deve",
+			"translations": [
+				"must",
+				"has to",
+				"he must",
+				"she must"
+			]
+		},
+		{
+			"text": "corri",
+			"translations": [
+				"run"
+			]
+		},
+		{
+			"text": "sicuro",
+			"translations": [
+				"safe",
+				"sure",
+				"sound",
+				"secure",
+				"safest"
+			]
+		},
+		{
+			"text": "corsa",
+			"translations": [
+				"jog",
+				"run",
+				"runs",
+				"dash",
+				"footrace"
+			]
+		},
+		{
+			"text": "ho fame",
+			"translations": [
+				"am hungry",
+				"I'm hungry"
+			]
+		},
+		{
+			"text": "faccio",
+			"translations": [
+				"do",
+				"made",
+				"make"
+			]
+		},
+		{
+			"text": "martedì",
+			"translations": [
+				"Tuesday"
+			]
+		},
+		{
+			"text": "straccio",
+			"translations": [
+				"rag"
+			]
+		},
+		{
+			"text": "a casa",
+			"translations": [
+				"at home",
+				"home"
+			]
+		},
+		{
+			"text": "malato",
+			"translations": [
+				"ill",
+				"sick",
+				"dirty",
+				"ailing",
+				"injured"
+			]
+		},
+		{
+			"text": "yoga",
+			"translations": [
+				"yoga"
+			]
+		},
+		{
+			"text": "lunedì",
+			"translations": [
+				"Monday"
+			]
+		},
+		{
+			"text": "venire",
+			"translations": [
+				"to come"
+			]
+		},
+		{
+			"text": "al",
+			"translations": [
+				"a",
+				"at",
+				"to",
+				"in",
+				"the"
+			]
+		},
+		{
+			"text": "pagare",
+			"translations": [
+				"to pay"
+			]
+		},
+		{
+			"text": "carta di credito",
+			"translations": [
+				"credit card"
+			]
+		},
+		{
+			"text": "cliccare",
+			"translations": [
+				"to click"
+			]
+		},
+		{
+			"text": "dopo",
+			"translations": [
+				"then"
+			]
+		},
+		{
+			"text": "gara",
+			"translations": [
+				"race",
+				"event",
+				"events",
+				"contest",
+				"competition"
+			]
+		},
+		{
+			"text": "devi",
+			"translations": [
+				"you must",
+				"you have to",
+				"must"
+			]
+		},
+		{
+			"text": "orologi",
+			"translations": [
+				"clocks",
+				"watches"
+			]
+		},
+		{
+			"text": "molte",
+			"translations": [
+				"many"
+			]
+		},
+		{
+			"text": "scarpa",
+			"translations": [
+				"shoe"
+			]
+		},
+		{
+			"text": "giri",
+			"translations": [
+				"turn",
+				"break"
+			]
+		},
+		{
+			"text": "guanti",
+			"translations": [
+				"gloves"
+			]
+		},
+		{
+			"text": "mi piacciono",
+			"translations": [
+				"I like"
+			]
+		},
+		{
+			"text": "scarpe",
+			"translations": [
+				"shoes"
+			]
+		},
+		{
+			"text": "belle",
+			"translations": [
+				"good",
+				"nice",
+				"fair",
+				"goods",
+				"fines"
+			]
+		},
+		{
+			"text": "nere",
+			"translations": [
+				"black"
+			]
+		},
+		{
+			"text": "maglietta",
+			"translations": [
+				"T-shirt"
+			]
+		},
+		{
+			"text": "ti piacciono",
+			"translations": [
+				"you like"
+			]
+		},
+		{
+			"text": "queste",
+			"translations": [
+				"this",
+				"these"
+			]
+		},
+		{
+			"text": "borse",
+			"translations": [
+				"bag",
+				"bags",
+				"handbag",
+				"briefcase",
+				"stock exchange"
+			]
+		},
+		{
+			"text": "questi",
+			"translations": [
+				"this",
+				"these",
+				"those"
+			]
+		},
+		{
+			"text": "neri",
+			"translations": [
+				"black",
+				"neri"
+			]
+		},
+		{
+			"text": "allo",
+			"translations": [
+				"a",
+				"at",
+				"to",
+				"in",
+				"al"
+			]
+		},
+		{
+			"text": "pantaloni",
+			"translations": [
+				"pants"
+			]
+		},
+		{
+			"text": "su",
+			"translations": [
+				"up",
+				"on",
+				"to",
+				"in",
+				"ons"
+			]
+		},
+		{
+			"text": "cervo",
+			"translations": [
+				"deer",
+				"stag",
+				"hart"
+			]
+		},
+		{
+			"text": "ci sono",
+			"translations": [
+				"there are",
+				"are there"
+			]
+		},
+		{
+			"text": "guanto",
+			"translations": [
+				"glove"
+			]
+		},
+		{
+			"text": "molti",
+			"translations": [
+				"many"
+			]
+		},
+		{
+			"text": "sito",
+			"translations": [
+				"website"
+			]
+		},
+		{
+			"text": "guarda",
+			"translations": [
+				"look",
+				"watch",
+				"looks"
+			]
+		},
+		{
+			"text": "belli",
+			"translations": [
+				"good",
+				"nice",
+				"fair",
+				"fine",
+				"goodly"
+			]
+		},
+		{
+			"text": "rotta",
+			"translations": [
+				"rout",
+				"break",
+				"course",
+				"broken"
+			]
+		},
+		{
+			"text": "mi",
+			"translations": [
+				"me",
+				"my",
+				"myself"
+			]
+		},
+		{
+			"text": "va bene",
+			"translations": [
+				"OK"
+			]
+		},
+		{
+			"text": "idea",
+			"translations": [
+				"idea"
+			]
+		},
+		{
+			"text": "sabato",
+			"translations": [
+				"Saturday"
+			]
+		},
+		{
+			"text": "ricchi",
+			"translations": [
+				"rich",
+				"riches",
+				"wealthy",
+				"copious",
+				"abundant"
+			]
+		},
+		{
+			"text": "borsa",
+			"translations": [
+				"bag"
+			]
+		},
+		{
+			"text": "non sono d'accordo",
+			"translations": [
+				"I disagree",
+				"I don't agree",
+				"I do not agree",
+				"No"
+			]
+		},
+		{
+			"text": "bicicletta",
+			"translations": [
+				"bicycle"
+			]
+		},
+		{
+			"text": "vecchia",
+			"translations": [
+				"old"
+			]
+		},
+		{
+			"text": "la sua",
+			"translations": [
+				"her",
+				"his",
+				"its",
+				"hers"
+			]
+		},
+		{
+			"text": "tacco",
+			"translations": [
+				"heel",
+				"heeled shoe"
+			]
+		},
+		{
+			"text": "computer",
+			"translations": [
+				"computers",
+				"computer"
+			]
+		},
+		{
+			"text": "soglia",
+			"translations": [
+				"limit",
+				"verge",
+				"brink",
+				"doorstep",
+				"threshold"
+			]
+		},
+		{
+			"text": "portafoglio",
+			"translations": [
+				"wallet"
+			]
+		},
+		{
+			"text": "rotto",
+			"translations": [
+				"broken"
+			]
+		},
+		{
+			"text": "venerdì",
+			"translations": [
+				"Friday"
+			]
+		},
+		{
+			"text": "hai ragione",
+			"translations": [
+				"you're right",
+				"you are right"
+			]
+		},
+		{
+			"text": "orologio",
+			"translations": [
+				"watch",
+				"clock",
+				"timer",
+				"watches"
+			]
+		},
+		{
+			"text": "vecchio",
+			"translations": [
+				"old"
+			]
+		},
+		{
+			"text": "il suo",
+			"translations": [
+				"her",
+				"his",
+				"your",
+				"hers"
+			]
+		},
+		{
+			"text": "telefono",
+			"translations": [
+				"phone"
+			]
+		},
+		{
+			"text": "domenica",
+			"translations": [
+				"Sunday"
+			]
+		},
+		{
+			"text": "festa",
+			"translations": [
+				"done",
+				"don't",
+				"party",
+				"holiday",
+				"parties"
+			]
+		},
+		{
+			"text": "compleanno",
+			"translations": [
+				"birthday"
+			]
+		},
+		{
+			"text": "regalo",
+			"translations": [
+				"gift"
+			]
+		},
+		{
+			"text": "posso",
+			"translations": [
+				"I can",
+				"can"
+			]
+		},
+		{
+			"text": "passo",
+			"translations": [
+				"step",
+				"pace",
+				"I pass",
+				"pass"
+			]
+		},
+		{
+			"text": "biglietto",
+			"translations": [
+				"ticket"
+			]
+		},
+		{
+			"text": "vorresti",
+			"translations": [
+				"want",
+				"you'd",
+				"wanted",
+				"wouldn't",
+				"you would need"
+			]
+		},
+		{
+			"text": "biglietti",
+			"translations": [
+				"tickets"
+			]
+		},
+		{
+			"text": "città",
+			"translations": [
+				"town",
+				"city",
+				"cities"
+			]
+		},
+		{
+			"text": "settimana",
+			"translations": [
+				"week"
+			]
+		},
+		{
+			"text": "la prossima",
+			"translations": [
+				"next"
+			]
+		},
+		{
+			"text": "francese",
+			"translations": [
+				"French"
+			]
+		},
+		{
+			"text": "va",
+			"translations": [
+				"goes",
+				"go",
+				"he goes",
+				"she goes"
+			]
+		},
+		{
+			"text": "fiato",
+			"translations": [
+				"breath"
+			]
+		},
+		{
+			"text": "studia",
+			"translations": [
+				"study",
+				"studies",
+				"analyzes",
+				"it examines",
+				"he examines"
+			]
+		},
+		{
+			"text": "spesso",
+			"translations": [
+				"often"
+			]
+		},
+		{
+			"text": "rosa",
+			"translations": [
+				"pink",
+				"rose",
+				"romantic",
+				"rosa"
+			]
+		},
+		{
+			"text": "estate",
+			"translations": [
+				"summer"
+			]
+		},
+		{
+			"text": "svizzera",
+			"translations": [
+				"Swiss",
+				"hamburger",
+				"Switzerland"
+			]
+		},
+		{
+			"text": "vai",
+			"translations": [
+				"you go",
+				"go"
+			]
+		},
+		{
+			"text": "perché",
+			"translations": [
+				"why",
+				"for",
+				"find",
+				"found",
+				"reason"
+			]
+		},
+		{
+			"text": "tedesco",
+			"translations": [
+				"German"
+			]
+		},
+		{
+			"text": "svizzero",
+			"translations": [
+				"Swiss"
+			]
+		},
+		{
+			"text": "sempre",
+			"translations": [
+				"always"
+			]
+		},
+		{
+			"text": "anno",
+			"translations": [
+				"year"
+			]
+		},
+		{
+			"text": "vado",
+			"translations": [
+				"I go",
+				"go",
+				"I'm going"
+			]
+		},
+		{
+			"text": "ogni",
+			"translations": [
+				"every"
+			]
+		},
+		{
+			"text": "lagna",
+			"translations": [
+				"beef"
+			]
+		},
+		{
+			"text": "mese",
+			"translations": [
+				"month"
+			]
+		},
+		{
+			"text": "vuole",
+			"translations": [
+				"want",
+				"wants",
+				"wishes"
+			]
+		},
+		{
+			"text": "il prossimo",
+			"translations": [
+				"next"
+			]
+		},
+		{
+			"text": "svuoto",
+			"translations": [
+				"clear"
+			]
+		},
+		{
+			"text": "macchine",
+			"translations": [
+				"car",
+				"cars",
+				"engine",
+				"machine",
+				"machines"
+			]
+		},
+		{
+			"text": "taglie",
+			"translations": [
+				"sizes"
+			]
+		},
+		{
+			"text": "cani",
+			"translations": [
+				"dogs"
+			]
+		},
+		{
+			"text": "figlie",
+			"translations": [
+				"daughters"
+			]
+		},
+		{
+			"text": "sanno",
+			"translations": [
+				"knew",
+				"knows",
+				"they can",
+				"they know",
+				"know how to"
+			]
+		},
+		{
+			"text": "zecca",
+			"translations": [
+				"tick",
+				"mint"
+			]
+		},
+		{
+			"text": "balconi",
+			"translations": [
+				"balconies"
+			]
+		},
+		{
+			"text": "giardino",
+			"translations": [
+				"garden"
+			]
+		},
+		{
+			"text": "gatti",
+			"translations": [
+				"cats"
+			]
+		},
+		{
+			"text": "stanze",
+			"translations": [
+				"rooms"
+			]
+		},
+		{
+			"text": "bella",
+			"translations": [
+				"nice",
+				"pretty",
+				"beautiful",
+				"fair copy"
+			]
+		},
+		{
+			"text": "ingiallito",
+			"translations": [
+				"turned"
+			]
+		},
+		{
+			"text": "siamo",
+			"translations": [
+				"be",
+				"did",
+				"are",
+				"feel",
+				"we've"
+			]
+		},
+		{
+			"text": "macchina",
+			"translations": [
+				"car",
+				"machine",
+				"automobile",
+				"he plots",
+				"she plots"
+			]
+		},
+		{
+			"text": "tagli",
+			"translations": [
+				"cut",
+				"mow",
+				"stop",
+				"break"
+			]
+		},
+		{
+			"text": "figli",
+			"translations": [
+				"sons",
+				"children"
+			]
+		},
+		{
+			"text": "gatto",
+			"translations": [
+				"cat"
+			]
+		},
+		{
+			"text": "nuove",
+			"translations": [
+				"new",
+				"anew",
+				"again",
+				"afresh",
+				"further"
+			]
+		},
+		{
+			"text": "siete",
+			"translations": [
+				"be",
+				"you're",
+				"you’re",
+				"you've",
+				"did you"
+			]
+		},
+		{
+			"text": "ieri",
+			"translations": [
+				"yesterday"
+			]
+		},
+		{
+			"text": "pieno",
+			"translations": [
+				"full",
+				"rich",
+				"busy",
+				"solid",
+				"heavy"
+			]
+		},
+		{
+			"text": "vicine",
+			"translations": [
+				"close",
+				"neighbors"
+			]
+		},
+		{
+			"text": "americane",
+			"translations": [
+				"American",
+				"Americans"
+			]
+		},
+		{
+			"text": "italiane",
+			"translations": [
+				"Italian",
+				"Italians",
+				"Italian-style"
+			]
+		},
+		{
+			"text": "loro",
+			"translations": [
+				"they",
+				"them",
+				"their",
+				"theirs",
+				"they'll"
+			]
+		},
+		{
+			"text": "vicini",
+			"translations": [
+				"near",
+				"close",
+				"nearby",
+				"similar",
+				"neighbor"
+			]
+		},
+		{
+			"text": "italiani",
+			"translations": [
+				"Italian",
+				"Italians"
+			]
+		},
+		{
+			"text": "americani",
+			"translations": [
+				"American",
+				"Americans"
+			]
+		},
+		{
+			"text": "nuovi",
+			"translations": [
+				"new",
+				"anew",
+				"again",
+				"afresh",
+				"further"
+			]
+		},
+		{
+			"text": "ospedale",
+			"translations": [
+				"hospital"
+			]
+		},
+		{
+			"text": "purtroppo",
+			"translations": [
+				"unfortunately"
+			]
+		},
+		{
+			"text": "tappi",
+			"translations": [
+				"stop"
+			]
+		},
+		{
+			"text": "difficile",
+			"translations": [
+				"difficult"
+			]
+		},
+		{
+			"text": "stressante",
+			"translations": [
+				"stressful"
+			]
+		},
+		{
+			"text": "noioso",
+			"translations": [
+				"boring"
+			]
+		},
+		{
+			"text": "buffo",
+			"translations": [
+				"funny",
+				"goofy"
+			]
+		},
+		{
+			"text": "divertente",
+			"translations": [
+				"fun"
+			]
+		},
+		{
+			"text": "interessante",
+			"translations": [
+				"interesting"
+			]
+		},
+		{
+			"text": "facile",
+			"translations": [
+				"easy"
+			]
+		},
+		{
+			"text": "canapè",
+			"translations": [
+				"couch"
+			]
+		},
+		{
+			"text": "cuoca",
+			"translations": [
+				"cook"
+			]
+		},
+		{
+			"text": "professoressa",
+			"translations": [
+				"teacher",
+				"teachers",
+				"professor"
+			]
+		},
+		{
+			"text": "dottoressa",
+			"translations": [
+				"doctor",
+				"graduate"
+			]
+		},
+		{
+			"text": "scuola",
+			"translations": [
+				"school"
+			]
+		},
+		{
+			"text": "anche",
+			"translations": [
+				"so",
+				"too",
+				"even",
+				"hips",
+				"also"
+			]
+		},
+		{
+			"text": "matto",
+			"translations": [
+				"mad",
+				"madly",
+				"loony",
+				"crazy",
+				"potty"
+			]
+		},
+		{
+			"text": "ufficio",
+			"translations": [
+				"office"
+			]
+		},
+		{
+			"text": "professore",
+			"translations": [
+				"teacher",
+				"teachers",
+				"professor"
+			]
+		},
+		{
+			"text": "ora",
+			"translations": [
+				"now"
+			]
+		},
+		{
+			"text": "dottore",
+			"translations": [
+				"doctor"
+			]
+		},
+		{
+			"text": "cuoco",
+			"translations": [
+				"cook"
+			]
+		},
+		{
+			"text": "sale",
+			"translations": [
+				"sal",
+				"wit",
+				"salt",
+				"piquancy"
+			]
+		},
+		{
+			"text": "come stai",
+			"translations": [
+				"how are you"
+			]
+		},
+		{
+			"text": "di solito",
+			"translations": [
+				"usually"
+			]
+		},
+		{
+			"text": "sai",
+			"translations": [
+				"can",
+				"know",
+				"knew",
+				"savor",
+				"smell"
+			]
+		},
+		{
+			"text": "allora",
+			"translations": [
+				"so"
+			]
+		},
+		{
+			"text": "fai",
+			"translations": [
+				"do",
+				"made",
+				"make",
+				"have",
+				"keep"
+			]
+		},
+		{
+			"text": "sto bene",
+			"translations": [
+				"I'm fine"
+			]
+		},
+		{
+			"text": "troppo",
+			"translations": [
+				"too",
+				"very",
+				"overly",
+				"excessively"
+			]
+		},
+		{
+			"text": "mobili",
+			"translations": [
+				"furniture",
+				"furnishings"
+			]
+		},
+		{
+			"text": "fatta",
+			"translations": [
+				"do",
+				"have",
+				"make",
+				"form",
+				"last"
+			]
+		},
+		{
+			"text": "hai bisogno di",
+			"translations": [
+				"you need"
+			]
+		},
+		{
+			"text": "letto",
+			"translations": [
+				"bed"
+			]
+		},
+		{
+			"text": "qualcosa",
+			"translations": [
+				"anything",
+				"something"
+			]
+		},
+		{
+			"text": "noi",
+			"translations": [
+				"us",
+				"ourselves"
+			]
+		},
+		{
+			"text": "la nostra",
+			"translations": [
+				"our",
+				"ours"
+			]
+		},
+		{
+			"text": "cucina",
+			"translations": [
+				"kitchen"
+			]
+		},
+		{
+			"text": "abbiamo",
+			"translations": [
+				"ve",
+				"own",
+				"are",
+				"have"
+			]
+		},
+		{
+			"text": "sabbia",
+			"translations": [
+				"sand"
+			]
+		},
+		{
+			"text": "soggiorno",
+			"translations": [
+				"stay",
+				"visit",
+				"visited",
+				"family room",
+				"living room"
+			]
+		},
+		{
+			"text": "lavatrice",
+			"translations": [
+				"washing machine"
+			]
+		},
+		{
+			"text": "scusate",
+			"translations": [
+				"excuse me",
+				"you excuse",
+				"you justify",
+				"you apologize",
+				"you say sorry"
+			]
+		},
+		{
+			"text": "finestra",
+			"translations": [
+				"window"
+			]
+		},
+		{
+			"text": "lastra",
+			"translations": [
+				"plate",
+				"sheets"
+			]
+		},
+		{
+			"text": "altri",
+			"translations": [
+				"other",
+				"others",
+				"different"
+			]
+		},
+		{
+			"text": "balcone",
+			"translations": [
+				"balcony"
+			]
+		},
+		{
+			"text": "cane",
+			"translations": [
+				"dog"
+			]
+		},
+		{
+			"text": "voi",
+			"translations": [
+				"you'll",
+				"yourselves"
+			]
+		},
+		{
+			"text": "affitto",
+			"translations": [
+				"rent"
+			]
+		},
+		{
+			"text": "ragazzi",
+			"translations": [
+				"boys",
+				"kids",
+				"guys",
+				"children",
+				"boyfriends"
+			]
+		},
+		{
+			"text": "buffi",
+			"translations": [
+				"funny"
+			]
+		},
+		{
+			"text": "grande",
+			"translations": [
+				"big"
+			]
+		},
+		{
+			"text": "avete",
+			"translations": [
+				"did",
+				"own",
+				"have",
+				"keep",
+				"you've"
+			]
+		},
+		{
+			"text": "calza",
+			"translations": [
+				"sock",
+				"stocking"
+			]
+		},
+		{
+			"text": "appartamento",
+			"translations": [
+				"apartment"
+			]
+		},
+		{
+			"text": "per",
+			"translations": [
+				"on",
+				"to",
+				"in",
+				"by",
+				"for"
+			]
+		},
+		{
+			"text": "coinquilino",
+			"translations": [
+				"roommate"
+			]
+		},
+		{
+			"text": "stanza",
+			"translations": [
+				"room"
+			]
+		},
+		{
+			"text": "coinquilina",
+			"translations": [
+				"roommate"
+			]
+		},
+		{
+			"text": "il nostro",
+			"translations": [
+				"our",
+				"ours"
+			]
+		},
+		{
+			"text": "costano",
+			"translations": [
+				"are",
+				"cost"
+			]
+		},
+		{
+			"text": "quanto costano",
+			"translations": [
+				"how much are"
+			]
+		},
+		{
+			"text": "economica",
+			"translations": [
+				"cheap",
+				"economic",
+				"financial",
+				"economical",
+				"inexpensive"
+			]
+		},
+		{
+			"text": "triste",
+			"translations": [
+				"sad",
+				"darker",
+				"depressed"
+			]
+		},
+		{
+			"text": "tre",
+			"translations": [
+				"three"
+			]
+		},
+		{
+			"text": "economico",
+			"translations": [
+				"cheap"
+			]
+		},
+		{
+			"text": "gonne",
+			"translations": [
+				"skirts"
+			]
+		},
+		{
+			"text": "specie",
+			"translations": [
+				"kind",
+				"kinds"
+			]
+		},
+		{
+			"text": "camicie",
+			"translations": [
+				"shirts",
+				"blouses"
+			]
+		},
+		{
+			"text": "gonna",
+			"translations": [
+				"skirt"
+			]
+		},
+		{
+			"text": "cara",
+			"translations": [
+				"dear",
+				"costly",
+				"expensive"
+			]
+		},
+		{
+			"text": "due",
+			"translations": [
+				"two"
+			]
+		},
+		{
+			"text": "le",
+			"translations": [
+				"it",
+				"her",
+				"she",
+				"the",
+				"them"
+			]
+		},
+		{
+			"text": "stivali",
+			"translations": [
+				"boots"
+			]
+		},
+		{
+			"text": "uffa",
+			"translations": [
+				"Ugh"
+			]
+		},
+		{
+			"text": "zaini",
+			"translations": [
+				"backpacks"
+			]
+		},
+		{
+			"text": "zeri",
+			"translations": [
+				"zero",
+				"digit",
+				"zeros"
+			]
+		},
+		{
+			"text": "gli",
+			"translations": [
+				"he",
+				"it",
+				"him",
+				"the",
+				"his"
+			]
+		},
+		{
+			"text": "in offerta",
+			"translations": [
+				"on sale"
+			]
+		},
+		{
+			"text": "dove",
+			"translations": [
+				"where"
+			]
+		},
+		{
+			"text": "i",
+			"translations": [
+				"the",
+				"his"
+			]
+		},
+		{
+			"text": "maglioni",
+			"translations": [
+				"jumpers",
+				"sweaters",
+				"pullovers"
+			]
+		},
+		{
+			"text": "cappelli",
+			"translations": [
+				"hats"
+			]
+		},
+		{
+			"text": "aperto",
+			"translations": [
+				"open"
+			]
+		},
+		{
+			"text": "al mercato",
+			"translations": [
+				"at the market",
+				"to the market",
+				"in the market"
+			]
+		},
+		{
+			"text": "comprare",
+			"translations": [
+				"to buy"
+			]
+		},
+		{
+			"text": "care",
+			"translations": [
+				"kind",
+				"dear",
+				"sweet",
+				"honey",
+				"costly"
+			]
+		},
+		{
+			"text": "vestiti",
+			"translations": [
+				"clothes"
+			]
+		},
+		{
+			"text": "mercato",
+			"translations": [
+				"market"
+			]
+		},
+		{
+			"text": "taxi",
+			"translations": [
+				"cab",
+				"cabs",
+				"taxis",
+				"taxi"
+			]
+		},
+		{
+			"text": "cura",
+			"translations": [
+				"care",
+				"cure",
+				"course",
+				"nurses",
+				"charge"
+			]
+		},
+		{
+			"text": "non ti preoccupare",
+			"translations": [
+				"don't worry"
+			]
+		},
+		{
+			"text": "in ritardo",
+			"translations": [
+				"late"
+			]
+		},
+		{
+			"text": "aeroporto",
+			"translations": [
+				"airport"
+			]
+		},
+		{
+			"text": "pacco",
+			"translations": [
+				"pack",
+				"packs",
+				"package"
+			]
+		},
+		{
+			"text": "mi dispiace",
+			"translations": [
+				"sorry"
+			]
+		},
+		{
+			"text": "autobus",
+			"translations": [
+				"bus"
+			]
+		},
+		{
+			"text": "buco",
+			"translations": [
+				"hit",
+				"hole",
+				"broke",
+				"break",
+				"broken"
+			]
+		},
+		{
+			"text": "non lo so",
+			"translations": [
+				"I do not know"
+			]
+		},
+		{
+			"text": "hotel",
+			"translations": [
+				"hotels",
+				"albergo",
+				"hotel"
+			]
+		},
+		{
+			"text": "trovare",
+			"translations": [
+				"to find"
+			]
+		},
+		{
+			"text": "viro",
+			"translations": [
+				"turn"
+			]
+		},
+		{
+			"text": "mi sono persa",
+			"translations": [
+				"got lost"
+			]
+		},
+		{
+			"text": "devo",
+			"translations": [
+				"I must",
+				"I have to",
+				"must"
+			]
+		},
+		{
+			"text": "andare",
+			"translations": [
+				"to go",
+				"go",
+				"goes",
+				"went"
+			]
+		},
+		{
+			"text": "puoi ripetere",
+			"translations": [
+				"can you repeat",
+				"may you repeat",
+				"could you repeat",
+				"are you able to repeat"
+			]
+		},
+		{
+			"text": "hobby",
+			"translations": [
+				"hobbies",
+				"pastime",
+				"hobby"
+			]
+		},
+		{
+			"text": "capa",
+			"translations": [
+				"boss"
+			]
+		},
+		{
+			"text": "solo",
+			"translations": [
+				"but",
+				"only",
+				"mere",
+				"just",
+				"lone"
+			]
+		},
+		{
+			"text": "ho capito",
+			"translations": [
+				"understand",
+				"understood"
+			]
+		},
+		{
+			"text": "non ho capito",
+			"translations": [
+				"I don't understand",
+				"I haven't understood",
+				"I didn't get it",
+				"I didn't catch that"
+			]
+		},
+		{
+			"text": "lì",
+			"translations": [
+				"there",
+				"throws",
+				"thereabouts",
+				"at first",
+				"very nearly"
+			]
+		},
+		{
+			"text": "treno",
+			"translations": [
+				"train"
+			]
+		},
+		{
+			"text": "cerco",
+			"translations": [
+				"find",
+				"found",
+				"looking",
+				"I try",
+				"I look for"
+			]
+		},
+		{
+			"text": "mi sono perso",
+			"translations": [
+				"got lost",
+				"I'm lost"
+			]
+		},
+		{
+			"text": "non",
+			"translations": [
+				"n’t",
+				"can't",
+				"won’t",
+				"won't",
+				"don't"
+			]
+		},
+		{
+			"text": "stazione",
+			"translations": [
+				"station"
+			]
+		},
+		{
+			"text": "taglio",
+			"translations": [
+				"cut",
+				"stop",
+				"trim",
+				"style",
+				"break"
+			]
+		},
+		{
+			"text": "stasera",
+			"translations": [
+				"tonight"
+			]
+		},
+		{
+			"text": "domani",
+			"translations": [
+				"tomorrow"
+			]
+		},
+		{
+			"text": "voglio",
+			"translations": [
+				"want",
+				"take"
+			]
+		},
+		{
+			"text": "lisa",
+			"translations": [
+				"lisa"
+			]
+		},
+		{
+			"text": "visitare",
+			"translations": [
+				"to visit"
+			]
+		},
+		{
+			"text": "fine settimana",
+			"translations": [
+				"weekend"
+			]
+		},
+		{
+			"text": "vuoi",
+			"translations": [
+				"want"
+			]
+		},
+		{
+			"text": "puoi",
+			"translations": [
+				"you can",
+				"can"
+			]
+		},
+		{
+			"text": "pattinare",
+			"translations": [
+				"to skate"
+			]
+		},
+		{
+			"text": "lasci",
+			"translations": [
+				"leave"
+			]
+		},
+		{
+			"text": "uscire",
+			"translations": [
+				"came",
+				"got",
+				"walk",
+				"walks",
+				"exits"
+			]
+		},
+		{
+			"text": "bere",
+			"translations": [
+				"to drink"
+			]
+		},
+		{
+			"text": "gialli",
+			"translations": [
+				"amber",
+				"crime",
+				"yellow",
+				"sallow",
+				"mystery"
+			]
+		},
+		{
+			"text": "cari",
+			"translations": [
+				"dear",
+				"fond",
+				"costly",
+				"expensive"
+			]
+		},
+		{
+			"text": "sport",
+			"translations": [
+				"sports",
+				"sport"
+			]
+		},
+		{
+			"text": "mangiare",
+			"translations": [
+				"to eat"
+			]
+		},
+		{
+			"text": "cosa",
+			"translations": [
+				"what"
+			]
+		},
+		{
+			"text": "fare",
+			"translations": [
+				"to do",
+				"do",
+				"make",
+				"makes",
+				"made"
+			]
+		},
+		{
+			"text": "casse",
+			"translations": [
+				"speakers",
+				"cashiers",
+				"checkouts"
+			]
+		},
+		{
+			"text": "passeggiare",
+			"translations": [
+				"to walk around"
+			]
+		},
+		{
+			"text": "quando",
+			"translations": [
+				"when"
+			]
+		},
+		{
+			"text": "mi piace",
+			"translations": [
+				"I like"
+			]
+		},
+		{
+			"text": "libera",
+			"translations": [
+				"free",
+				"clear",
+				"releases",
+				"available",
+				"he frees"
+			]
+		},
+		{
+			"text": "cantare",
+			"translations": [
+				"to sing"
+			]
+		},
+		{
+			"text": "leggenda",
+			"translations": [
+				"tale",
+				"myth",
+				"story",
+				"legend"
+			]
+		},
+		{
+			"text": "nuotare",
+			"translations": [
+				"to swim"
+			]
+		},
+		{
+			"text": "ballare",
+			"translations": [
+				"to dance"
+			]
+		},
+		{
+			"text": "raggi",
+			"translations": [
+				"rays"
+			]
+		},
+		{
+			"text": "suonare",
+			"translations": [
+				"mean",
+				"beat",
+				"gone",
+				"ring"
+			]
+		},
+		{
+			"text": "ti piace",
+			"translations": [
+				"you like"
+			]
+		},
+		{
+			"text": "libero",
+			"translations": [
+				"free",
+				"available"
+			]
+		},
+		{
+			"text": "oggi",
+			"translations": [
+				"today"
+			]
+		},
+		{
+			"text": "la tua",
+			"translations": [
+				"your",
+				"yours"
+			]
+		},
+		{
+			"text": "molto",
+			"translations": [
+				"far",
+				"very",
+				"much",
+				"really",
+				"a lot"
+			]
+		},
+		{
+			"text": "spagnolo",
+			"translations": [
+				"Spanish",
+				"Spaniard"
+			]
+		},
+		{
+			"text": "studio",
+			"translations": [
+				"study",
+				"office",
+				"I study"
+			]
+		},
+		{
+			"text": "radio",
+			"translations": [
+				"radium",
+				"radius",
+				"radios",
+				"radio"
+			]
+		},
+		{
+			"text": "parli",
+			"translations": [
+				"talk",
+				"speak",
+				"you are talking",
+				"you are speaking"
+			]
+		},
+		{
+			"text": "il tuo",
+			"translations": [
+				"your",
+				"yours"
+			]
+		},
+		{
+			"text": "studi",
+			"translations": [
+				"study",
+				"survey",
+				"office",
+				"studied",
+				"practice"
+			]
+		},
+		{
+			"text": "sana",
+			"translations": [
+				"healthy",
+				"be healed"
+			]
+		},
+		{
+			"text": "suo",
+			"translations": [
+				"his",
+				"her",
+				"its",
+				"your",
+				"hers"
+			]
+		},
+		{
+			"text": "inglese",
+			"translations": [
+				"English",
+				"British"
+			]
+		},
+		{
+			"text": "bene",
+			"translations": [
+				"well"
+			]
+		},
+		{
+			"text": "barra",
+			"translations": [
+				"bar",
+				"rod",
+				"rods"
+			]
+		},
+		{
+			"text": "sorella",
+			"translations": [
+				"sister"
+			]
+		},
+		{
+			"text": "parlo",
+			"translations": [
+				"talk",
+				"speak",
+				"I am talking",
+				"I am speaking"
+			]
+		},
+		{
+			"text": "fratello",
+			"translations": [
+				"brother"
+			]
+		},
+		{
+			"text": "in",
+			"translations": [
+				"at",
+				"to",
+				"on",
+				"by",
+				"for"
+			]
+		},
+		{
+			"text": "palla",
+			"translations": [
+				"ball",
+				"drag",
+				"bummer"
+			]
+		},
+		{
+			"text": "vivi",
+			"translations": [
+				"alive",
+				"living",
+				"you live",
+				"you experience"
+			]
+		},
+		{
+			"text": "piano",
+			"translations": [
+				"slow",
+				"even",
+				"flat",
+				"plan",
+				"level"
+			]
+		},
+		{
+			"text": "lavori",
+			"translations": [
+				"jobs",
+				"works",
+				"worked",
+				"you work",
+				"you are working"
+			]
+		},
+		{
+			"text": "mi chiamo",
+			"translations": [
+				"my name is",
+				"i am called"
+			]
+		},
+		{
+			"text": "lavoro",
+			"translations": [
+				"job",
+				"work",
+				"jobs",
+				"task",
+				"labor"
+			]
+		},
+		{
+			"text": "a",
+			"translations": [
+				"à",
+				"at",
+				"on",
+				"to",
+				"in"
+			]
+		},
+		{
+			"text": "come ti chiami",
+			"translations": [
+				"what's your name"
+			]
+		},
+		{
+			"text": "vivo",
+			"translations": [
+				"live",
+				"alive",
+				"sharp",
+				"acute",
+				"vivid"
+			]
+		},
+		{
+			"text": "costa",
+			"translations": [
+				"costs",
+				"slope",
+				"spine",
+				"coast",
+				"seabord"
+			]
+		},
+		{
+			"text": "cento",
+			"translations": [
+				"one hundred"
+			]
+		},
+		{
+			"text": "euro",
+			"translations": [
+				"euro",
+				"euros"
+			]
+		},
+		{
+			"text": "dieci",
+			"translations": [
+				"ten"
+			]
+		},
+		{
+			"text": "cinquanta",
+			"translations": [
+				"fifty"
+			]
+		},
+		{
+			"text": "piccola",
+			"translations": [
+				"less",
+				"baby",
+				"minor",
+				"small",
+				"little"
+			]
+		},
+		{
+			"text": "quanto costa",
+			"translations": [
+				"how much is"
+			]
+		},
+		{
+			"text": "nera",
+			"translations": [
+				"black"
+			]
+		},
+		{
+			"text": "scontrino",
+			"translations": [
+				"receipt"
+			]
+		},
+		{
+			"text": "quanta",
+			"translations": [
+				"how"
+			]
+		},
+		{
+			"text": "nero",
+			"translations": [
+				"black"
+			]
+		},
+		{
+			"text": "uno",
+			"translations": [
+				"a",
+				"1",
+				"an",
+				"one",
+				"someone"
+			]
+		},
+		{
+			"text": "zaino",
+			"translations": [
+				"backpack"
+			]
+		},
+		{
+			"text": "piccolo",
+			"translations": [
+				"small"
+			]
+		},
+		{
+			"text": "specchio",
+			"translations": [
+				"mirror"
+			]
+		},
+		{
+			"text": "rossa",
+			"translations": [
+				"red"
+			]
+		},
+		{
+			"text": "camicia",
+			"translations": [
+				"shirt"
+			]
+		},
+		{
+			"text": "giacca",
+			"translations": [
+				"jacket"
+			]
+		},
+		{
+			"text": "nodo",
+			"translations": [
+				"knot",
+				"junction"
+			]
+		},
+		{
+			"text": "nuova",
+			"translations": [
+				"new",
+				"recent"
+			]
+		},
+		{
+			"text": "messi",
+			"translations": [
+				"set"
+			]
+		},
+		{
+			"text": "aglio",
+			"translations": [
+				"garlic"
+			]
+		},
+		{
+			"text": "maglione",
+			"translations": [
+				"sweater"
+			]
+		},
+		{
+			"text": "cappello",
+			"translations": [
+				"hat"
+			]
+		},
+		{
+			"text": "ho bisogno di",
+			"translations": [
+				"need"
+			]
+		},
+		{
+			"text": "nuovo",
+			"translations": [
+				"new"
+			]
+		},
+		{
+			"text": "rosso",
+			"translations": [
+				"red"
+			]
+		},
+		{
+			"text": "tiramisù",
+			"translations": [
+				"tiramisu",
+				"tiramisù"
+			]
+		},
+		{
+			"text": "come dolce",
+			"translations": [
+				"for dessert"
+			]
+		},
+		{
+			"text": "conto",
+			"translations": [
+				"bill",
+				"check"
+			]
+		},
+		{
+			"text": "torta",
+			"translations": [
+				"cake"
+			]
+		},
+		{
+			"text": "a presto",
+			"translations": [
+				"see you soon"
+			]
+		},
+		{
+			"text": "notte",
+			"translations": [
+				"night",
+				"nights",
+				"evenings"
+			]
+		},
+		{
+			"text": "casa",
+			"translations": [
+				"home",
+				"place",
+				"house",
+				"domicile"
+			]
+		},
+		{
+			"text": "pollo",
+			"translations": [
+				"chicken"
+			]
+		},
+		{
+			"text": "pesce",
+			"translations": [
+				"fish"
+			]
+		},
+		{
+			"text": "riso",
+			"translations": [
+				"rice"
+			]
+		},
+		{
+			"text": "pasta",
+			"translations": [
+				"pasta"
+			]
+		},
+		{
+			"text": "come primo",
+			"translations": [
+				"for the first course"
+			]
+		},
+		{
+			"text": "come secondo",
+			"translations": [
+				"for the second course"
+			]
+		},
+		{
+			"text": "insalata",
+			"translations": [
+				"salad"
+			]
+		},
+		{
+			"text": "antipasto",
+			"translations": [
+				"appetizer"
+			]
+		},
+		{
+			"text": "suono",
+			"translations": [
+				"sound",
+				"noises"
+			]
+		},
+		{
+			"text": "buona sera",
+			"translations": [
+				"good night",
+				"good evening"
+			]
+		},
+		{
+			"text": "vorrei",
+			"translations": [
+				"I'd like"
+			]
+		},
+		{
+			"text": "l'",
+			"translations": [
+				"it",
+				"her",
+				"the",
+				"him",
+				"hers"
+			]
+		},
+		{
+			"text": "buon giorno",
+			"translations": [
+				"good morning"
+			]
+		},
+		{
+			"text": "prego",
+			"translations": [
+				"you're welcome"
+			]
+		},
+		{
+			"text": "menù",
+			"translations": [
+				"menu"
+			]
+		},
+		{
+			"text": "ecco",
+			"translations": [
+				"there",
+				"that's",
+				"here’s",
+				"here's",
+				"there's"
+			]
+		},
+		{
+			"text": "secco",
+			"translations": [
+				"die",
+				"her",
+				"dry",
+				"hard",
+				"dries"
+			]
+		},
+		{
+			"text": "tavolo",
+			"translations": [
+				"table"
+			]
+		},
+		{
+			"text": "timido",
+			"translations": [
+				"shy"
+			]
+		},
+		{
+			"text": "amico",
+			"translations": [
+				"friend"
+			]
+		},
+		{
+			"text": "simpatico",
+			"translations": [
+				"nice"
+			]
+		},
+		{
+			"text": "alta",
+			"translations": [
+				"top",
+				"deep",
+				"long",
+				"tall",
+				"loud"
+			]
+		},
+		{
+			"text": "il mio",
+			"translations": [
+				"my",
+				"mine"
+			]
+		},
+		{
+			"text": "un'",
+			"translations": [
+				"a",
+				"an",
+				"one",
+				"each",
+				"someone"
+			]
+		},
+		{
+			"text": "la mia",
+			"translations": [
+				"my",
+				"mine"
+			]
+		},
+		{
+			"text": "amica",
+			"translations": [
+				"friend",
+				"friends",
+				"partner"
+			]
+		},
+		{
+			"text": "simpatica",
+			"translations": [
+				"nice",
+				"likable"
+			]
+		},
+		{
+			"text": "ha",
+			"translations": [
+				"has",
+				"have",
+				"he has",
+				"she has"
+			]
+		},
+		{
+			"text": "ragazza",
+			"translations": [
+				"girl",
+				"girlfriend"
+			]
+		},
+		{
+			"text": "americana",
+			"translations": [
+				"American"
+			]
+		},
+		{
+			"text": "ho",
+			"translations": [
+				"I have",
+				"have"
+			]
+		},
+		{
+			"text": "vicina",
+			"translations": [
+				"neighbor"
+			]
+		},
+		{
+			"text": "voci",
+			"translations": [
+				"talk",
+				"voices",
+				"entries",
+				"you yell",
+				"you shout"
+			]
+		},
+		{
+			"text": "pazzo",
+			"translations": [
+				"mad",
+				"crazy",
+				"goofy",
+				"madman",
+				"maddest"
+			]
+		},
+		{
+			"text": "timida",
+			"translations": [
+				"shy"
+			]
+		},
+		{
+			"text": "alto",
+			"translations": [
+				"tall"
+			]
+		},
+		{
+			"text": "hanno",
+			"translations": [
+				"did",
+				"own",
+				"are",
+				"have"
+			]
+		},
+		{
+			"text": "ragazzo",
+			"translations": [
+				"boy",
+				"boyfriend"
+			]
+		},
+		{
+			"text": "americano",
+			"translations": [
+				"American"
+			]
+		},
+		{
+			"text": "vicino",
+			"translations": [
+				"neighbor"
+			]
+		},
+		{
+			"text": "mai",
+			"translations": [
+				"ever",
+				"never"
+			]
+		},
+		{
+			"text": "hai",
+			"translations": [
+				"you have",
+				"have"
+			]
+		},
+		{
+			"text": "pizzeria",
+			"translations": [
+				"pizzeria"
+			]
+		},
+		{
+			"text": "lacci",
+			"translations": [
+				"tie",
+				"lace",
+				"cord",
+				"laces",
+				"ribbon"
+			]
+		},
+		{
+			"text": "molle",
+			"translations": [
+				"soft"
+			]
+		},
+		{
+			"text": "questa",
+			"translations": [
+				"this",
+				"that",
+				"these",
+				"those",
+				"that's"
+			]
+		},
+		{
+			"text": "grazie mille",
+			"translations": [
+				"thank you very much"
+			]
+		},
+		{
+			"text": "farmacia",
+			"translations": [
+				"pharmacy"
+			]
+		},
+		{
+			"text": "bar",
+			"translations": [
+				"cafe",
+				"café",
+				"cafes",
+				"cafés"
+			]
+		},
+		{
+			"text": "questo",
+			"translations": [
+				"this",
+				"that",
+				"these",
+				"those",
+				"that's"
+			]
+		},
+		{
+			"text": "ragno",
+			"translations": [
+				"spider"
+			]
+		},
+		{
+			"text": "quale",
+			"translations": [
+				"what",
+				"which",
+				"such as"
+			]
+		},
+		{
+			"text": "e",
+			"translations": [
+				"and"
+			]
+		},
+		{
+			"text": "ristorante",
+			"translations": [
+				"restaurant"
+			]
+		},
+		{
+			"text": "banca",
+			"translations": [
+				"bank"
+			]
+		},
+		{
+			"text": "bagno",
+			"translations": [
+				"wet",
+				"swim",
+				"bath",
+				"toilet",
+				"washroom"
+			]
+		},
+		{
+			"text": "chiesa",
+			"translations": [
+				"church"
+			]
+		},
+		{
+			"text": "signora",
+			"translations": [
+				"Ms.",
+				"mrs",
+				"lady",
+				"mrs.",
+				"madam"
+			]
+		},
+		{
+			"text": "la",
+			"translations": [
+				"it",
+				"her",
+				"the",
+				"for",
+				"your"
+			]
+		},
+		{
+			"text": "c'è",
+			"translations": [
+				"there’s",
+				"there is",
+				"there was"
+			]
+		},
+		{
+			"text": "piazza",
+			"translations": [
+				"square"
+			]
+		},
+		{
+			"text": "mazzo",
+			"translations": [
+				"pack",
+				"stock"
+			]
+		},
+		{
+			"text": "dov'è",
+			"translations": [
+				"where is"
+			]
+		},
+		{
+			"text": "qui",
+			"translations": [
+				"here"
+			]
+		},
+		{
+			"text": "teatro",
+			"translations": [
+				"theater"
+			]
+		},
+		{
+			"text": "negozio",
+			"translations": [
+				"store"
+			]
+		},
+		{
+			"text": "signore",
+			"translations": [
+				"sir"
+			]
+		},
+		{
+			"text": "il",
+			"translations": [
+				"a",
+				"the"
+			]
+		},
+		{
+			"text": "italiana",
+			"translations": [
+				"Italian",
+				"italians"
+			]
+		},
+		{
+			"text": "figlio",
+			"translations": [
+				"son"
+			]
+		},
+		{
+			"text": "mano",
+			"translations": [
+				"coat",
+				"hand",
+				"layer",
+				"coats"
+			]
+		},
+		{
+			"text": "o",
+			"translations": [
+				"or"
+			]
+		},
+		{
+			"text": "che",
+			"translations": [
+				"who",
+				"how",
+				"that",
+				"than",
+				"what"
+			]
+		},
+		{
+			"text": "moglie",
+			"translations": [
+				"wife"
+			]
+		},
+		{
+			"text": "cassa",
+			"translations": [
+				"cashier",
+				"cash desk",
+				"cash register"
+			]
+		},
+		{
+			"text": "italiano",
+			"translations": [
+				"Italian"
+			]
+		},
+		{
+			"text": "marito",
+			"translations": [
+				"husband"
+			]
+		},
+		{
+			"text": "figlia",
+			"translations": [
+				"daughter"
+			]
+		},
+		{
+			"text": "madre",
+			"translations": [
+				"mother"
+			]
+		},
+		{
+			"text": "una",
+			"translations": [
+				"a",
+				"an",
+				"one"
+			]
+		},
+		{
+			"text": "lei",
+			"translations": [
+				"she",
+				"her",
+				"hers",
+				"she'll",
+				"you'll"
+			]
+		},
+		{
+			"text": "luna",
+			"translations": [
+				"moon",
+				"month"
+			]
+		},
+		{
+			"text": "chi",
+			"translations": [
+				"who",
+				"whom"
+			]
+		},
+		{
+			"text": "uovo",
+			"translations": [
+				"egg"
+			]
+		},
+		{
+			"text": "è",
+			"translations": [
+				"is",
+				"he is",
+				"she is",
+				"it's"
+			]
+		},
+		{
+			"text": "lui",
+			"translations": [
+				"he"
+			]
+		},
+		{
+			"text": "padre",
+			"translations": [
+				"father"
+			]
+		},
+		{
+			"text": "bello",
+			"translations": [
+				"nice",
+				"good",
+				"lovely",
+				"pretty",
+				"handsome"
+			]
+		},
+		{
+			"text": "dare",
+			"translations": [
+				"gave",
+				"give",
+				"sit",
+				"sits",
+				"held"
+			]
+		},
+		{
+			"text": "di dove sei",
+			"translations": [
+				"where are you from"
+			]
+		},
+		{
+			"text": "ah",
+			"translations": [
+				"oh",
+				"ah"
+			]
+		},
+		{
+			"text": "madri",
+			"translations": [
+				"stub",
+				"moms'",
+				"mother",
+				"mothers"
+			]
+		},
+		{
+			"text": "Filadelfia",
+			"translations": [
+				"Philadelphia"
+			]
+		},
+		{
+			"text": "caro",
+			"translations": [
+				"dear",
+				"honey",
+				"costly",
+				"darling",
+				"beloved"
+			]
+		},
+		{
+			"text": "fantastico",
+			"translations": [
+				"fantastic"
+			]
+		},
+		{
+			"text": "Londra",
+			"translations": [
+				"London"
+			]
+		},
+		{
+			"text": "me",
+			"translations": [
+				"myself",
+				"me"
+			]
+		},
+		{
+			"text": "tu",
+			"translations": [
+				"you'll"
+			]
+		},
+		{
+			"text": "sei",
+			"translations": [
+				"are",
+				"you are",
+				"you're"
+			]
+		},
+		{
+			"text": "scusa",
+			"translations": [
+				"sorry",
+				"pretext",
+				"excuse me"
+			]
+		},
+		{
+			"text": "vero",
+			"translations": [
+				"real",
+				"true",
+				"right",
+				"isn't",
+				"aren’t"
+			]
+		},
+		{
+			"text": "di",
+			"translations": [
+				"'s",
+				"at",
+				"to",
+				"of",
+				"in"
+			]
+		},
+		{
+			"text": "Milano",
+			"translations": [
+				"Milan"
+			]
+		},
+		{
+			"text": "Roma",
+			"translations": [
+				"Rome"
+			]
+		},
+		{
+			"text": "rido",
+			"translations": [
+				"laugh",
+				"smile",
+				"giggle",
+				"ridere",
+				"chuckle"
+			]
+		},
+		{
+			"text": "piacere",
+			"translations": [
+				"nice to meet you"
+			]
+		},
+		{
+			"text": "cera",
+			"translations": [
+				"crayon"
+			]
+		},
+		{
+			"text": "tonno",
+			"translations": [
+				"tuna"
+			]
+		},
+		{
+			"text": "sono",
+			"translations": [
+				"am",
+				"are",
+				"they are",
+				"I'm"
+			]
+		},
+		{
+			"text": "cielo",
+			"translations": [
+				"sky",
+				"heaven"
+			]
+		},
+		{
+			"text": "io",
+			"translations": [
+				"me",
+				"i'd",
+				"i'll"
+			]
+		},
+		{
+			"text": "ciao",
+			"translations": [
+				"hi",
+				"bye",
+				"hello",
+				"goodbye"
+			]
+		},
+		{
+			"text": "zucchero",
+			"translations": [
+				"sugar"
+			]
+		},
+		{
+			"text": "arrivederci",
+			"translations": [
+				"goodbye"
+			]
+		},
+		{
+			"text": "cappuccino",
+			"translations": [
+				"cappuccino"
+			]
+		},
+		{
+			"text": "gelato",
+			"translations": [
+				"icy",
+				"frozen",
+				"frosted",
+				"chilled",
+				"ice-cold"
+			]
+		},
+		{
+			"text": "no",
+			"translations": [
+				"not",
+				"haven't",
+				"no"
+			]
+		},
+		{
+			"text": "ma",
+			"translations": [
+				"but",
+				"only",
+				"though"
+			]
+		},
+		{
+			"text": "latte",
+			"translations": [
+				"milk"
+			]
+		},
+		{
+			"text": "sì",
+			"translations": [
+				"yes"
+			]
+		},
+		{
+			"text": "grazie",
+			"translations": [
+				"thank you"
+			]
+		},
+		{
+			"text": "con",
+			"translations": [
+				"to",
+				"with",
+				"featuring"
+			]
+		},
+		{
+			"text": "caffè",
+			"translations": [
+				"coffee"
+			]
+		},
+		{
+			"text": "lo",
+			"translations": [
+				"it",
+				"the",
+				"him",
+				"that"
+			]
+		},
+		{
+			"text": "un",
+			"translations": [
+				"a",
+				"an",
+				"one"
+			]
+		},
+		{
+			"text": "salve",
+			"translations": [
+				"hello"
+			]
+		},
+		{
+			"text": "tè",
+			"translations": [
+				"tea",
+				"teas"
+			]
+		},
+		{
+			"text": "per favore",
+			"translations": [
+				"please"
+			]
+		},
+		{
+			"text": "cornetto",
+			"translations": [
+				"croissant"
+			]
+		}
+	]
+}

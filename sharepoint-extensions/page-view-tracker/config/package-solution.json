@@ -1,0 +1,46 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/build/package-solution.schema.json",
+  "solution": {
+    "name": "page-view-tracker-client-side-solution",
+    "id": "f3a8c2e1-9d4b-4a7f-b6e2-1c8d5f0a3b7e",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "AONIC GmbH",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.21.1"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "Tracks SharePoint page views with traffic source attribution."
+      },
+      "longDescription": {
+        "default": "Application Customizer that logs page views to a SharePoint list, including optional source query parameters such as source=viva for Viva Engage links."
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "Page View Tracker Application Customizer",
+        "description": "Deploys the page view tracking Application Customizer.",
+        "id": "e7b1d4c9-2f6a-4e8b-9c3d-5a1f0e8b2d6c",
+        "version": "1.0.0.0",
+        "assets": {
+          "elementManifests": [
+            "elements.xml",
+            "ClientSideInstance.xml"
+          ]
+        }
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/page-view-tracker.sppkg"
+  }
+}

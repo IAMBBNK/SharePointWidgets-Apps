@@ -1,0 +1,335 @@
+.pm-form-widget {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px;
+  color: #1f1f1f;
+  box-sizing: border-box;
+}
+
+.pm-form-widget *,
+.pm-form-widget *::before,
+.pm-form-widget *::after {
+  box-sizing: border-box;
+}
+
+.pm-form-widget .pm-header {
+  padding-bottom: 18px;
+  border-bottom: 1px solid #e3e3e3;
+  margin-bottom: 24px;
+}
+
+.pm-form-widget .pm-title {
+  color: #0f69af;
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.pm-form-widget .pm-user-line {
+  color: #444;
+  font-size: 13px;
+  margin: 8px 0 0 0;
+}
+
+.pm-form-widget .is-hidden {
+  display: none !important;
+}
+
+.pm-form-widget .error-banner {
+  background-color: #fdecea;
+  color: #b00020;
+  border: 1px solid #f5c2c7;
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin: 0 0 16px 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.pm-form-widget .success-banner {
+  background-color: #e8f5e9;
+  color: #1b5e20;
+  border: 1px solid #a5d6a7;
+  border-radius: 6px;
+  padding: 16px 20px;
+  margin: 0 0 16px 0;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.pm-form-widget .warn-banner {
+  background-color: #fff8e1;
+  color: #7a5a00;
+  border: 1px solid #ffe082;
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin: 0 0 16px 0;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.pm-form-widget .info-banner {
+  background-color: #f0f7fc;
+  color: #0f69af;
+  border: 1px solid #b3d4ec;
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin: 0 0 16px 0;
+  font-size: 14px;
+}
+
+.pm-form-widget .loading-overlay {
+  text-align: center;
+  padding: 40px 20px;
+  color: #666;
+  font-size: 16px;
+}
+
+.pm-form-widget .pm-toolbar {
+  margin-bottom: 20px;
+  padding: 14px 16px;
+  background: #f5f8fb;
+  border: 1px solid #dde3ea;
+  border-radius: 8px;
+}
+
+.pm-form-widget .pm-toolbar label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: #0f69af;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 6px;
+}
+
+.pm-form-widget .pm-toolbar select {
+  width: 100%;
+  max-width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #cfd6dd;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: inherit;
+  background: #fff;
+}
+
+.pm-form-widget .pm-toolbar select:focus {
+  outline: none;
+  border-color: #0f69af;
+  box-shadow: 0 0 0 2px rgba(15, 105, 175, 0.15);
+}
+
+.pm-form-widget .pm-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 20px;
+}
+
+.pm-form-widget .pm-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.pm-form-widget .pm-field--full {
+  grid-column: 1 / -1;
+}
+
+.pm-form-widget .pm-field label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #333;
+}
+
+.pm-form-widget .pm-field .field-hint {
+  display: block;
+  font-size: 11px;
+  color: #888;
+  font-weight: 400;
+}
+
+.pm-form-widget .pm-field input[type="text"],
+.pm-form-widget .pm-field input[type="datetime-local"],
+.pm-form-widget .pm-field select,
+.pm-form-widget .pm-field .pp-host,
+.pm-form-widget .pm-field .pp-wrap {
+  width: 100%;
+  min-height: 42px;
+}
+
+.pm-form-widget .pm-field input[type="text"],
+.pm-form-widget .pm-field input[type="datetime-local"],
+.pm-form-widget .pm-field select {
+  padding: 10px 12px;
+  border: 1px solid #cfd6dd;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: inherit;
+  background: #fff;
+  color: #1f1f1f;
+}
+
+.pm-form-widget .pm-field input[readonly] {
+  background: #f3f6f8;
+  color: #555;
+  cursor: default;
+}
+
+.pm-form-widget .pm-field input:focus,
+.pm-form-widget .pm-field select:focus {
+  outline: none;
+  border-color: #0f69af;
+  box-shadow: 0 0 0 2px rgba(15, 105, 175, 0.15);
+}
+
+.pm-form-widget .pm-field input[readonly]:focus {
+  border-color: #cfd6dd;
+  box-shadow: none;
+}
+
+.pm-form-widget .pm-actions {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid #e3e3e3;
+}
+
+.pm-form-widget .pm-btn {
+  appearance: none;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  background: #0f69af;
+  color: #fff;
+}
+
+.pm-form-widget .pm-btn:hover:not(:disabled) {
+  background: #0c5a96;
+}
+
+.pm-form-widget .pm-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* People picker */
+.pm-form-widget .pp-wrap {
+  border: 1px solid #cfd6dd;
+  border-radius: 6px;
+  padding: 8px;
+  background: #fff;
+  position: relative;
+}
+
+.pm-form-widget .pp-wrap:focus-within {
+  border-color: #0f69af;
+  box-shadow: 0 0 0 2px rgba(15, 105, 175, 0.15);
+}
+
+.pm-form-widget .pp-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.pm-form-widget .pp-chips:empty {
+  display: none;
+  margin: 0;
+}
+
+.pm-form-widget .pp-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px 4px 10px;
+  background: #e8f1f8;
+  color: #0f69af;
+  border-radius: 16px;
+  font-size: 13px;
+  font-weight: 600;
+  max-width: 100%;
+}
+
+.pm-form-widget .pp-chip-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pm-form-widget .pp-chip-remove {
+  border: none;
+  background: transparent;
+  color: #0f69af;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 2px;
+}
+
+.pm-form-widget .pp-input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 14px;
+  font-family: inherit;
+  padding: 4px 2px;
+  background: transparent;
+}
+
+.pm-form-widget .pp-suggestions {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  margin-top: 4px;
+  background: #fff;
+  border: 1px solid #cfd6dd;
+  border-radius: 6px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  z-index: 50;
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.pm-form-widget .pp-wrap.pp-open-up .pp-suggestions {
+  top: auto;
+  bottom: 100%;
+  margin-top: 0;
+  margin-bottom: 4px;
+}
+
+.pm-form-widget .pp-suggestion {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: transparent;
+  padding: 10px 12px;
+  font-size: 13px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.pm-form-widget .pp-suggestion:hover,
+.pm-form-widget .pp-suggestion.is-active {
+  background: #f0f7fc;
+}
+
+.pm-form-widget .pp-empty {
+  padding: 10px 12px;
+  font-size: 13px;
+  color: #888;
+  font-style: italic;
+}
+
+@media (max-width: 700px) {
+  .pm-form-widget .pm-grid {
+    grid-template-columns: 1fr;
+  }
+}

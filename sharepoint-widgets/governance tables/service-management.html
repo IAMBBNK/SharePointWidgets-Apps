@@ -1,0 +1,146 @@
+<div id="serviceCoeContainer"></div>
+
+<style>
+  /* Base table layout */
+  #serviceCoeContainer .service-table {
+    border-collapse: separate;
+    border-spacing: 8px 8px;
+    width: 100%;
+    max-width: 1200px;
+    border: none;
+    table-layout: fixed;
+  }
+
+  #serviceCoeContainer th,
+  #serviceCoeContainer td {
+    padding: 10px;
+    border: none;
+    text-align: center;
+    border-radius: 8px;
+    word-break: break-word;
+  }
+
+  #serviceCoeContainer tr:nth-child(1) {
+    font-weight: bold;
+  }
+
+  #serviceCoeContainer tr th:first-child,
+  #serviceCoeContainer tr td:first-child {
+    background: #0c5aa1;
+    color: white;
+    width: 12.5%;
+  }
+
+  #serviceCoeContainer tr th:not(:first-child),
+  #serviceCoeContainer tr td:not(:first-child) {
+    width: 12.5%;
+  }
+
+  #serviceCoeContainer tr:nth-child(1) td {
+    color: white;
+  }
+
+  #serviceCoeContainer tr:nth-child(1) td:nth-child(6),
+  #serviceCoeContainer tr:nth-child(1) td:nth-child(7),
+  #serviceCoeContainer tr:nth-child(1) td:nth-child(8) {
+    color: #0f69af;
+  }
+
+  #serviceCoeContainer tr:nth-child(1) td:nth-child(2) {
+    background: #f38ac0;
+  }
+  #serviceCoeContainer tr:nth-child(n + 2) td:nth-child(2) {
+    background: #f9cfe3;
+  }
+
+  #serviceCoeContainer tr:nth-child(1) td:nth-child(3) {
+    background: #9072cf;
+  }
+  #serviceCoeContainer tr:nth-child(n + 2) td:nth-child(3) {
+    background: #d7cdf6;
+  }
+
+  #serviceCoeContainer tr:nth-child(1) td:nth-child(4) {
+    background: #4ea9f0;
+  }
+  #serviceCoeContainer tr:nth-child(n + 2) td:nth-child(4) {
+    background: #c7e2fa;
+  }
+
+  #serviceCoeContainer tr:nth-child(1) td:nth-child(5) {
+    background: #7fdae3;
+  }
+  #serviceCoeContainer tr:nth-child(n + 2) td:nth-child(5) {
+    background: #d9f3f3;
+  }
+
+  #serviceCoeContainer tr:nth-child(1) td:nth-child(6) {
+    background: #4de8a3;
+  }
+  #serviceCoeContainer tr:nth-child(n + 2) td:nth-child(6) {
+    background: #cdf1d9;
+  }
+
+  #serviceCoeContainer tr:nth-child(1) td:nth-child(7) {
+    background: #c9e196;
+  }
+  #serviceCoeContainer tr:nth-child(n + 2) td:nth-child(7) {
+    background: #ebf0ce;
+  }
+
+  #serviceCoeContainer tr:nth-child(1) td:nth-child(8) {
+    background: #ffde84;
+  }
+  #serviceCoeContainer tr:nth-child(n + 2) td:nth-child(8) {
+    background: #fff7d9;
+  }
+
+  #serviceCoeContainer .service-load-error {
+    color: #b00020;
+    font-weight: 600;
+    padding: 12px;
+  }
+
+  .service-person-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .service-profile-pic-wrapper {
+    position: relative;
+    width: 36px;
+    height: 36px;
+    margin-bottom: 4px;
+  }
+
+  .service-profile-pic {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .service-name-text {
+    line-height: 1.2;
+    text-align: center;
+    font-weight: 600;
+    word-break: break-word;
+  }
+
+  .service-person-link {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .service-person-link:hover .service-name-text {
+    text-decoration: underline;
+  }
+</style>
+
+<script src="https://mdigital.sharepoint.com/sites/ITOTCommunityHub/SiteAssets/scripts/itot-governance-model/service-management.js">
+</script>

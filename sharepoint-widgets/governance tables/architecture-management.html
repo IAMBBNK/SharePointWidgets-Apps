@@ -1,0 +1,186 @@
+<div id="techArchCoeContainer"></div>
+
+<style>
+  /* Base table layout */
+  #techArchCoeContainer .techarch-table {
+    border-collapse: separate;
+    border-spacing: 6px 8px;
+    width: 100%;
+    max-width: 1400px;
+    border: none;
+    table-layout: fixed;
+  }
+
+  #techArchCoeContainer th,
+  #techArchCoeContainer td {
+    padding: 8px 4px;
+    border: none;
+    text-align: center;
+    border-radius: 8px;
+    word-break: normal;
+    overflow-wrap: break-word;
+    font-size: 12px;
+  }
+
+  #techArchCoeContainer tr:nth-child(1) {
+    font-weight: bold;
+  }
+
+  /* Label + 10 sector columns = 11 cells */
+  #techArchCoeContainer tr th:first-child,
+  #techArchCoeContainer tr td:first-child {
+    background: #0c5aa1;
+    color: white;
+    width: 8%;
+  }
+
+  #techArchCoeContainer tr th:not(:first-child),
+  #techArchCoeContainer tr td:not(:first-child) {
+    width: 9.2%;
+  }
+
+  #techArchCoeContainer tr:nth-child(1) td {
+    color: white;
+    line-height: 1.25;
+  }
+
+  /* Sector colors aligned with other CoE tables; Network + Laboratories are techArch-only */
+  #techArchCoeContainer tr:nth-child(1) td:nth-child(6),
+  #techArchCoeContainer tr:nth-child(1) td:nth-child(7),
+  #techArchCoeContainer tr:nth-child(1) td:nth-child(8),
+  #techArchCoeContainer tr:nth-child(1) td:nth-child(9),
+  #techArchCoeContainer tr:nth-child(1) td:nth-child(10),
+  #techArchCoeContainer tr:nth-child(1) td:nth-child(11) {
+    color: #0f69af;
+  }
+
+  /* Electronics */
+  #techArchCoeContainer tr:nth-child(1) td:nth-child(2) {
+    background: #f38ac0;
+  }
+  #techArchCoeContainer tr:nth-child(n + 2) td:nth-child(2) {
+    background: #f9cfe3;
+  }
+
+  /* Life Science */
+  #techArchCoeContainer tr:nth-child(1) td:nth-child(3) {
+    background: #9072cf;
+  }
+  #techArchCoeContainer tr:nth-child(n + 2) td:nth-child(3) {
+    background: #d7cdf6;
+  }
+
+  /* Healthcare */
+  #techArchCoeContainer tr:nth-child(1) td:nth-child(4) {
+    background: #4ea9f0;
+  }
+  #techArchCoeContainer tr:nth-child(n + 2) td:nth-child(4) {
+    background: #c7e2fa;
+  }
+
+  /* Site Management */
+  #techArchCoeContainer tr:nth-child(1) td:nth-child(5) {
+    background: #7fdae3;
+  }
+  #techArchCoeContainer tr:nth-child(n + 2) td:nth-child(5) {
+    background: #d9f3f3;
+  }
+
+  /* Merck Group IT (ETP Architecture) */
+  #techArchCoeContainer tr:nth-child(1) td:nth-child(6) {
+    background: #4de8a3;
+  }
+  #techArchCoeContainer tr:nth-child(n + 2) td:nth-child(6) {
+    background: #cdf1d9;
+  }
+
+  /* Merck Group IT (Network) — techArch-only */
+  #techArchCoeContainer tr:nth-child(1) td:nth-child(7) {
+    background: #f0b27a;
+  }
+  #techArchCoeContainer tr:nth-child(n + 2) td:nth-child(7) {
+    background: #fce5d4;
+  }
+
+  /* IT Application Management (Manufacturing) */
+  #techArchCoeContainer tr:nth-child(1) td:nth-child(8) {
+    background: #c9e196;
+  }
+  #techArchCoeContainer tr:nth-child(n + 2) td:nth-child(8) {
+    background: #ebf0ce;
+  }
+
+  /* IT Application Management (Laboratories) — techArch-only */
+  #techArchCoeContainer tr:nth-child(1) td:nth-child(9) {
+    background: #b8a9e0;
+  }
+  #techArchCoeContainer tr:nth-child(n + 2) td:nth-child(9) {
+    background: #ebe4f7;
+  }
+
+  /* Corporate Security */
+  #techArchCoeContainer tr:nth-child(1) td:nth-child(10) {
+    background: #ffde84;
+  }
+  #techArchCoeContainer tr:nth-child(n + 2) td:nth-child(10) {
+    background: #fff7d9;
+  }
+
+  /* DATA & AI */
+  #techArchCoeContainer tr:nth-child(1) td:nth-child(11) {
+    background: #6bb8c4;
+  }
+  #techArchCoeContainer tr:nth-child(n + 2) td:nth-child(11) {
+    background: #d9eef2;
+  }
+
+  #techArchCoeContainer .techarch-load-error {
+    color: #b00020;
+    font-weight: 600;
+    padding: 12px;
+  }
+
+  .techarch-person-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .techarch-profile-pic-wrapper {
+    position: relative;
+    width: 36px;
+    height: 36px;
+    margin-bottom: 4px;
+  }
+
+  .techarch-profile-pic {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .techarch-name-text {
+    line-height: 1.2;
+    text-align: center;
+    font-weight: 600;
+    word-break: normal;
+    overflow-wrap: normal;
+  }
+
+  .techarch-person-link {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .techarch-person-link:hover .techarch-name-text {
+    text-decoration: underline;
+  }
+</style>
+
+<script src="https://mdigital.sharepoint.com/sites/ITOTCommunityHub/SiteAssets/scripts/itot-governance-model/architecture-management.js">
+</script>

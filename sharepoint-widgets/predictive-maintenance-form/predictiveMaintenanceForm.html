@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Predictive Maintenance Form</title>
+
+    <link
+      rel="stylesheet"
+      href="https://mdigital.sharepoint.com/sites/ITOTCommunityHub/SiteAssets/styles/predictiveMaintenanceForm.css?v=1"
+    />
+    <script src="https://mdigital.sharepoint.com/sites/ITOTCommunityHub/SiteAssets/ExternalLibs/jquery371.min.js"></script>
+    <script src="https://mdigital.sharepoint.com/sites/ITOTCommunityHub/SiteAssets/scripts/predictiveMaintenanceForm.js?v=1"></script>
+  </head>
+  <body>
+    <div class="pm-form-widget" id="pmFormWidget">
+      <header class="pm-header">
+        <h1 class="pm-title">Predictive Maintenance</h1>
+        <p class="pm-user-line" id="pmUserLine"></p>
+      </header>
+
+      <div id="pmUnauthorized" class="is-hidden">
+        <div class="error-banner" role="alert">
+          You are not authorized to use this form. Contact the site owner if you
+          believe this is an error.
+        </div>
+      </div>
+
+      <div id="pmLoading" class="loading-overlay">Loading&hellip;</div>
+
+      <div id="pmMain" class="is-hidden">
+        <div id="pmError"></div>
+        <div id="pmSuccess"></div>
+        <div id="pmWarn"></div>
+
+        <div class="pm-toolbar">
+          <label for="pmEntrySelect">Entry</label>
+          <select id="pmEntrySelect" aria-label="Select entry to edit or create new">
+            <option value="">Create new entry</option>
+          </select>
+        </div>
+
+        <form id="pmForm" novalidate>
+          <div class="pm-grid">
+            <div class="pm-field">
+              <label for="pmSiteId">Site ID</label>
+              <select id="pmSiteId" required>
+                <option value="">Select site&hellip;</option>
+              </select>
+            </div>
+
+            <div class="pm-field">
+              <label for="pmSiteName">Site Name</label>
+              <input type="text" id="pmSiteName" readonly aria-readonly="true" />
+            </div>
+
+            <div class="pm-field">
+              <label for="pmSector">Sector</label>
+              <input type="text" id="pmSector" readonly aria-readonly="true" />
+            </div>
+
+            <div class="pm-field">
+              <label for="pmProduction">Production</label>
+              <input
+                type="text"
+                id="pmProduction"
+                placeholder="e.g. Line 3"
+                required
+              />
+            </div>
+
+            <div class="pm-field">
+              <label for="pmTechnicalContact">Technical Contact</label>
+              <span class="field-hint">One person only</span>
+              <div class="pp-host" id="pmTechnicalContact"></div>
+            </div>
+
+            <div class="pm-field">
+              <label for="pmSystemSize">System Size</label>
+              <input type="text" id="pmSystemSize" />
+            </div>
+
+            <div class="pm-field">
+              <label for="pmStartOfOperation">Start of Operation</label>
+              <input type="datetime-local" id="pmStartOfOperation" />
+            </div>
+
+            <div class="pm-field pm-field--full">
+              <label for="pmTechnicalSpecials">Technical Specials</label>
+              <input type="text" id="pmTechnicalSpecials" />
+            </div>
+          </div>
+
+          <div class="pm-actions">
+            <button type="submit" class="pm-btn" id="pmSaveBtn">Save entry</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

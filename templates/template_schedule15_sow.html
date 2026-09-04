@@ -1,0 +1,472 @@
+<style>
+  /* Schedule 15 SoW (DOCX-based) — keep placeholders, match Word look */
+  body {
+    font-family: Calibri, "Segoe UI", Arial, sans-serif;
+    font-size: 11pt;
+    line-height: 1.15;
+    color: #000;
+  }
+
+  .cover-page {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  .cover-page .logo-container {
+    margin: 0 0 18pt 0;
+  }
+
+  .cover-page .logo-container img {
+    max-height: 80px;
+    max-width: 300px;
+  }
+
+  .cover-page .doc-title {
+    color: #000 !important;
+    font-size: 16pt;
+    font-weight: 700;
+    margin: 0 0 6pt 0;
+  }
+
+  .cover-page .doc-subtitle {
+    font-size: 12pt;
+    margin: 0 0 12pt 0;
+  }
+
+  .cover-page .meta-grid {
+    display: block;
+    margin-top: 12pt;
+    font-size: 11pt;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 18pt;
+    border-bottom: 1px solid #000;
+    padding-bottom: 6pt;
+  }
+
+  .header .logo img {
+    max-height: 50px;
+    max-width: 180px;
+  }
+
+  .company-info {
+    text-align: right;
+    font-size: 9pt;
+    color: #000;
+  }
+
+  h1,
+  h2,
+  h3 {
+    color: #000;
+    font-weight: 700;
+  }
+
+  h1 {
+    font-size: 14pt;
+    margin: 18pt 0 6pt;
+  }
+
+  h2 {
+    font-size: 12pt;
+    margin: 14pt 0 6pt;
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  h3 {
+    font-size: 12pt;
+    margin: 12pt 0 6pt;
+  }
+
+  .two-col {
+    display: flex;
+    gap: 30px;
+    justify-content: space-between;
+  }
+
+  .two-col > div {
+    flex: 1 1 0;
+  }
+
+  .muted {
+    color: #000;
+  }
+
+  .toc {
+    margin: 12pt 0;
+    padding: 0;
+    border: none;
+    background: transparent;
+  }
+
+  .toc ol {
+    margin: 0;
+    padding-left: 18px;
+  }
+
+  .toc li {
+    margin: 6px 0;
+  }
+
+  table.simple {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+  }
+
+  table.simple th,
+  table.simple td {
+    border: 1px solid #ddd;
+    padding: 9px 10px;
+    vertical-align: top;
+    text-align: left;
+  }
+
+  table.simple th {
+    background: transparent;
+    color: #000;
+  }
+
+  .signature-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 28px;
+    margin-top: 25px;
+  }
+
+  .signature-box {
+    border: 1px solid #ddd;
+    border-radius: 0;
+    padding: 10px 10px 8px 10px;
+  }
+
+  .signature-line {
+    border-top: 1px solid #999;
+    margin-top: 24px;
+    padding-top: 8px;
+    color: #444;
+  }
+
+  .footer {
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid #000;
+    font-size: 9pt;
+    color: #000;
+  }
+</style>
+
+<!-- COVER -->
+<div class="cover-page">
+  <div class="logo-container">
+    {{logo}}
+  </div>
+
+  <div class="doc-title">Schedule 15</div>
+  <div class="doc-subtitle">
+    Statement of Work (Template) to the Master Services Agreement
+  </div>
+
+  <div class="meta-grid">
+    <div>to the</div>
+    <div><strong>Master Services Agreement</strong></div>
+    <div>({{project_name}} - Project)</div>
+    <div>as of {{sow_date}}</div>
+  </div>
+</div>
+
+{{page_break}}
+
+<!-- LETTERHEAD / HEADER -->
+<div class="header">
+  <div class="logo">
+    {{logo}}
+  </div>
+  <div class="company-info">
+    {{issuer_company_block}}
+  </div>
+</div>
+
+<h1>Statement of Work</h1>
+<p class="muted">
+  to the Master Services Agreement ({{msa_name}}) — ({{project_name}})
+</p>
+
+<div class="two-col">
+  <div>
+    <h3>Between</h3>
+    <p>
+      <strong>{{merck_company_name}}</strong><br />
+      {{merck_address}}<br />
+      {{merck_country}}<br />
+      (hereinafter “Merck”)
+    </p>
+  </div>
+  <div>
+    <h3>And</h3>
+    <p>
+      <strong>{{supplier_company_name}}</strong><br />
+      {{supplier_address}}<br />
+      {{supplier_country}}<br />
+      (hereinafter the “Supplier”)
+    </p>
+  </div>
+</div>
+
+<p class="muted">
+  (each also collectively referred to as “Parties” and separately as “Party”)
+</p>
+
+<p>The body of this agreement comprises {{page_count}} pages.</p>
+
+<h2>Table of Contents</h2>
+<div class="toc">
+  <ol>
+    <li>PREAMBLE</li>
+    <li>SPECIFICS OF THIS SoW</li>
+    <li>SERVICES</li>
+    <li>ACCEPTANCE</li>
+    <li>SERVICE FEES, INVOICING</li>
+    <li>MERCK’S COOPERATION OBLIGATIONS</li>
+    <li>INTELLECTUAL PROPERTY RIGHTS</li>
+    <li>REPORTING, MEETINGS &amp; STEERING COMMITTEE</li>
+    <li>SUBCONTRACTORS</li>
+    <li>CHANGES TO THE MSA AND ITS SCHEDULES AND EXHIBITS</li>
+    <li>TERM</li>
+    <li>NOTICES</li>
+    <li>JURISDICTION</li>
+    <li>LIST OF ANNEXES</li>
+  </ol>
+</div>
+
+<h2>PREAMBLE</h2>
+<p>
+  WHEREAS, on {{msa_date}}, Merck KGaA and {{supplier_company_name}} entered into a Master
+  Services Agreement {{msa_project_name}} (“MSA”) setting out the terms and conditions for the
+  performance by Supplier of Services in a Project and the payment by Merck of the Service Fees;
+</p>
+<p>
+  WHEREAS, Merck and Supplier wish to enter into this Statement of Work (“SoW”) for the
+  performance of the {{subproject_name}}.
+</p>
+<p>NOW THEREFORE, the Parties agree as follows:</p>
+
+<h2>1. SPECIFICS OF THIS SoW</h2>
+<p>
+  This SoW shall be subject to all of the terms and conditions of the MSA which are hereby
+  incorporated by reference in their entirety. For the purposes of this SoW, all references in the
+  MSA to “Supplier” shall be deemed references to Supplier, and all references in the MSA to “Merck”
+  shall be deemed references to Merck.
+</p>
+<p>
+  Unless otherwise stated in this SoW all capitalized terms used herein shall have the meaning set
+  forth in the MSA and its Schedules. For the purposes of this SoW, Supplier and Merck agree that
+  the terms defined below have the following meaning:
+</p>
+{{definitions_block}}
+<p>
+  If there is an inconsistency between the provisions of this SoW and the provisions of the MSA, the
+  MSA shall prevail unless (i) expressly stated otherwise in this SoW by expressly designating the
+  Clause of the MSA that shall be altered or amended; or (ii) the MSA makes express allowances for
+  deviating from the MSA in an SoW. If there is an inconsistency between the Annexes or any of the
+  documents attached to this SoW, the Annexes shall prevail over the body of this SoW.
+</p>
+
+<h2>2. SERVICES</h2>
+<p>
+  Supplier shall perform the Services and deliver the Deliverables as defined in this Clause 2 or any
+  Annex to this SoW.
+</p>
+
+<h3>2.1 Definition of the Services</h3>
+<h3>2.1.1 Services in Scope of this SoW</h3>
+{{services_in_scope}}
+
+<h3>2.1.2 Services out of the Scope of this SoW</h3>
+{{services_out_of_scope}}
+
+<h3>2.2 Deliverables</h3>
+{{deliverables}}
+
+<h3>2.3 Documentation</h3>
+{{documentation}}
+
+<h3>2.4 Place of Performance for the Services</h3>
+<p>The Parties agree that the Services shall generally performed out of / at:</p>
+{{place_of_performance}}
+
+<h3>2.5 Milestones</h3>
+<p>The Parties agree to the following milestones:</p>
+{{milestones}}
+<p class="muted">NOTE: Milestones are only binding, if defined as binding.</p>
+
+<h3>2.6 Stabilisation Services</h3>
+<p>
+  The Parties agree on the following Stabilisation Services in the sense of Clause 3.5 of the MSA:
+</p>
+{{stabilisation_services}}
+
+<h2>3. ACCEPTANCE</h2>
+<h3>3.1 Acceptance Criteria (Acceptance Test Cases)</h3>
+{{acceptance_criteria}}
+
+<h3>3.2 Acceptance Procedure</h3>
+{{acceptance_procedure}}
+
+<h2>4. SERVICE FEES, INVOICING</h2>
+<p>
+  In consideration for Supplier providing the Services, Merck will pay to Supplier the following
+  Project Service Fees:
+</p>
+{{service_fees}}
+
+<h3>4.1 Payment Milestones</h3>
+{{payment_milestones}}
+
+<p>The Fees are in {{currency}} excluding VAT.</p>
+<p>
+  The amounts are due as defined in the MSA {{payment_terms_override}} upon receipt of a proper
+  invoice by Merck showing all reasonable details enabling Merck to allocate the invoiced payments
+  to its payment obligations.
+</p>
+<p>Supplier shall send the invoice to the following address:</p>
+{{invoice_address}}
+
+<h2>5. MERCK’S COOPERATION OBLIGATIONS</h2>
+<p>
+  For the purposes of the Project, Merck will take over the following duties, roles and
+  responsibilities in the sense of Clause 7.5 of the MSA:
+</p>
+{{merck_cooperation_obligations}}
+
+<h2>6. INTELLECTUAL PROPERTY RIGHTS</h2>
+<p>
+  With respect to the Intellectual Property Rights the Parties agree to apply Clause 13 of the MSA.
+</p>
+
+<h2>7. REPORTING, MEETINGS &amp; STEERING COMMITTEE</h2>
+<p>The Parties agree on the following intervals for reporting and/or meetings:</p>
+{{reporting_and_meetings}}
+<p>
+  The Parties {{steering_committee_established}} establish a joint Steering Committee as defined in
+  Clause 7.8 of the MSA. The members of such Steering Committee will be:
+</p>
+{{steering_committee_members}}
+
+<h2>8. SUBCONTRACTORS</h2>
+<p>
+  The Parties agree that Supplier may subcontract the performance of the Services only to the
+  Subcontractors specified in Annex 6.
+</p>
+{{subcontractors}}
+
+<h2>9. CHANGES TO THE MSA AND ITS SCHEDULES AND EXHIBITS</h2>
+<p>
+  For the purpose of this SoW, only, the Parties agree on the following further amendments,
+  deletions or other changes to the MSA in the sense of Clause 4.2 of the MSA. The below table
+  states the Clauses of the body of the MSA that are changed and the content of the change itself.
+</p>
+{{msa_changes_table}}
+
+<h2>10. TERM</h2>
+<p>
+  This SoW shall commence on {{term_start_date}} upon signature by both Parties and terminate
+  upon completion of the Project or as defined in the MSA.
+</p>
+<p>Merck may terminate this SoW for convenience specified in Clause 25.2 of the MSA.</p>
+
+<h2>11. NOTICES</h2>
+<p>All notices under the terms of this SoW shall be sent to the following address:</p>
+
+<div class="two-col">
+  <div>
+    <h3>Merck Contact Person</h3>
+    {{merck_contact_person}}
+  </div>
+  <div>
+    <h3>Supplier Contact Person</h3>
+    {{supplier_contact_person}}
+  </div>
+</div>
+
+<h2>12. JURISDICTION</h2>
+<p>
+  This SoW shall be governed by, and interpreted in accordance with the laws of
+  {{governing_law_country}} without regard to the conflict of laws provisions thereof and excluding
+  the provisions of the United Nations Convention on Contracts for the International Sales of Goods
+  (CISG). The place of jurisdiction shall be {{jurisdiction_place}}.
+</p>
+<p>
+  The Parties have each caused this SoW to be signed and delivered by their duly authorized
+  representatives in two (2) originals.
+</p>
+
+<h2>List of Annexes</h2>
+<ul>
+  <li>Annex 1: Service Descriptions</li>
+  <li>Annex 2–5: intentionally left blank</li>
+  <li>Annex 6: Subcontractors</li>
+  <li>Annex 7–10: intentionally left blank</li>
+  <li>Annex 11: Data Protection</li>
+</ul>
+
+{{page_break}}
+
+<h2>Signatory Page</h2>
+<div class="signature-grid">
+  <div class="signature-box">
+    <p><strong>{{merck_company_name}}</strong></p>
+    <div class="signature-line">Date: {{merck_sign_date_1}}</div>
+    <div class="signature-line">Authorized Signatory: {{merck_signatory_1}}</div>
+    <div class="signature-line">Name: {{merck_sign_name_1}}</div>
+    <div class="signature-line">Job Title: {{merck_sign_title_1}}</div>
+  </div>
+  <div class="signature-box">
+    <p><strong>{{supplier_company_name}}</strong></p>
+    <div class="signature-line">Date: {{supplier_sign_date_1}}</div>
+    <div class="signature-line">Authorized Signatory: {{supplier_signatory_1}}</div>
+    <div class="signature-line">Name: {{supplier_sign_name_1}}</div>
+    <div class="signature-line">Job Title: {{supplier_sign_title_1}}</div>
+  </div>
+  <div class="signature-box">
+    <p><strong>{{merck_company_name}}</strong></p>
+    <div class="signature-line">Date: {{merck_sign_date_2}}</div>
+    <div class="signature-line">Authorized Signatory: {{merck_signatory_2}}</div>
+    <div class="signature-line">Name: {{merck_sign_name_2}}</div>
+    <div class="signature-line">Job Title: {{merck_sign_title_2}}</div>
+  </div>
+  <div class="signature-box">
+    <p><strong>{{supplier_company_name}}</strong></p>
+    <div class="signature-line">Date: {{supplier_sign_date_2}}</div>
+    <div class="signature-line">Authorized Signatory: {{supplier_signatory_2}}</div>
+    <div class="signature-line">Name: {{supplier_sign_name_2}}</div>
+    <div class="signature-line">Job Title: {{supplier_sign_title_2}}</div>
+  </div>
+</div>
+
+{{page_break}}
+
+<!-- Annex placeholders -->
+<h2>Annex 1: Service Descriptions</h2>
+{{annex_1_service_descriptions}}
+
+{{page_break}}
+
+<h2>Annex 6: Subcontractors</h2>
+{{annex_6_subcontractors}}
+
+{{page_break}}
+
+<h2>Annex 11: Data Protection</h2>
+{{annex_11_data_protection}}
+
+<div class="footer">
+  <p>Generated from Schedule 15 SoW template — {{owner_initials}}</p>
+</div>
+

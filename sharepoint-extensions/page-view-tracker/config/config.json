@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/build/config.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "page-view-tracker-application-customizer": {
+      "components": [
+        {
+          "entrypoint": "./lib/extensions/pageViewTracker/PageViewTrackerApplicationCustomizer.js",
+          "manifest": "./src/extensions/pageViewTracker/PageViewTrackerApplicationCustomizer.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "PageViewTrackerApplicationCustomizerStrings": "lib/extensions/pageViewTracker/loc/{locale}/en-us.js"
+  }
+}

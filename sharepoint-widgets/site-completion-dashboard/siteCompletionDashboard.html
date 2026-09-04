@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Site Master Data — Completion Dashboard</title>
+
+    <script src="https://mdigital.sharepoint.com/sites/ITOTCommunityHub/SiteAssets/ExternalLibs/jquery371.min.js"></script>
+    <script src="https://mdigital.sharepoint.com/sites/ITOTCommunityHub/SiteAssets/scripts/siteCompletionDashboard.js?v=8"></script>
+    <style>
+      .scd-widget {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 20px;
+        color: #1f1f1f;
+        box-sizing: border-box;
+      }
+
+      .scd-widget *,
+      .scd-widget *::before,
+      .scd-widget *::after {
+        box-sizing: border-box;
+      }
+
+      .scd-widget .scd-header {
+        padding-bottom: 18px;
+        border-bottom: 1px solid #e3e3e3;
+        margin-bottom: 20px;
+      }
+
+      .scd-widget .scd-title {
+        color: #0f69af;
+        font-size: 22px;
+        font-weight: 700;
+        margin: 0;
+      }
+
+      .scd-widget .scd-subtitle {
+        color: #666;
+        font-size: 14px;
+        margin: 8px 0 0 0;
+        line-height: 1.5;
+      }
+
+      .scd-widget .error-banner {
+        background-color: #fdecea;
+        color: #b00020;
+        border: 1px solid #f5c2c7;
+        border-radius: 6px;
+        padding: 12px 16px;
+        margin: 0 0 16px 0;
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      .scd-widget .scd-loading {
+        color: #666;
+        font-size: 14px;
+        padding: 24px 0;
+      }
+
+      .scd-widget .is-hidden {
+        display: none !important;
+      }
+
+      .scd-widget .scd-filters {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-end;
+        gap: 16px;
+        margin-bottom: 20px;
+      }
+
+      .scd-widget .scd-filter-group {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        min-width: 180px;
+      }
+
+      .scd-widget .scd-filter-group label {
+        font-size: 12px;
+        font-weight: 600;
+        color: #555;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+      }
+
+      .scd-widget .scd-filter-group select {
+        appearance: none;
+        -webkit-appearance: none;
+        background-color: #fff;
+        background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='%230f69af' d='M5.3 7.7a1 1 0 0 1 1.4 0L10 11l3.3-3.3a1 1 0 1 1 1.4 1.4l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 0 1 0-1.4Z'/></svg>");
+        background-repeat: no-repeat;
+        background-position: right 10px center;
+        background-size: 14px;
+        border: 1px solid #cfd6dd;
+        border-radius: 6px;
+        padding: 10px 34px 10px 12px;
+        font-size: 14px;
+        font-family: inherit;
+        color: #1f1f1f;
+        min-width: 200px;
+      }
+
+      .scd-widget .scd-overall-card {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 20px 28px;
+        margin-bottom: 18px;
+        padding: 18px 22px;
+        border: 1px solid #c5d8ea;
+        border-radius: 12px;
+        background: linear-gradient(135deg, #f7fbfe 0%, #eef5fb 100%);
+      }
+
+      .scd-widget .scd-overall-card-label {
+        font-size: 13px;
+        font-weight: 700;
+        color: #0f69af;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+      }
+
+      .scd-widget .scd-overall-card-hint {
+        display: block;
+        margin-top: 4px;
+        font-size: 12px;
+        font-weight: 400;
+        color: #666;
+        text-transform: none;
+        letter-spacing: 0;
+      }
+
+      .scd-widget .scd-overall-card .scd-meter--hero {
+        min-width: 200px;
+        max-width: 280px;
+        flex: 1;
+      }
+
+      .scd-widget .scd-overall-card .scd-meter--hero .scd-meter-pct {
+        font-size: 28px;
+        font-weight: 700;
+        color: #1f1f1f;
+        letter-spacing: -0.02em;
+      }
+
+      .scd-widget .scd-overall-card .scd-meter--hero .scd-meter-track {
+        height: 10px;
+        margin-top: 8px;
+      }
+
+      .scd-widget .scd-overall-card .scd-meter--hero .scd-meter-sub {
+        margin-top: 6px;
+        font-size: 12px;
+        color: #666;
+      }
+
+      .scd-widget .scd-overall-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 18px;
+        font-size: 13px;
+        color: #555;
+      }
+
+      .scd-widget .scd-overall-meta strong {
+        color: #1f1f1f;
+      }
+
+      .scd-widget .scd-summary {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px 20px;
+        margin-bottom: 12px;
+        font-size: 13px;
+        color: #555;
+      }
+
+      .scd-widget .scd-summary strong {
+        color: #1f1f1f;
+      }
+
+      .scd-widget .scd-legend {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 14px;
+        font-size: 12px;
+        color: #666;
+      }
+
+      .scd-widget .scd-legend-bar {
+        width: 140px;
+        height: 12px;
+        border-radius: 999px;
+        background: linear-gradient(
+          to right,
+          rgb(211, 47, 47),
+          rgb(245, 166, 35),
+          rgb(46, 125, 50)
+        );
+        border: 1px solid #ddd;
+      }
+
+      .scd-widget .scd-table-wrap {
+        overflow-x: auto;
+        border: 1px solid #e0e6eb;
+        border-radius: 10px;
+        background: #fff;
+      }
+
+      .scd-widget table.scd-table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 980px;
+        table-layout: fixed;
+      }
+
+      .scd-widget .scd-table th,
+      .scd-widget .scd-table td {
+        padding: 12px 14px;
+        text-align: left;
+        border-bottom: 1px solid #e8edf1;
+        vertical-align: middle;
+        overflow: hidden;
+      }
+
+      .scd-widget .scd-table thead th {
+        background: #f4f7fa;
+        font-size: 12px;
+        font-weight: 700;
+        color: #445;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+        position: sticky;
+        top: 0;
+        z-index: 2;
+        white-space: normal;
+        overflow: visible;
+      }
+
+      .scd-widget .scd-table thead th.scd-th-overall {
+        background: #e8f1f8;
+        color: #0f69af;
+        border-left: 2px solid #b3d4ec;
+      }
+
+      .scd-widget .scd-th-btn {
+        appearance: none;
+        border: none;
+        background: transparent;
+        padding: 0;
+        margin: 0;
+        font: inherit;
+        color: inherit;
+        text-transform: inherit;
+        letter-spacing: inherit;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        white-space: nowrap;
+      }
+
+      .scd-widget .scd-th-btn:hover {
+        color: #0f69af;
+      }
+
+      .scd-widget .scd-sort-ind {
+        font-size: 10px;
+        opacity: 0.45;
+      }
+
+      .scd-widget .scd-th-btn.is-active .scd-sort-ind {
+        opacity: 1;
+        color: #0f69af;
+      }
+
+      .scd-widget .scd-info {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        border: 1px solid #9bb8d0;
+        color: #0f69af;
+        font-size: 10px;
+        font-weight: 700;
+        font-style: normal;
+        cursor: help;
+        background: #fff;
+        flex-shrink: 0;
+        vertical-align: middle;
+        margin-left: 2px;
+      }
+
+      .scd-widget .scd-info-tip {
+        display: none;
+        position: absolute;
+        left: 50%;
+        top: calc(100% + 8px);
+        transform: translateX(-50%);
+        z-index: 20;
+        width: 260px;
+        padding: 10px 12px;
+        background: #1f2a36;
+        color: #fff;
+        border-radius: 8px;
+        font-size: 12px;
+        font-weight: 400;
+        text-transform: none;
+        letter-spacing: 0;
+        line-height: 1.4;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        text-align: left;
+        white-space: normal;
+      }
+
+      .scd-widget .scd-info-tip::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: -6px;
+        transform: translateX(-50%);
+        border: 6px solid transparent;
+        border-bottom-color: #1f2a36;
+        border-top-width: 0;
+      }
+
+      .scd-widget .scd-info:hover .scd-info-tip,
+      .scd-widget .scd-info:focus .scd-info-tip {
+        display: block;
+      }
+
+      .scd-widget .scd-info-tip strong {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        color: #b8d4ea;
+      }
+
+      .scd-widget .scd-info-tip ul {
+        margin: 0;
+        padding-left: 16px;
+      }
+
+      .scd-widget .scd-info-tip li {
+        margin-bottom: 3px;
+      }
+
+      .scd-widget .scd-table tbody tr:hover td.scd-site-cell {
+        background: #f7fbfe;
+      }
+
+      .scd-widget .scd-site-id {
+        display: block;
+        font-weight: 700;
+        color: #0f69af;
+        font-size: 14px;
+        text-decoration: none;
+      }
+
+      .scd-widget a.scd-site-id:hover {
+        text-decoration: underline;
+      }
+
+      .scd-widget .scd-site-name {
+        display: block;
+        font-size: 13px;
+        color: #555;
+        margin-top: 2px;
+      }
+
+      .scd-widget .scd-site-link {
+        display: inline-block;
+        margin-top: 6px;
+        font-size: 12px;
+        font-weight: 600;
+        color: #0f69af;
+        text-decoration: none;
+      }
+
+      .scd-widget .scd-site-link:hover {
+        text-decoration: underline;
+      }
+
+      .scd-widget .scd-cell {
+        text-align: left !important;
+        font-size: 13px;
+        color: #1a1a1a;
+        background: #fff;
+      }
+
+      .scd-widget .scd-cell-overall {
+        background: #f3f8fc;
+        border-left: 2px solid #b3d4ec;
+      }
+
+      .scd-widget .scd-meter {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        width: 100%;
+      }
+
+      .scd-widget .scd-meter-pct {
+        font-size: 13px;
+        font-weight: 700;
+        color: #1f1f1f;
+        line-height: 1.2;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .scd-widget .scd-meter-track {
+        width: 100%;
+        height: 6px;
+        border-radius: 999px;
+        background: #e6ebf0;
+        overflow: hidden;
+      }
+
+      .scd-widget .scd-meter-fill {
+        height: 100%;
+        border-radius: 999px;
+        min-width: 0;
+        transition: width 0.2s ease;
+      }
+
+      .scd-widget .scd-meter-sub {
+        font-size: 11px;
+        font-weight: 600;
+        color: #667;
+        line-height: 1.2;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .scd-widget .scd-meter--overall {
+        gap: 6px;
+        padding: 4px 0;
+      }
+
+      .scd-widget .scd-meter--overall .scd-meter-pct {
+        font-size: 18px;
+        font-weight: 700;
+        color: #0f69af;
+        letter-spacing: -0.02em;
+      }
+
+      .scd-widget .scd-meter--overall .scd-meter-track {
+        height: 8px;
+        background: #d7e5f2;
+      }
+
+      .scd-widget .scd-review-pill {
+        display: block;
+        width: 100%;
+        padding: 6px 10px;
+        border-radius: 8px;
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 1.3;
+        border: 1px solid transparent;
+        white-space: normal;
+        word-wrap: break-word;
+        box-sizing: border-box;
+        text-align: center;
+      }
+
+      .scd-widget .scd-review-pill--done {
+        background: #e8f5e9;
+        color: #1b5e20;
+        border-color: #a5d6a7;
+      }
+
+      .scd-widget .scd-review-pill--pending {
+        background: #fff8e1;
+        color: #8a5a00;
+        border-color: #ffe082;
+      }
+
+      .scd-widget .scd-review-pill--progress {
+        background: #e3f2fd;
+        color: #0d47a1;
+        border-color: #90caf9;
+      }
+
+      .scd-widget .scd-review-pill--empty {
+        background: #f0f0f0;
+        color: #666;
+        border-color: #ddd;
+      }
+
+      .scd-widget .scd-review-pill--other {
+        background: #f3e5f5;
+        color: #6a1b9a;
+        border-color: #ce93d8;
+      }
+
+      .scd-widget .scd-empty {
+        padding: 28px 16px;
+        text-align: center;
+        color: #666;
+        font-size: 14px;
+      }
+
+      .scd-widget .scd-dpi-tag {
+        display: inline-block;
+        margin-top: 6px;
+        margin-right: 6px;
+        padding: 2px 8px;
+        border-radius: 999px;
+        font-size: 11px;
+        font-weight: 700;
+        background: #e8f1f8;
+        color: #0f69af;
+      }
+
+      .scd-widget .scd-dpi-tag--no {
+        background: #f0f0f0;
+        color: #666;
+      }
+
+      .scd-widget .scd-sector-tag {
+        display: inline-block;
+        margin-top: 6px;
+        margin-right: 4px;
+        padding: 2px 8px;
+        border-radius: 999px;
+        font-size: 11px;
+        font-weight: 700;
+        background: #f3e8fd;
+        color: #6a1b9a;
+      }
+
+      .scd-widget .scd-sector-tag--el {
+        background: #e3f2fd;
+        color: #0d47a1;
+      }
+
+      .scd-widget .scd-sector-tag--ls {
+        background: #e8f5e9;
+        color: #1b5e20;
+      }
+
+      .scd-widget .scd-sector-tag--hc {
+        background: #fce4ec;
+        color: #b71c1c;
+      }
+
+      .scd-widget .scd-search-group {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        min-width: 220px;
+        flex: 1;
+        max-width: 340px;
+      }
+
+      .scd-widget .scd-search-group label {
+        font-size: 12px;
+        font-weight: 600;
+        color: #555;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+      }
+
+      .scd-widget .scd-search-group input {
+        background-color: #fff;
+        border: 1px solid #cfd6dd;
+        border-radius: 6px;
+        padding: 10px 12px;
+        font-size: 14px;
+        font-family: inherit;
+        color: #1f1f1f;
+      }
+
+      .scd-widget .scd-edit-cell {
+        width: 50px;
+        text-align: center;
+        padding: 8px 4px;
+        overflow: visible;
+      }
+
+      .scd-widget .scd-edit-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+        border: 1px solid #cfd6dd;
+        border-radius: 6px;
+        background: #fff;
+        color: #0f69af;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background 0.15s, border-color 0.15s;
+      }
+
+      .scd-widget .scd-edit-btn:hover {
+        background: #e8f1f8;
+        border-color: #0f69af;
+      }
+
+      .scd-widget .scd-edit-btn svg {
+        width: 14px;
+        height: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="scd-widget" id="scdWidget">
+      <div class="scd-header">
+        <p class="scd-subtitle">
+          This dashboard tracks how complete the <strong>Site Master Data</strong> is for each site.
+          Site Master Data is the central collection of information about a site, covering general details, key contacts, maturity assessments, and OT application counts.
+          Each column represents a section; hover the <strong>ⓘ</strong> button next to a column header to see which fields are included.
+          Completion bars go from red (empty) to green (fully filled). Click column headers to sort.
+        </p>
+        <p class="scd-subtitle" style="margin-top:6px">
+          <strong>Review Status</strong> is independent of completion. It indicates whether the
+          Site Data Admin or Digital SPOC has recently reviewed the information. The goal is to have every site's data reviewed at least once per quarter.
+          Only the assigned Site Data Admin or Digital SPOC can edit a site's data (pencil icon on the left).
+        </p>
+      </div>
+
+      <div id="scdError"></div>
+      <div class="scd-loading" id="scdLoading">Loading sites…</div>
+
+      <div id="scdMain" class="is-hidden">
+        <div class="scd-filters">
+          <div class="scd-filter-group">
+            <label for="scdFilterSector">Sector</label>
+            <select id="scdFilterSector" aria-label="Filter by sector">
+              <option value="">All sectors</option>
+            </select>
+          </div>
+          <div class="scd-filter-group">
+            <label for="scdFilterRegion">Region</label>
+            <select id="scdFilterRegion" aria-label="Filter by region">
+              <option value="">All regions</option>
+            </select>
+          </div>
+          <div class="scd-filter-group">
+            <label for="scdFilterDpi">DPI site</label>
+            <select id="scdFilterDpi" aria-label="Filter by DPI">
+              <option value="">All sites</option>
+              <option value="dpi">DPI sites only</option>
+              <option value="non-dpi">Non-DPI sites only</option>
+            </select>
+          </div>
+          <div class="scd-search-group">
+            <label for="scdSearch">Search</label>
+            <input type="text" id="scdSearch" placeholder="Site code or name…" aria-label="Search by site code or name" />
+          </div>
+        </div>
+
+        <div class="scd-overall-card" id="scdOverallCard">
+          <div>
+            <div class="scd-overall-card-label">
+              Overall completion
+              <span class="scd-overall-card-hint"
+                >Based on current filters · all fields across visible
+                sites</span
+              >
+            </div>
+          </div>
+          <div id="scdOverallPill"></div>
+          <div class="scd-overall-meta" id="scdOverallMeta"></div>
+        </div>
+
+        <div class="scd-legend">
+          <span>Empty</span>
+          <div class="scd-legend-bar" aria-hidden="true"></div>
+          <span>Complete</span>
+        </div>
+
+        <div class="scd-summary" id="scdSummary"></div>
+
+        <div class="scd-table-wrap">
+          <table class="scd-table" aria-label="Site completion by section">
+            <colgroup>
+              <col style="width:50px" />
+              <col style="width:13%" />
+              <col style="width:13%" />
+              <col />
+              <col />
+              <col />
+              <col />
+              <col />
+            </colgroup>
+            <thead>
+              <tr id="scdTableHead"></tr>
+            </thead>
+            <tbody id="scdTableBody"></tbody>
+          </table>
+          <div class="scd-empty is-hidden" id="scdEmpty">
+            No sites match the current filters.
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

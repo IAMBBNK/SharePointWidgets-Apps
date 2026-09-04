@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-extension-manifest.schema.json",
+  "id": "7c4e8f2a-1b3d-4e5f-9a6b-2c8d0e1f3a5b",
+  "alias": "PageViewTrackerApplicationCustomizer",
+  "componentType": "Extension",
+  "extensionType": "ApplicationCustomizer",
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "properties": {
+    "trackingListTitle": "Page View Tracking",
+    "trackingListSiteUrl": "",
+    "sourceQueryParam": "source",
+    "trackNewsOnly": false,
+    "defaultSource": "direct",
+    "dedupeInSession": true
+  }
+}

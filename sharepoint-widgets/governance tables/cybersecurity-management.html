@@ -1,0 +1,146 @@
+<div id="cyberCoeContainer"></div>
+
+<style>
+  /* Base table layout */
+  #cyberCoeContainer .cyber-table {
+    border-collapse: separate;
+    border-spacing: 8px 8px;
+    width: 100%;
+    max-width: 1200px;
+    border: none;
+    table-layout: fixed;
+  }
+
+  #cyberCoeContainer th,
+  #cyberCoeContainer td {
+    padding: 10px;
+    border: none;
+    text-align: center;
+    border-radius: 8px;
+    word-break: break-word;
+  }
+
+  #cyberCoeContainer tr:nth-child(1) {
+    font-weight: bold;
+  }
+
+  #cyberCoeContainer tr th:first-child,
+  #cyberCoeContainer tr td:first-child {
+    background: #0c5aa1;
+    color: white;
+    width: 12.5%;
+  }
+
+  #cyberCoeContainer tr th:not(:first-child),
+  #cyberCoeContainer tr td:not(:first-child) {
+    width: 12.5%;
+  }
+
+  #cyberCoeContainer tr:nth-child(1) td {
+    color: white;
+  }
+
+  #cyberCoeContainer tr:nth-child(1) td:nth-child(6),
+  #cyberCoeContainer tr:nth-child(1) td:nth-child(7),
+  #cyberCoeContainer tr:nth-child(1) td:nth-child(8) {
+    color: #0f69af;
+  }
+
+  #cyberCoeContainer tr:nth-child(1) td:nth-child(2) {
+    background: #f38ac0;
+  }
+  #cyberCoeContainer tr:nth-child(n + 2) td:nth-child(2) {
+    background: #f9cfe3;
+  }
+
+  #cyberCoeContainer tr:nth-child(1) td:nth-child(3) {
+    background: #9072cf;
+  }
+  #cyberCoeContainer tr:nth-child(n + 2) td:nth-child(3) {
+    background: #d7cdf6;
+  }
+
+  #cyberCoeContainer tr:nth-child(1) td:nth-child(4) {
+    background: #4ea9f0;
+  }
+  #cyberCoeContainer tr:nth-child(n + 2) td:nth-child(4) {
+    background: #c7e2fa;
+  }
+
+  #cyberCoeContainer tr:nth-child(1) td:nth-child(5) {
+    background: #7fdae3;
+  }
+  #cyberCoeContainer tr:nth-child(n + 2) td:nth-child(5) {
+    background: #d9f3f3;
+  }
+
+  #cyberCoeContainer tr:nth-child(1) td:nth-child(6) {
+    background: #4de8a3;
+  }
+  #cyberCoeContainer tr:nth-child(n + 2) td:nth-child(6) {
+    background: #cdf1d9;
+  }
+
+  #cyberCoeContainer tr:nth-child(1) td:nth-child(7) {
+    background: #c9e196;
+  }
+  #cyberCoeContainer tr:nth-child(n + 2) td:nth-child(7) {
+    background: #ebf0ce;
+  }
+
+  #cyberCoeContainer tr:nth-child(1) td:nth-child(8) {
+    background: #ffde84;
+  }
+  #cyberCoeContainer tr:nth-child(n + 2) td:nth-child(8) {
+    background: #fff7d9;
+  }
+
+  #cyberCoeContainer .cyber-load-error {
+    color: #b00020;
+    font-weight: 600;
+    padding: 12px;
+  }
+
+  .cyber-person-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cyber-profile-pic-wrapper {
+    position: relative;
+    width: 36px;
+    height: 36px;
+    margin-bottom: 4px;
+  }
+
+  .cyber-profile-pic {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .cyber-name-text {
+    line-height: 1.2;
+    text-align: center;
+    font-weight: 600;
+    word-break: break-word;
+  }
+
+  .cyber-person-link {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .cyber-person-link:hover .cyber-name-text {
+    text-decoration: underline;
+  }
+</style>
+
+<script src="https://mdigital.sharepoint.com/sites/ITOTCommunityHub/SiteAssets/scripts/itot-governance-model/cybersecurity-management.js">
+</script>

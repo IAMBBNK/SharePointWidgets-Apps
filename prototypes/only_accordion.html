@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SharePoint Single Accordion</title>
+    <style>
+      :root {
+        --sp-muted: rgba(0, 0, 0, 0.72);
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family:
+          system-ui,
+          -apple-system,
+          Segoe UI,
+          Roboto,
+          Arial,
+          sans-serif;
+        background: transparent;
+        color: inherit;
+      }
+
+      #sp-accordion {
+        width: 100%;
+        max-width: 900px;
+        margin: 0;
+      }
+
+      #sp-summary {
+        list-style: none;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 700;
+        color: inherit;
+        padding: 0;
+        user-select: none;
+      }
+
+      #sp-summary::-webkit-details-marker {
+        display: none;
+      }
+
+      #sp-summary:focus-visible {
+        outline: 3px solid rgba(244, 200, 74, 0.55);
+        outline-offset: 2px;
+        border-radius: 8px;
+      }
+
+      #sp-chevron {
+        width: 18px;
+        height: 18px;
+        flex: 0 0 auto;
+        transition: transform 180ms ease;
+        opacity: 0.9;
+      }
+
+      #sp-accordion[open] #sp-chevron {
+        transform: rotate(180deg);
+      }
+
+      #sp-panelInner {
+        padding: 8px 0 0 0;
+      }
+
+      #sp-projectList {
+        margin: 0;
+        padding-left: 18px;
+        font-size: 14px;
+      }
+
+      #sp-projectList li {
+        margin: 8px 0;
+        color: var(--sp-muted);
+        line-height: 1.35;
+      }
+
+      #sp-projectList strong {
+        color: inherit;
+      }
+    </style>
+  </head>
+  <body>
+    <details id="sp-accordion">
+      <summary id="sp-summary">
+        <span>Projects</span>
+        <svg id="sp-chevron" viewBox="0 0 20 20" aria-hidden="true">
+          <path
+            fill="currentColor"
+            d="M5.3 7.7a1 1 0 0 1 1.4 0L10 11l3.3-3.3a1 1 0 1 1 1.4 1.4l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 0 1 0-1.4Z"
+          />
+        </svg>
+      </summary>
+
+      <div id="sp-panelInner">
+        <ul id="sp-projectList">
+          <li><strong>Project A</strong> — description.</li>
+          <li><strong>Project B</strong> — description.</li>
+          <li><strong>Project C</strong> — description.</li>
+          <li><strong>Project D</strong> — description.</li>
+          <li><strong>Project E</strong> — description.</li>
+        </ul>
+      </div>
+    </details>
+  </body>
+</html>

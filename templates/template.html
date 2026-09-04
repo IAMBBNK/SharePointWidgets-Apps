@@ -1,0 +1,370 @@
+<style>
+    /* Deckblatt Styles */
+    .cover-page {
+      background: linear-gradient(135deg, {{brand_color}} 0%, {{brand_color}}cc 50%, {{brand_color}}dd 100%);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      min-height: 297mm;
+      margin: -20mm;
+      padding: 40mm 20mm;
+      width: calc(100% + 40mm);
+      box-sizing: border-box;
+    }
+    
+    .cover-page .logo-container {
+      margin-bottom: 60px;
+    }
+    
+    .cover-page .logo-container img {
+      max-height: 80px;
+      max-width: 300px;
+      filter: brightness(0) invert(1);
+    }
+    
+    .cover-page .offer-title {
+      color: white !important;
+      font-size: 32pt;
+      font-weight: bold;
+      margin-bottom: 10px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+    
+    .cover-page .project-number {
+      font-size: 14pt;
+      opacity: 0.9;
+      margin-bottom: 40px;
+    }
+    
+    .cover-page .tagline {
+      font-size: 14pt;
+      font-style: italic;
+      max-width: 600px;
+      line-height: 1.6;
+      opacity: 0.9;
+      margin-bottom: 60px;
+    }
+    
+    .cover-page .customer-info {
+      font-size: 16pt;
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+    
+    .cover-page .date-info {
+      font-size: 12pt;
+      opacity: 0.8;
+    }
+    
+    
+    /* Dokument Styles */
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      font-size: 11pt;
+      line-height: 1.5;
+      color: #333;
+    }
+    
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 40px;
+      border-bottom: 2px solid {{brand_color}};
+      padding-bottom: 20px;
+    }
+    
+    .header .logo img {
+      max-height: 50px;
+      max-width: 180px;
+    }
+    
+    .company-info {
+      text-align: right;
+      font-size: 9pt;
+      color: #666;
+    }
+    
+    .recipient-project-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 30px;
+    }
+    
+    .customer-address h3 {
+      margin: 0 0 5px 0;
+      color: {{brand_color}};
+    }
+    
+    .project-info {
+      text-align: right;
+      font-size: 10pt;
+    }
+    
+    .project-info p {
+      margin: 5px 0;
+    }
+    
+    
+    h1 {
+      color: {{brand_color}};
+      font-size: 18pt;
+      margin: 30px 0 20px;
+    }
+    
+    h2 {
+      color: {{brand_color}};
+      font-size: 14pt;
+      margin: 25px 0 15px;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 5px;
+    }
+    
+    /* Diese Zeile ändern: */
+    h1, h2, .customer-address h3 {
+      color: {{brand_color}};
+    }
+    
+    h1 {
+      color: #333;
+    }
+    
+    .customer-address h3 {
+      color: #333;
+    }
+    
+    table.calculation {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    
+    table.calculation th,
+    table.calculation td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: left;
+    }
+    
+    table.calculation th {
+      background: {{brand_color}};
+      color: white;
+    }
+    
+    table.calculation tr:nth-child(even) {
+      background: #f9f9f9;
+    }
+    
+    .totals {
+      margin-top: 30px;
+      text-align: right;
+    }
+    
+    .totals table {
+      margin-left: auto;
+      border-collapse: collapse;
+    }
+    
+    .totals td {
+      padding: 5px 15px;
+    }
+    
+    .totals .total-row {
+      font-weight: bold;
+      font-size: 12pt;
+      border-top: 2px solid {{brand_color}};
+    }
+    
+    .footer {
+      margin-top: 50px;
+      padding-top: 20px;
+      border-top: 1px solid {{brand_color}};
+      font-size: 9pt;
+      color: #666;
+    }
+    </style>
+    
+    <!-- DECKBLATT -->
+    <div class="cover-page">
+      <div class="logo-container">
+        {{logo}}
+      </div>
+      
+      <h1 class="offer-title">{{title}}</h1>
+      <p class="project-number">Projekt: {{project_number}}</p>
+    
+      
+      <p class="tagline">
+        „Gemeinsam gestalten wir Ihre digitale Zukunft – mit Leidenschaft, Expertise und einem klaren Blick auf Ihre Ziele."
+      </p>
+      
+      <div class="customer-info">
+        Erstellt für: {{customer_name}}
+      </div>
+      
+      <div class="date-info">
+        {{date}}
+      </div>
+    </div>
+    
+    {{page_break}}
+    
+    <!-- BRIEFKOPF -->
+    <div class="header">
+      <div class="logo">
+        {{logo}}
+      </div>
+      <div class="company-info">
+        AONIC GmbH<br>
+        Europaplatz 5<br>
+        64293 Darmstadt<br>
+        info@aonic.de
+      </div>
+    </div>
+    
+    <div class="recipient-project-row">
+      <div class="customer-address">
+        <p>
+           <h3>{{customer_name}}</h3>
+           {{customer_address}}
+        </p>
+        <br/>
+        <p>
+          <h3>Ansprechpartner</h3>
+          {{contacts}}
+        </p>
+      </div>
+      <div class="project-info">
+        <p><strong>Projekt:</strong> {{project_number}}</p>
+        <p><strong>Erstellungsdatum:</strong> {{date}}</p>
+        <p><strong>Gültig bis:</strong> {{validity_date}}</p>
+        <p><strong>Email:</strong> sales@aonic.de</p>
+        <p><strong>Bestellung:</strong> order@aonic.de</p>
+        <br/>
+        <p><strong>Amtsgericht Darmstadt </strong></p>
+        <p><strong>Handelsregister: </strong> HRB 90788 </p>
+        <p><strong>USt-IdNr.: </strong> DE281313816</p>
+        <br/>
+        <p><strong>Commerzbank </strong></p>
+        <p>IBAN: DE90 5084 0005 0553 6941 00 </p>
+        <p>BIC: COBADEFFXXX</p>
+      </div>
+    </div>
+    
+    <h1></h1>
+    <br/>
+    <br/>
+    <br/>
+    <h2>{{title}}</h2>
+    
+    <p>{{description}}</p>
+    <br/>
+    <p>Mit freundlichen Grüßen,<br>
+    Dr. Gregor Bachmann und Grischa Jacobs
+    </p>
+    
+    {{page_break}}
+    
+    {{version_history}}
+    
+    {{page_break}}
+    
+    {{chapters}}
+    
+    {{page_break}}
+    
+    <h2>Kalkulation</h2>
+    {{calculation_table}}
+    
+    <div class="totals">
+      <table>
+        {{discount_row}}
+        <tr>
+          <td>Angebotssumme (netto):</td>
+          <td>{{total_net}}</td>
+        </tr>
+        <tr>
+          <td>+ 19% MwSt.:</td>
+          <td>{{vat_amount}}</td>
+        </tr>
+        <tr class="total-row">
+          <td>Angebotssumme (brutto):</td>
+          <td>{{total_gross}}</td>
+        </tr>
+      </table>
+    </div>
+    
+    {{page_break}}
+    <h2>Reisekosten</h2>
+    <p>
+    Sofern Reisekosten anfallen, werden diese nach Abstimmung der Reise mit dem Kunden 
+    separat abgerechnet.
+    Hierfür gelten folgende Rahmenbedingungen:
+    <ul>
+    <li>
+    Verpflegung: Nach den Pauschalen für Verpflegungsmehraufwand 
+    </li>
+    <li>
+    PKW: EUR 0,55 je km
+    </li>
+    <li>
+    Bahn: 1. Klasse mit BahnCard 25 (BahnCard wird vom Auftraggeber übernommen)
+    </li>
+    <li>
+    Flugzeug: Business Class
+    </li>
+    <li>
+    Übernachtungskosten: beliebiges Hotel (min. Kategorie 4-Sterne)
+    </li>
+    <li>
+    Die Reisezeit wird mit 50 % der jeweiligen Tagessätze berechnet
+    </li>
+    </ul>
+    </p>
+    
+    <h2>Schlussbemerkungen</h2>
+    <p>
+    <ul>
+    <li>
+    Das Dokument ist nur für die Personen oder das Unternehmen bestimmt, an die es 
+    adressiert ist.
+    </li>
+    <li>
+    Für die Tagessätze gilt: 1 Arbeitstag entspricht 8 Stunden. Mehr- oder Minderleistungen werden entsprechend anteilig abgerechnet.
+    </li>
+    <li>
+    Vorbehaltlich Irrtümer. Steuerliche Änderungen gehen zu Lasten des Auftraggebers.
+    </li>
+    <li>
+    Es gelten die AGB der AONIC GmbH in der jeweils aktuellen Fassung.
+    </li>
+    <li>
+    Bitte senden Sie Ihre Bestellung an order@aonic.de
+    </li>
+    </ul>
+    </p>
+    
+    <h2>Zahlungsbedingungen</h2>
+    <p>
+    Alle Preisangaben verstehen sich zzgl. der gesetzlichen MwSt. Die Abrechnung der erbrachten Leistungen erfolgt auf monatlicher Basis.
+    </p>
+    
+    <h2>Auftragserteilung</h2>
+    
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <hr>
+    Datum, Unterschrift
+    
+    {{page_break}}
+    
+    {{agb}}
+    
+    <div class="footer">
+      <p>Erstellt von: {{owner_initials}}</p>
+    </div>

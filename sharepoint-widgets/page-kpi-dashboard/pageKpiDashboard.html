@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Community Engagement KPIs</title>
+
+    <script src="https://mdigital.sharepoint.com/sites/ITOTCommunityHub/SiteAssets/ExternalLibs/jquery371.min.js"></script>
+
+    <style>
+      .page-kpi-dashboard {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 20px;
+        color: #1f1f1f;
+        box-sizing: border-box;
+      }
+
+      .page-kpi-dashboard *,
+      .page-kpi-dashboard *::before,
+      .page-kpi-dashboard *::after {
+        box-sizing: border-box;
+      }
+
+      .page-kpi-dashboard .dashboard-header {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 0 0 12px 0;
+        margin-bottom: 8px;
+      }
+
+      .page-kpi-dashboard .last-updated {
+        font-size: 12px;
+        color: #777;
+        white-space: nowrap;
+      }
+
+      .page-kpi-dashboard .error-banner {
+        background-color: #fdecea;
+        color: #b00020;
+        border: 1px solid #f5c2c7;
+        border-radius: 6px;
+        padding: 12px 16px;
+        margin: 0 0 16px 0;
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      .page-kpi-dashboard .loading-overlay {
+        text-align: center;
+        padding: 40px 20px;
+        color: #666;
+        font-size: 16px;
+      }
+
+      .page-kpi-dashboard .is-hidden {
+        display: none !important;
+      }
+
+      .page-kpi-dashboard .section-title {
+        margin: 0 0 14px 0;
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 1.25;
+        color: #0f69af;
+      }
+
+      .page-kpi-dashboard .section-block {
+        margin-bottom: 36px;
+      }
+
+      .page-kpi-dashboard .kpi-tiles {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+        margin-bottom: 20px;
+      }
+
+      .page-kpi-dashboard .kpi-tile {
+        background: linear-gradient(135deg, #0f69af 0%, #1782d4 100%);
+        color: #fff;
+        border-radius: 10px;
+        padding: 22px 24px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+      }
+
+      .page-kpi-dashboard .kpi-tile.tile-secondary {
+        background: linear-gradient(135deg, #2e7d32 0%, #43a047 100%);
+      }
+
+      .page-kpi-dashboard .kpi-tile.tile-tertiary {
+        background: linear-gradient(135deg, #5c6bc0 0%, #7986cb 100%);
+      }
+
+      .page-kpi-dashboard .kpi-tile-label {
+        font-size: 13px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        opacity: 0.92;
+        margin-bottom: 6px;
+      }
+
+      .page-kpi-dashboard .kpi-tile-value {
+        font-size: 40px;
+        font-weight: 700;
+        line-height: 1;
+      }
+
+      .page-kpi-dashboard .kpi-tile-sub {
+        font-size: 13px;
+        margin-top: 8px;
+        opacity: 0.92;
+      }
+
+      .page-kpi-dashboard .metric-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 16px;
+        margin-bottom: 20px;
+      }
+
+      .page-kpi-dashboard .metric-card {
+        background-color: #fff;
+        border: 1px solid #e3e7eb;
+        border-radius: 10px;
+        padding: 16px 18px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+      }
+
+      .page-kpi-dashboard .metric-label {
+        font-size: 13px;
+        font-weight: 700;
+        color: #0f69af;
+        margin-bottom: 6px;
+      }
+
+      .page-kpi-dashboard .metric-value {
+        font-size: 32px;
+        font-weight: 800;
+        line-height: 1.1;
+        color: #1f1f1f;
+      }
+
+      .page-kpi-dashboard .metric-sub {
+        font-size: 12px;
+        color: #666;
+        margin-top: 6px;
+        line-height: 1.4;
+      }
+
+      .page-kpi-dashboard .filter-row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-end;
+        gap: 16px;
+        margin-bottom: 18px;
+      }
+
+      .page-kpi-dashboard .filter-group {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        min-width: 260px;
+        flex: 1 1 280px;
+        max-width: 420px;
+      }
+
+      .page-kpi-dashboard .filter-group label {
+        font-size: 12px;
+        font-weight: 600;
+        color: #555;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+      }
+
+      .page-kpi-dashboard .filter-group select {
+        appearance: none;
+        -webkit-appearance: none;
+        background-color: #fff;
+        background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='%230f69af' d='M5.3 7.7a1 1 0 0 1 1.4 0L10 11l3.3-3.3a1 1 0 1 1 1.4 1.4l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 0 1 0-1.4Z'/></svg>");
+        background-repeat: no-repeat;
+        background-position: right 10px center;
+        background-size: 16px;
+        padding: 10px 36px 10px 12px;
+        border: 1px solid #cfd6dd;
+        border-radius: 6px;
+        font-size: 14px;
+        font-family: inherit;
+        color: #1f1f1f;
+        cursor: pointer;
+      }
+
+      .page-kpi-dashboard .filter-group select:focus {
+        outline: none;
+        border-color: #0f69af;
+        box-shadow: 0 0 0 3px rgba(15, 105, 175, 0.18);
+      }
+
+      .page-kpi-dashboard .filter-group input[type="search"] {
+        background-color: #fff;
+        padding: 10px 12px;
+        border: 1px solid #cfd6dd;
+        border-radius: 6px;
+        font-size: 14px;
+        font-family: inherit;
+        color: #1f1f1f;
+        width: 100%;
+      }
+
+      .page-kpi-dashboard .filter-group input[type="search"]:focus {
+        outline: none;
+        border-color: #0f69af;
+        box-shadow: 0 0 0 3px rgba(15, 105, 175, 0.18);
+      }
+
+      .page-kpi-dashboard .page-search-hint {
+        font-size: 12px;
+        color: #666;
+        margin: -8px 0 16px 0;
+      }
+
+      .page-kpi-dashboard .section-hint {
+        font-size: 13px;
+        color: #555;
+        line-height: 1.5;
+        margin: 0 0 14px 0;
+        max-width: 920px;
+      }
+
+      .page-kpi-dashboard .newsletter-subtitle {
+        font-size: 14px;
+        color: #555;
+        margin: 0 0 16px 0;
+        line-height: 1.45;
+      }
+
+      .page-kpi-dashboard .data-table-wrap {
+        overflow-x: auto;
+        border: 1px solid #e3e7eb;
+        border-radius: 10px;
+        background: #fff;
+      }
+
+      .page-kpi-dashboard .data-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 14px;
+      }
+
+      .page-kpi-dashboard .data-table th,
+      .page-kpi-dashboard .data-table td {
+        padding: 12px 14px;
+        text-align: left;
+        border-bottom: 1px solid #edf0f3;
+      }
+
+      .page-kpi-dashboard .data-table th {
+        background: #f5f8fb;
+        color: #0f69af;
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+      }
+
+      .page-kpi-dashboard .data-table tr:last-child td {
+        border-bottom: none;
+      }
+
+      .page-kpi-dashboard .data-table td.num,
+      .page-kpi-dashboard .data-table th.num {
+        text-align: right;
+        white-space: nowrap;
+      }
+
+      .page-kpi-dashboard .data-table tbody tr:hover {
+        background: #f8fafc;
+      }
+
+      .page-kpi-dashboard .story-link {
+        color: #0f69af;
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .page-kpi-dashboard .story-link:hover {
+        text-decoration: underline;
+      }
+
+      .page-kpi-dashboard .empty-state {
+        padding: 18px;
+        color: #777;
+        font-size: 14px;
+        font-style: italic;
+      }
+
+      .page-kpi-dashboard .table-caption {
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 1.25;
+        color: #0f69af;
+        margin: 0 0 10px 0;
+      }
+
+      .page-kpi-dashboard .chart-card-title {
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 1.25;
+        color: #0f69af;
+        margin: 0 0 4px 0;
+      }
+
+      .page-kpi-dashboard .newsletter-charts {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin: 0 0 24px 0;
+      }
+
+      .page-kpi-dashboard .chart-card {
+        background: #fff;
+        border: 1px solid #e3e7eb;
+        border-radius: 10px;
+        padding: 14px 16px 10px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+      }
+
+      .page-kpi-dashboard .chart-card-sub {
+        font-size: 12px;
+        color: #666;
+        margin: 0 0 10px 0;
+      }
+
+      .page-kpi-dashboard .chart-legend {
+        display: flex;
+        gap: 14px;
+        margin-bottom: 8px;
+        font-size: 12px;
+        color: #555;
+      }
+
+      .page-kpi-dashboard .chart-legend-item {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .page-kpi-dashboard .chart-swatch {
+        width: 14px;
+        height: 3px;
+        border-radius: 2px;
+        display: inline-block;
+      }
+
+      .page-kpi-dashboard .chart-swatch.opens {
+        background: #0f69af;
+      }
+
+      .page-kpi-dashboard .chart-swatch.clicks {
+        background: #2e7d32;
+      }
+
+      .page-kpi-dashboard .chart-svg-wrap {
+        width: 100%;
+        overflow: hidden;
+      }
+
+      .page-kpi-dashboard .chart-svg-wrap svg {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .page-kpi-dashboard .chart-empty {
+        font-size: 13px;
+        color: #777;
+        font-style: italic;
+        padding: 18px 4px;
+      }
+
+      @media (max-width: 1100px) {
+        .page-kpi-dashboard .metric-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .page-kpi-dashboard .newsletter-charts {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 700px) {
+        .page-kpi-dashboard .kpi-tiles,
+        .page-kpi-dashboard .metric-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .page-kpi-dashboard .dashboard-header {
+          justify-content: flex-start;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="page-kpi-dashboard" id="pageKpiDashboard">
+      <div class="dashboard-header">
+        <div class="last-updated" id="lastUpdated"></div>
+      </div>
+
+      <div id="errorContainer"></div>
+      <div id="loadingOverlay" class="loading-overlay">Loading engagement data&hellip;</div>
+
+      <div id="dashboardContent" class="is-hidden">
+        <section class="section-block" aria-labelledby="pageKpiSectionTitle">
+          <h2 class="section-title" id="pageKpiSectionTitle">SharePoint page KPIs</h2>
+
+          <div class="kpi-tiles" aria-label="Page headline KPIs">
+            <div class="kpi-tile">
+              <div class="kpi-tile-label">Total page views</div>
+              <div class="kpi-tile-value" id="kpiTotalViews">&mdash;</div>
+              <div class="kpi-tile-sub">Menu pages + articles only</div>
+            </div>
+            <div class="kpi-tile tile-tertiary">
+              <div class="kpi-tile-label">Pages tracked</div>
+              <div class="kpi-tile-value" id="kpiPageCount">&mdash;</div>
+              <div class="kpi-tile-sub" id="kpiPageCountSub">Menu + articles</div>
+            </div>
+          </div>
+
+          <div class="filter-row">
+            <div class="filter-group" style="max-width: 520px;">
+              <label for="pageSearchInput">Search pages</label>
+              <input
+                type="search"
+                id="pageSearchInput"
+                placeholder="Search by title, hub section, or URL…"
+                autocomplete="off"
+              />
+            </div>
+          </div>
+          <p class="page-search-hint" id="pageSearchHint">Showing top pages by views. Type to find a specific page.</p>
+
+          <h2 class="table-caption" id="menuPagesCaption">Top menu pages by views</h2>
+          <div class="data-table-wrap">
+            <table class="data-table" id="menuPagesTable">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Page</th>
+                  <th>Hub section</th>
+                  <th class="num">Views</th>
+                  <th class="num">Viewers</th>
+                </tr>
+              </thead>
+              <tbody id="menuPagesBody"></tbody>
+            </table>
+            <div class="empty-state is-hidden" id="menuPagesEmpty">No menu page KPI data found.</div>
+          </div>
+
+          <h2 class="table-caption" id="articlePagesCaption" style="margin-top: 22px;">News articles</h2>
+          <div class="metric-grid" aria-label="News article averages" style="margin-bottom: 16px; grid-template-columns: repeat(3, 1fr);">
+            <div class="metric-card">
+              <div class="metric-label">Avg views</div>
+              <div class="metric-value" id="kpiArticleAvgViews">&mdash;</div>
+              <div class="metric-sub" id="kpiArticleAvgViewsSub">Across all articles</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">Avg viewers</div>
+              <div class="metric-value" id="kpiArticleAvgViewers">&mdash;</div>
+              <div class="metric-sub" id="kpiArticleAvgViewersSub">Across all articles</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">Viva Engage views</div>
+              <div class="metric-value" id="kpiArticleVivaViews">&mdash;</div>
+              <div class="metric-sub" id="kpiArticleVivaViewsSub">From Page View Tracking</div>
+            </div>
+          </div>
+          <h2 class="table-caption" id="articlePagesTableCaption">Top articles by views</h2>
+          <div class="data-table-wrap">
+            <table class="data-table" id="articlePagesTable">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Page</th>
+                  <th>Hub section</th>
+                  <th class="num">Views</th>
+                  <th class="num">Viewers</th>
+                  <th class="num" title="Views with ?source=viva from Page View Tracking">Viva views</th>
+                </tr>
+              </thead>
+              <tbody id="articlePagesBody"></tbody>
+            </table>
+            <div class="empty-state is-hidden" id="articlePagesEmpty">No article KPI data found.</div>
+          </div>
+
+          <div id="otherPagesSearchBlock" class="is-hidden">
+            <h2 class="table-caption" id="otherPagesCaption" style="margin-top: 22px;">Other matches (Templates / Archive / uncategorized)</h2>
+            <div class="data-table-wrap">
+              <table class="data-table" id="otherPagesTable">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Page</th>
+                    <th>Hub section</th>
+                    <th class="num">Views</th>
+                    <th class="num">Viewers</th>
+                  </tr>
+                </thead>
+                <tbody id="otherPagesBody"></tbody>
+              </table>
+              <div class="empty-state is-hidden" id="otherPagesEmpty">No other matches.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-block" aria-labelledby="newsletterSectionTitle">
+          <h2 class="section-title" id="newsletterSectionTitle">Newsletter KPIs</h2>
+
+          <div class="filter-row">
+            <div class="filter-group">
+              <label for="newsletterEditionSelect">Edition</label>
+              <select id="newsletterEditionSelect" aria-label="Select newsletter edition">
+                <option value="overall">Overall (all editions)</option>
+              </select>
+            </div>
+          </div>
+
+          <p class="newsletter-subtitle" id="newsletterSubtitle"></p>
+
+          <div class="metric-grid" aria-label="Newsletter engagement metrics">
+            <div class="metric-card">
+              <div class="metric-label">Delivered to</div>
+              <div class="metric-value" id="nlDeliveredTo">&mdash;</div>
+              <div class="metric-sub" id="nlDeliveredToSub"></div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">Opens (24h)</div>
+              <div class="metric-value" id="nlOpens24h">&mdash;</div>
+              <div class="metric-sub" id="nlOpens24hSub"></div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">Clicks (24h)</div>
+              <div class="metric-value" id="nlClicks24h">&mdash;</div>
+              <div class="metric-sub" id="nlClicks24hSub"></div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">Opens (7 days)</div>
+              <div class="metric-value" id="nlOpens7d">&mdash;</div>
+              <div class="metric-sub" id="nlOpens7dSub"></div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">Clicks (7 days)</div>
+              <div class="metric-value" id="nlClicks7d">&mdash;</div>
+              <div class="metric-sub" id="nlClicks7dSub"></div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">Avg % of page views from newsletter</div>
+              <div class="metric-value" id="nlAvgViewShare">&mdash;</div>
+              <div class="metric-sub" id="nlAvgViewShareSub">Newsletter clicks ÷ matching page views</div>
+            </div>
+          </div>
+
+          <div class="newsletter-charts" aria-label="Newsletter engagement trends">
+            <div class="chart-card">
+              <h2 class="chart-card-title">First 24 hours (hourly)</h2>
+              <p class="chart-card-sub" id="nlChart24hSub">Incremental opens and clicks per hour</p>
+              <div class="chart-legend">
+                <span class="chart-legend-item"><span class="chart-swatch opens"></span>Opens</span>
+                <span class="chart-legend-item"><span class="chart-swatch clicks"></span>Clicks</span>
+              </div>
+              <div class="chart-svg-wrap" id="nlChart24h"></div>
+            </div>
+            <div class="chart-card">
+              <h2 class="chart-card-title">First 7 days (daily)</h2>
+              <p class="chart-card-sub" id="nlChart7dSub">Incremental opens and clicks per day</p>
+              <div class="chart-legend">
+                <span class="chart-legend-item"><span class="chart-swatch opens"></span>Opens</span>
+                <span class="chart-legend-item"><span class="chart-swatch clicks"></span>Clicks</span>
+              </div>
+              <div class="chart-svg-wrap" id="nlChart7d"></div>
+            </div>
+          </div>
+
+          <h2 class="table-caption" id="storyTableCaption">Story engagement</h2>
+          <p class="section-hint" id="storyTableHint">
+            <strong>Newsletter clicks</strong> are how often that story’s link was clicked
+            <em>inside the newsletter email</em> (from your newsletter analytics).
+            <strong>Page views</strong> and <strong>page viewers</strong> come from SharePoint
+            for the same page when the story URL matches a Page KPI link — lifetime hub traffic,
+            not only traffic from this newsletter. <strong>% of page views</strong> is
+            newsletter clicks ÷ page views for that story. A dash (—) means no matching page URL was found.
+          </p>
+          <div class="data-table-wrap">
+            <table class="data-table" id="storyClicksTable">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Story</th>
+                  <th class="num" title="Clicks on this story link inside the newsletter email">Newsletter clicks</th>
+                  <th class="num" title="SharePoint lifetime page views for the matched hub page">Page views</th>
+                  <th class="num" title="SharePoint lifetime page viewers for the matched hub page">Page viewers</th>
+                  <th class="num" title="Newsletter clicks ÷ page views">% of page views</th>
+                </tr>
+              </thead>
+              <tbody id="storyClicksBody"></tbody>
+            </table>
+            <div class="empty-state is-hidden" id="storyClicksEmpty">No story click data for this selection.</div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- cache-bust when uploading updated JS to SiteAssets -->
+    <script src="https://mdigital.sharepoint.com/sites/ITOTCommunityHub/SiteAssets/scripts/pageKpiDashboard.js?v=20260904-1"></script>
+  </body>
+</html>
