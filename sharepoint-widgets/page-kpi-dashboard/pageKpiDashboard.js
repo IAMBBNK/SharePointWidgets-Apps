@@ -493,29 +493,76 @@
     return p.toLowerCase();
   }
 
-  function pageLookupKeys(row) {
-    var keys = [];
-    var urlKey = normalizeUrlKey(row && row.link);
-    if (urlKey) keys.push(urlKey);
-    if (row && row.link) {
+  /**
+   * Canonical key shared across full URLs, server-relative paths, and sharing links.
+   * Example: ".../SitePages/My-News.aspx?source=viva" → "/sitepages/my-news.aspx"
+   */
+  function extractSitePagesKey(urlOrPath) {
+    if (!urlOrPath) return "";
+    var s = String(urlOrPath).trim();
+    if (!s) return "";
+
+    try {
+      s = decodeURIComponent(s);
+    } catch (e) {
+      /* keep original */
+    }
+
+    s = s
+      .split("#")[0]
+      .split("?")[0]
+      .replace(/\\/g, "/")
+      .toLowerCase();
+
+    var idx = s.indexOf("/sitepages/");
+    if (idx === -1) return "";
+
+    var key = s.substring(idx).replace(/\/+$/, "");
+    var aspx = key.indexOf(".aspx");
+    if (aspx !== -1) {
+      key = key.substring(0, aspx + 5);
+    }
+    return key;
+  }
+
+  function collectPageAliases(pageUrl, pagePath) {
+    var aliases = {};
+    function add(k) {
+      if (k) aliases[k] = true;
+    }
+
+    add(extractSitePagesKey(pageUrl));
+    add(extractSitePagesKey(pagePath));
+    add(normalizeUrlKey(pageUrl));
+    add(normalizePathKey(pagePath));
+
+    if (pageUrl) {
       try {
-        var pathPart = row.link.replace(/^https?:\/\/[^/]+/i, "");
-        var pathKey = normalizePathKey(pathPart);
-        if (pathKey && keys.indexOf(pathKey) === -1) keys.push(pathKey);
+        var pathFromUrl = String(pageUrl).replace(/^https?:\/\/[^/]+/i, "");
+        add(normalizePathKey(pathFromUrl));
+        add(extractSitePagesKey(pathFromUrl));
       } catch (e) {
         /* ignore */
       }
     }
-    return keys;
+
+    return Object.keys(aliases);
+  }
+
+  function pageLookupKeys(row) {
+    return collectPageAliases(row && row.link, null);
   }
 
   function getVivaViewsForPage(row) {
     var keys = pageLookupKeys(row);
+    var best = null;
     for (var i = 0; i < keys.length; i++) {
       var count = vivaViewsByPageKey[keys[i]];
-      if (typeof count === "number") return count;
+      if (typeof count === "number" && (best == null || count > best)) {
+        best = count;
+      }
     }
-    return null;
+    return best;
   }
 
   function formatVivaViewsCell(row) {
@@ -554,57 +601,103 @@
     return deferred.promise();
   }
 
-  function bumpVivaCount(map, key) {
-    if (!key) return;
-    map[key] = (map[key] || 0) + 1;
-  }
-
+  /**
+   * Count each tracking row once under a canonical /sitepages/... key,
+   * then publish that same total on every URL/path alias for lookup.
+   */
   function buildVivaViewsLookup(items) {
-    var map = {};
+    var countsByCanonical = {};
+    var aliasesByCanonical = {};
+    var totalVivaRows = 0;
+
     (items || []).forEach(function (item) {
       var source = String(item.Source || "")
         .trim()
         .toLowerCase();
       if (source !== VIVA_SOURCE_VALUE) return;
 
-      var keys = {};
-      function addKey(k) {
-        if (k) keys[k] = true;
-      }
+      var aliases = collectPageAliases(item.PageUrl, item.PagePath);
+      if (!aliases.length) return;
 
-      addKey(normalizeUrlKey(item.PageUrl));
-      addKey(normalizePathKey(item.PagePath));
-      if (item.PageUrl) {
-        try {
-          var pathFromUrl = String(item.PageUrl).replace(
-            /^https?:\/\/[^/]+/i,
-            ""
-          );
-          addKey(normalizePathKey(pathFromUrl));
-        } catch (e) {
-          /* ignore */
-        }
-      }
+      totalVivaRows += 1;
 
-      Object.keys(keys).forEach(function (k) {
-        bumpVivaCount(map, k);
+      var canonical =
+        extractSitePagesKey(item.PageUrl) ||
+        extractSitePagesKey(item.PagePath) ||
+        normalizePathKey(item.PagePath) ||
+        normalizeUrlKey(item.PageUrl) ||
+        aliases[0];
+
+      countsByCanonical[canonical] =
+        (countsByCanonical[canonical] || 0) + 1;
+
+      if (!aliasesByCanonical[canonical]) {
+        aliasesByCanonical[canonical] = {};
+      }
+      aliases.forEach(function (a) {
+        aliasesByCanonical[canonical][a] = true;
       });
     });
+
+    // Merge canonical buckets that share any alias (same page, different URL shapes)
+    var parent = {};
+    function find(x) {
+      parent[x] = parent[x] || x;
+      if (parent[x] !== x) parent[x] = find(parent[x]);
+      return parent[x];
+    }
+    function union(a, b) {
+      var ra = find(a);
+      var rb = find(b);
+      if (ra !== rb) parent[rb] = ra;
+    }
+
+    Object.keys(aliasesByCanonical).forEach(function (canonical) {
+      find(canonical);
+      Object.keys(aliasesByCanonical[canonical]).forEach(function (alias) {
+        Object.keys(aliasesByCanonical).forEach(function (other) {
+          if (other === canonical) return;
+          if (aliasesByCanonical[other][alias]) union(canonical, other);
+        });
+      });
+    });
+
+    var mergedCounts = {};
+    var mergedAliases = {};
+    Object.keys(countsByCanonical).forEach(function (canonical) {
+      var root = find(canonical);
+      mergedCounts[root] =
+        (mergedCounts[root] || 0) + countsByCanonical[canonical];
+      if (!mergedAliases[root]) mergedAliases[root] = {};
+      Object.keys(aliasesByCanonical[canonical] || {}).forEach(function (a) {
+        mergedAliases[root][a] = true;
+      });
+      mergedAliases[root][canonical] = true;
+    });
+
+    var map = {};
+    Object.keys(mergedCounts).forEach(function (root) {
+      var count = mergedCounts[root];
+      Object.keys(mergedAliases[root] || {}).forEach(function (alias) {
+        map[alias] = count;
+      });
+      map[root] = count;
+    });
+
+    map.__totalVivaRows = totalVivaRows;
     return map;
   }
 
   function loadVivaEngageViews() {
     var safeTitle = PAGE_VIEW_TRACKING_LIST_NAME.replace(/'/g, "''");
-    var filter =
-      "Source eq '" + String(VIVA_SOURCE_VALUE).replace(/'/g, "''") + "'";
+    // Load broadly, then filter client-side (avoids missing rows when Source casing/spacing differs)
     var url =
       SITE_URL.replace(/\/$/, "") +
       "/_api/web/lists/getbytitle('" +
       safeTitle +
       "')/items?$select=" +
       encodeURIComponent("Id,PageUrl,PagePath,Source") +
-      "&$filter=" +
-      encodeURIComponent(filter) +
+      "&$orderby=Id desc" +
       "&$top=5000";
 
     return fetchAllListItems(url).then(
@@ -1054,12 +1147,25 @@
 
     var vivaTotal = 0;
     var vivaWithData = 0;
+    var seenCanonical = {};
     (articles || []).forEach(function (r) {
       var viva = getVivaViewsForPage(r);
       if (viva == null) return;
+      // Avoid double-counting if two article rows resolve to the same page
+      var keys = pageLookupKeys(r);
+      var dedupeKey = keys[0] || String(r.link || r.title || "");
+      if (seenCanonical[dedupeKey]) return;
+      keys.forEach(function (k) {
+        seenCanonical[k] = true;
+      });
       vivaWithData += 1;
       vivaTotal += viva;
     });
+
+    var listVivaTotal =
+      typeof vivaViewsByPageKey.__totalVivaRows === "number"
+        ? vivaViewsByPageKey.__totalVivaRows
+        : null;
 
     var countLabel =
       count === 1 ? "1 article (HubSection: Articles)" : count + " articles (HubSection: Articles)";
@@ -1071,18 +1177,29 @@
       avgViewers == null ? "—" : formatDecimal(avgViewers, 1)
     );
     $("#kpiArticleVivaViews").text(
-      vivaWithData ? formatNumber(vivaTotal) : "N/A"
+      listVivaTotal != null && listVivaTotal > 0
+        ? formatNumber(listVivaTotal)
+        : vivaWithData
+          ? formatNumber(vivaTotal)
+          : "N/A"
     );
 
     $("#kpiArticleAvgViewsSub").text(countLabel);
     $("#kpiArticleAvgViewersSub").text(countLabel);
     $("#kpiArticleVivaViewsSub").text(
-      vivaWithData
-        ? vivaWithData +
+      listVivaTotal != null && listVivaTotal > 0
+        ? listVivaTotal +
+            " tracked · " +
+            vivaWithData +
             " of " +
             count +
-            " articles have Viva source data"
-        : "No Viva Engage views in Page View Tracking yet"
+            " articles matched"
+        : vivaWithData
+          ? vivaWithData +
+              " of " +
+              count +
+              " articles have Viva source data"
+          : "No Viva Engage views in Page View Tracking yet"
     );
   }
 
