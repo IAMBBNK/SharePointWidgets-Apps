@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "image-carousel-client-side-solution",
+    "id": "8d4f2a91-6c3e-4b7a-9e15-2f8c0d4a6b73",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "AONIC GmbH",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.21.1"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "Button that opens a popup image carousel."
+      },
+      "longDescription": {
+        "default": "SharePoint web part with a customizable button (text or text + icon) that opens a 1-card or 3-card image carousel overlay."
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "Image Carousel Web Part",
+        "description": "Deploys the Image Carousel web part.",
+        "id": "1a9c5e82-4d7b-4f3a-8c16-9e2b7d5a0f44",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/image-carousel.sppkg"
+  }
+}

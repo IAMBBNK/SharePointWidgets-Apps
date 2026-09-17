@@ -42,6 +42,7 @@ interface ITooltipValues {
 	systemSize: string
 	startOfOperation: string
 	technicalSpecials: string
+	phase: string
 }
 
 interface IFormattedItem extends ITooltipValues {
@@ -74,6 +75,13 @@ interface ISmdIndex {
 	bySiteId: Record<string, ISmdSite>
 }
 
+const PHASE_STYLES: Record<string, { fill: string; label: string }> = {
+	design: { fill: '#5b6abf', label: 'Design' },
+	installation: { fill: '#e87722', label: 'Installation' },
+	training: { fill: '#1aa6c1', label: 'Training' },
+	operation: { fill: '#2e8b57', label: 'Operation' },
+}
+
 const SECTOR_COLORS: Record<string, { fill: string; css: string }> = {
 	healthcare: { fill: '#eb3c96', css: 'sector-pink' },
 	'health care': { fill: '#eb3c96', css: 'sector-pink' },
@@ -86,7 +94,14 @@ const TOOLTIP_FIELDS: ITooltipFieldSpec[] = [
 	{
 		key: 'technicalContact',
 		label: 'Technical contact person',
-		aliases: ['technical contact person', 'technical contact'],
+		aliases: [
+			'technical contact person',
+			'technical contact',
+			'pm technical contact',
+			'contact person',
+			'tech contact',
+			'technicalcontact',
+		],
 		valueOnNextLine: true,
 	},
 	{ key: 'systemSize', label: 'System size', aliases: ['system size'] },
@@ -100,6 +115,7 @@ const TOOLTIP_FIELDS: ITooltipFieldSpec[] = [
 		label: 'Technical specials',
 		aliases: ['technical specials'],
 	},
+	{ key: 'phase', label: 'Phase', aliases: ['phase', 'pm phase'] },
 ]
 
 declare global {
@@ -164,6 +180,87 @@ export default class MapPredictiveMaintenanceWebPart extends BaseClientSideWebPa
         border-radius: 10px;
         font-size: 12px;
         font-weight: 500;
+      }
+      .map-tooltip.sector-mixed { border-top: 15px solid #503291; }
+      .map-tooltip.map-tooltip-cluster { width: 360px; }
+      .map-cluster-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .map-cluster-list-paged { min-height: 210px; }
+      .map-cluster-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+        margin: 0;
+        padding: 10px 6px;
+        border: none;
+        border-bottom: 1px solid #eee;
+        background: transparent;
+        text-align: left;
+        cursor: pointer;
+        font-family: inherit;
+        font-size: 14px;
+        color: #333;
+      }
+      .map-cluster-item:last-child { border-bottom: none; }
+      .map-cluster-item:hover { background: #f5f5f5; }
+      .map-cluster-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        border: 2px solid #0f69af;
+        flex-shrink: 0;
+      }
+      .map-cluster-item-text { min-width: 0; flex: 1; }
+      .map-phase-bubble {
+        display: inline-block;
+        padding: 3px 10px;
+        border-radius: 999px;
+        color: #fff;
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 1.3;
+        white-space: nowrap;
+      }
+      .map-phase-bubble-sm {
+        padding: 2px 8px;
+        font-size: 11px;
+      }
+      .map-tooltip-header .map-phase-bubble { margin-top: 8px; }
+      .map-cluster-pager {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        padding-top: 10px;
+        margin-top: 4px;
+        border-top: 1px solid #eee;
+      }
+      .map-cluster-page-btn {
+        width: 32px;
+        height: 32px;
+        padding: 0;
+        border: 1px solid #d0d0d0;
+        border-radius: 6px;
+        background: #fff;
+        color: #333;
+        font-size: 20px;
+        line-height: 1;
+        cursor: pointer;
+        font-family: inherit;
+      }
+      .map-cluster-page-btn:hover:not(:disabled) { background: #f5f5f5; }
+      .map-cluster-page-btn:disabled {
+        opacity: 0.35;
+        cursor: default;
+      }
+      .map-cluster-page-label {
+        font-size: 13px;
+        color: #555;
+        font-weight: 600;
       }
     `
 		this.domElement.appendChild(style)
@@ -271,19 +368,115 @@ export default class MapPredictiveMaintenanceWebPart extends BaseClientSideWebPa
 		return SECTOR_COLORS.healthcare
 	}
 
+	private _phaseStyle(
+		phase: string,
+	): { fill: string; label: string } | undefined {
+		const key = (phase || '').toLowerCase().trim()
+		if (!key || key === '-') return undefined
+		if (PHASE_STYLES[key]) return PHASE_STYLES[key]
+		const names = Object.keys(PHASE_STYLES)
+		for (let i = 0; i < names.length; i++) {
+			if (key.indexOf(names[i]) >= 0) return PHASE_STYLES[names[i]]
+		}
+		return undefined
+	}
+
 	private _matchField(
 		fields: IListField[],
 		aliases: string[],
 	): IListField | undefined {
-		return this._find(fields, (f) => {
+		const hits: IListField[] = []
+		for (let i = 0; i < fields.length; i++) {
+			const f = fields[i]
 			const title = (f.Title || '').toLowerCase().trim()
 			const internal = this._normName(f.InternalName)
-			for (let i = 0; i < aliases.length; i++) {
-				const alias = aliases[i]
-				if (title === alias || this._normName(alias) === internal) return true
+			for (let a = 0; a < aliases.length; a++) {
+				const alias = aliases[a]
+				if (title === alias || this._normName(alias) === internal) {
+					hits.push(f)
+					break
+				}
 			}
-			return false
-		})
+		}
+		if (!hits.length) return undefined
+		const prefer = (type: string): IListField | undefined =>
+			this._find(hits, (f) => f.TypeAsString === type && !f.Hidden)
+		return (
+			prefer('User') ||
+			prefer('UserMulti') ||
+			prefer('Lookup') ||
+			this._find(hits, (f) => !f.Hidden) ||
+			hits[0]
+		)
+	}
+
+	private _isPersonField(field?: IListField): boolean {
+		if (!field) return false
+		return (
+			field.TypeAsString === 'User' ||
+			field.TypeAsString === 'UserMulti' ||
+			field.TypeAsString === 'Lookup'
+		)
+	}
+
+	private _userIdFromValue(raw: unknown): number | undefined {
+		if (typeof raw === 'number' && raw > 0) return raw
+		if (typeof raw === 'string' && /^\d+$/.test(raw.trim())) {
+			const n = parseInt(raw.trim(), 10)
+			return n > 0 ? n : undefined
+		}
+		if (raw && typeof raw === 'object') {
+			const obj = raw as { Id?: number; ID?: number }
+			if (typeof obj.Id === 'number' && obj.Id > 0) return obj.Id
+			if (typeof obj.ID === 'number' && obj.ID > 0) return obj.ID
+		}
+		return undefined
+	}
+
+	private _extractPerson(
+		item: Record<string, unknown>,
+		field?: IListField,
+	): { display: string; userId?: number } {
+		if (!field) return { display: '-' }
+		const name = field.InternalName
+		const raw = item[name]
+		const display = this._fieldValue(raw, field.TypeAsString)
+		const userId =
+			this._userIdFromValue(item[name + 'Id']) || this._userIdFromValue(raw)
+		if (display !== '-' && !/^\d+$/.test(display)) return { display, userId }
+		return { display: '-', userId }
+	}
+
+	private async _resolveUserTitles(
+		ids: number[],
+	): Promise<Record<number, string>> {
+		const out: Record<number, string> = {}
+		const unique: number[] = []
+		for (let i = 0; i < ids.length; i++) {
+			if (ids[i] > 0 && unique.indexOf(ids[i]) < 0) unique.push(ids[i])
+		}
+		if (!unique.length) return out
+		const filter = unique.map((id) => 'Id eq ' + id).join(' or ')
+		const json = await this._getJson([
+			SITE_WEB_URL +
+				'/_api/web/siteusers?$select=Id,Title,Email&$filter=' +
+				encodeURIComponent(filter),
+		])
+		const results: { Id?: number; Title?: string }[] =
+			(json && json.d && json.d.results) || []
+		for (let i = 0; i < results.length; i++) {
+			if (results[i].Id && results[i].Title)
+				out[results[i].Id as number] = String(results[i].Title)
+		}
+		for (let i = 0; i < unique.length; i++) {
+			if (out[unique[i]]) continue
+			const ujson = await this._getJson([
+				SITE_WEB_URL + '/_api/web/getuserbyid(' + unique[i] + ')',
+			])
+			const u = ujson && ujson.d
+			if (u && u.Title) out[unique[i]] = String(u.Title)
+		}
+		return out
 	}
 
 	private _formatDate(raw: string): string | undefined {
@@ -316,19 +509,28 @@ export default class MapPredictiveMaintenanceWebPart extends BaseClientSideWebPa
 			const obj = val as {
 				Title?: string
 				Results?: unknown[]
+				results?: unknown[]
 				Description?: string
 				Url?: string
 				Label?: string
+				EMail?: string
+				Email?: string
 			}
 			if (obj.Title && String(obj.Title).trim()) return String(obj.Title).trim()
 			if (obj.Label && String(obj.Label).trim()) return String(obj.Label).trim()
+			if (obj.EMail && String(obj.EMail).trim()) return String(obj.EMail).trim()
+			if (obj.Email && String(obj.Email).trim()) return String(obj.Email).trim()
 			if (obj.Description && String(obj.Description).trim())
 				return String(obj.Description).trim()
 			if (obj.Url && String(obj.Url).trim()) return String(obj.Url).trim()
-			if (Array.isArray(obj.Results) && obj.Results.length) {
-				return obj.Results.map((r) => this._fieldValue(r))
-					.filter((s) => s !== '-')
-					.join(', ') || '-'
+			const nested = obj.Results || obj.results
+			if (Array.isArray(nested) && nested.length) {
+				return (
+					nested
+						.map((r) => this._fieldValue(r))
+						.filter((s) => s !== '-')
+						.join(', ') || '-'
+				)
 			}
 		}
 		return '-'
@@ -512,6 +714,17 @@ export default class MapPredictiveMaintenanceWebPart extends BaseClientSideWebPa
 				field: this._matchField(fields, TOOLTIP_FIELDS[i].aliases),
 			})
 		}
+		for (let i = 0; i < resolved.length; i++) {
+			if (resolved[i].spec.key !== 'technicalContact' || resolved[i].field)
+				continue
+			resolved[i].field = this._find(fields, (f) => {
+				const blob =
+					(f.Title || '').toLowerCase() +
+					' ' +
+					this._normName(f.InternalName)
+				return blob.indexOf('technical') >= 0 && blob.indexOf('contact') >= 0
+			})
+		}
 		const siteNameField =
 			this._matchField(fields, [
 				'site name',
@@ -529,21 +742,10 @@ export default class MapPredictiveMaintenanceWebPart extends BaseClientSideWebPa
 		const employeesField = this._matchField(fields, ['employees'])
 		const sectorField = this._matchField(fields, ['sector'])
 
-		const expandNames: string[] = []
-		const addExpand = (field?: IListField): void => {
-			if (!field) return
-			if (field.TypeAsString === 'User' || field.TypeAsString === 'Lookup') {
-				if (expandNames.indexOf(field.InternalName) < 0)
-					expandNames.push(field.InternalName)
-			}
-		}
-		resolved.forEach((r) => addExpand(r.field))
-		addExpand(siteNameField)
-		addExpand(siteIdField)
-		addExpand(addressField)
-		addExpand(servicesField)
-		addExpand(employeesField)
-		addExpand(sectorField)
+		const contactField = this._find(
+			resolved,
+			(r) => r.spec.key === 'technicalContact',
+		)?.field
 
 		console.log(
 			'[MapPM] Site Name field:',
@@ -560,21 +762,56 @@ export default class MapPredictiveMaintenanceWebPart extends BaseClientSideWebPa
 			resolved.map((r) => ({
 				label: r.spec.label,
 				internal: r.field ? r.field.InternalName : '(not found)',
+				type: r.field ? r.field.TypeAsString : '',
 			})),
 		)
 
-		const itemQuery = expandNames.length
-			? '/items?$top=1000&$expand=' + expandNames.join(',')
-			: '/items?$top=1000'
+		const personSelect: string[] = []
+		const personExpand: string[] = []
+		resolved.forEach((r) => {
+			if (!this._isPersonField(r.field) || !r.field) return
+			const n = r.field.InternalName
+			if (personExpand.indexOf(n) < 0) personExpand.push(n)
+			personSelect.push(n + '/Id', n + '/Title', n + '/EMail')
+		})
+
+		const queries: string[] = []
+		if (contactField && this._isPersonField(contactField)) {
+			const n = contactField.InternalName
+			queries.push(
+				'/items?$top=1000&$select=ID,' +
+					n +
+					'/Id,' +
+					n +
+					'/Title,' +
+					n +
+					'/EMail&$expand=' +
+					n,
+			)
+			queries.push(
+				'/items?$top=1000&$select=ID,' + n + '/Id,' + n + '/Title&$expand=' + n,
+			)
+		}
+		if (personExpand.length && personSelect.length) {
+			queries.push(
+				'/items?$top=1000&$select=*,' +
+					personSelect.join(',') +
+					'&$expand=' +
+					personExpand.join(','),
+			)
+			queries.push('/items?$top=1000&$expand=' + personExpand.join(','))
+		}
+		queries.push('/items?$top=1000')
+
 		const fetched = await Promise.all([
-			this._getJson(this._listUrls(itemQuery, LIST_TITLE, LIST_PATH)),
+			this._getJson(this._listUrls(queries[0], LIST_TITLE, LIST_PATH)),
 			this._getSiteMasterCoordMap(),
 		])
 		let json = fetched[0]
 		const smd = fetched[1]
-		if (!json) {
+		for (let q = 1; !json && q < queries.length; q++) {
 			json = await this._getJson(
-				this._listUrls('/items?$top=1000', LIST_TITLE, LIST_PATH),
+				this._listUrls(queries[q], LIST_TITLE, LIST_PATH),
 			)
 		}
 		if (!json) {
@@ -582,8 +819,33 @@ export default class MapPredictiveMaintenanceWebPart extends BaseClientSideWebPa
 			return []
 		}
 
-		const results: Record<string, unknown>[] = (json.d && json.d.results) || []
-		console.log('[MapPM] PM items:', results.length, '| first keys:', results[0] ? Object.keys(results[0]) : [])
+		let results: Record<string, unknown>[] = (json.d && json.d.results) || []
+		const contactById: Record<number, { display: string; userId?: number }> = {}
+		if (contactField && results.length && results[0] && results[0].ID != null) {
+			const onlyContact =
+				Object.keys(results[0]).filter(
+					(k) => k !== '__metadata' && k !== 'ID' && k !== 'Id',
+				).length <= 2
+			if (onlyContact) {
+				for (let i = 0; i < results.length; i++) {
+					const id = Number(results[i].ID)
+					if (!id) continue
+					contactById[id] = this._extractPerson(results[i], contactField)
+				}
+				const fullJson = await this._getJson(
+					this._listUrls('/items?$top=1000', LIST_TITLE, LIST_PATH),
+				)
+				if (fullJson && fullJson.d && fullJson.d.results) {
+					results = fullJson.d.results
+				}
+			}
+		}
+		console.log(
+			'[MapPM] PM items:',
+			results.length,
+			'| first keys:',
+			results[0] ? Object.keys(results[0]) : [],
+		)
 
 		const prefer = (
 			field: IListField | undefined,
@@ -595,7 +857,8 @@ export default class MapPredictiveMaintenanceWebPart extends BaseClientSideWebPa
 			return val !== '-' ? val : fallback
 		}
 
-		const mapped = results.map((item) => {
+		const pendingUserIds: { index: number; userId: number }[] = []
+		const mapped = results.map((item, index) => {
 			const site = this._resolveSite(item, siteNameField, siteIdField, smd)
 			const values: ITooltipValues = {
 				production: '-',
@@ -603,14 +866,46 @@ export default class MapPredictiveMaintenanceWebPart extends BaseClientSideWebPa
 				systemSize: '-',
 				startOfOperation: '-',
 				technicalSpecials: '-',
+				phase: '-',
 			}
 			resolved.forEach((r) => {
 				if (!r.field) return
+				if (r.spec.key === 'technicalContact') {
+					const fromItem = this._extractPerson(item, r.field)
+					const fromExpand = contactById[Number(item.ID)]
+					values.technicalContact =
+						fromItem.display !== '-'
+							? fromItem.display
+							: fromExpand && fromExpand.display !== '-'
+								? fromExpand.display
+								: '-'
+					const userId = fromItem.userId || (fromExpand && fromExpand.userId)
+					if (values.technicalContact === '-' && userId) {
+						pendingUserIds.push({ index, userId })
+					}
+					return
+				}
 				values[r.spec.key] = this._fieldValue(
 					item[r.field.InternalName],
 					r.field.TypeAsString,
 				)
 			})
+			if (values.technicalContact === '-') {
+				const keys = Object.keys(item)
+				for (let k = 0; k < keys.length; k++) {
+					const key = keys[k]
+					const lower = key.toLowerCase()
+					if (lower.lastIndexOf('id') === lower.length - 2) continue
+					if (lower.indexOf('contact') < 0) continue
+					const scanned = this._fieldValue(item[key])
+					if (scanned !== '-' && !/^\d+$/.test(scanned)) {
+						values.technicalContact = scanned
+						break
+					}
+					const scannedId = this._userIdFromValue(item[key + 'Id'] || item[key])
+					if (scannedId) pendingUserIds.push({ index, userId: scannedId })
+				}
+			}
 			const pmSiteName = prefer(siteNameField, item, '')
 			const smdName = site ? site.siteName : '-'
 
@@ -628,67 +923,40 @@ export default class MapPredictiveMaintenanceWebPart extends BaseClientSideWebPa
 				systemSize: values.systemSize,
 				startOfOperation: values.startOfOperation,
 				technicalSpecials: values.technicalSpecials,
+				phase: values.phase,
 				Lattitude: site ? site.lat : undefined,
 				Longitude: site ? site.lng : undefined,
 			}
 		})
+
+		if (pendingUserIds.length) {
+			const titles = await this._resolveUserTitles(
+				pendingUserIds.map((p) => p.userId),
+			)
+			for (let i = 0; i < pendingUserIds.length; i++) {
+				const row = mapped[pendingUserIds[i].index]
+				if (!row || row.technicalContact !== '-') continue
+				const title = titles[pendingUserIds[i].userId]
+				if (title) row.technicalContact = title
+			}
+		}
 		const matched = mapped.filter(
 			(m) => m.Lattitude != null && m.Longitude != null,
 		).length
 		console.log('[MapPM] Matched coords:', matched, '/', mapped.length)
-		return this._spreadOverlapping(mapped)
+		return mapped
 	}
 
-	private _spreadOverlapping(items: IFormattedItem[]): IFormattedItem[] {
-		const groups: Record<string, IFormattedItem[]> = {}
-		for (let i = 0; i < items.length; i++) {
-			const item = items[i]
-			if (item.Lattitude == null || item.Longitude == null) {
-				if (!groups.none) groups.none = []
-				groups.none.push(item)
-				continue
-			}
-			const key =
-				item.Lattitude.toFixed(5) + ',' + item.Longitude.toFixed(5)
-			if (!groups[key]) groups[key] = []
-			groups[key].push(item)
-		}
-		const out: IFormattedItem[] = []
-		const keys = Object.keys(groups)
-		for (let g = 0; g < keys.length; g++) {
-			const list = groups[keys[g]]
-			if (keys[g] === 'none' || list.length === 1) {
-				for (let i = 0; i < list.length; i++) out.push(list[i])
-				continue
-			}
-			const baseLat = list[0].Lattitude as number
-			const baseLng = list[0].Longitude as number
-			const radius = 0.00035
-			const latRad = (baseLat * Math.PI) / 180
-			for (let i = 0; i < list.length; i++) {
-				const angle = (2 * Math.PI * i) / list.length - Math.PI / 2
-				const copy: IFormattedItem = {
-					ID: list[i].ID,
-					siteName: list[i].siteName,
-					businessUnit: list[i].businessUnit,
-					legalEntityName: list[i].legalEntityName,
-					location: list[i].location,
-					services: list[i].services,
-					employees: list[i].employees,
-					sector: list[i].sector,
-					production: list[i].production,
-					technicalContact: list[i].technicalContact,
-					systemSize: list[i].systemSize,
-					startOfOperation: list[i].startOfOperation,
-					technicalSpecials: list[i].technicalSpecials,
-					Lattitude: baseLat + radius * Math.cos(angle),
-					Longitude:
-						baseLng + (radius * Math.sin(angle)) / Math.cos(latRad),
-				}
-				out.push(copy)
-			}
-		}
-		return out
+	private _siteHeadline(meta: IFormattedItem): string {
+		const name = meta.siteName && meta.siteName !== '-' ? meta.siteName : ''
+		const bu =
+			meta.businessUnit && meta.businessUnit !== '-' ? meta.businessUnit : ''
+		if (name && bu) return name + ' / ' + bu
+		return name || bu || 'Site'
+	}
+
+	private _clusterFill(_pins: any[]): { fill: string; css: string } {
+		return { fill: '#503291', css: 'sector-mixed' }
 	}
 
 	private _loadBingAndInit(): void {
@@ -766,29 +1034,53 @@ export default class MapPredictiveMaintenanceWebPart extends BaseClientSideWebPa
 
 		const sectorColor = (sector: string) => self._sectorColor(sector)
 
-		function createCircle(fill: string): string {
+		function createCircle(fill: string, size?: number, label?: string): string {
+			const dim = size || 24
 			const c = document.createElement('canvas')
-			c.width = 24
-			c.height = 24
+			c.width = dim
+			c.height = dim
 			const ctx = c.getContext('2d')
 			if (ctx) {
 				ctx.fillStyle = fill
 				ctx.lineWidth = 2
 				ctx.strokeStyle = '#0f69af'
 				ctx.beginPath()
-				ctx.arc(c.width * 0.5, c.height * 0.5, 10, 0, 2 * Math.PI)
+				ctx.arc(c.width * 0.5, c.height * 0.5, dim * 0.5 - 2, 0, 2 * Math.PI)
 				ctx.fill()
 				ctx.stroke()
+				if (label) {
+					ctx.fillStyle = fill === '#ffc832' ? '#333' : '#fff'
+					ctx.font =
+						'bold ' +
+						(dim >= 44 ? 16 : 13) +
+						'px Segoe UI, Tahoma, sans-serif'
+					ctx.textAlign = 'center'
+					ctx.textBaseline = 'middle'
+					ctx.fillText(label, c.width * 0.5, c.height * 0.5 + 0.5)
+				}
 			}
 			return c.toDataURL()
 		}
 
-		function clearPushpins(): void {
-			for (let i = map.entities.getLength() - 1; i >= 0; i--) {
-				const entity = map.entities.get(i)
-				if (entity && (entity as any).getLocation) {
-					map.entities.removeAt(i)
-				}
+		function hideTooltip(): void {
+			tooltip.setOptions({ visible: false })
+			infobox.setOptions({ visible: false })
+		}
+
+		function bindTooltipClose(): void {
+			const closeBtn = document.getElementById('closeInfoboxPm')
+			if (closeBtn) {
+				closeBtn.addEventListener('click', () => hideTooltip())
+			}
+		}
+
+		function setTooltipOffset(location: any, tall?: boolean): void {
+			if (location.latitude > 60) {
+				tooltip.setOptions({ offset: new Microsoft.Maps.Point(20, -400) })
+			} else if (tall) {
+				tooltip.setOptions({ offset: new Microsoft.Maps.Point(20, -220) })
+			} else {
+				tooltip.setOptions({ offset: new Microsoft.Maps.Point(20, -100) })
 			}
 		}
 
@@ -821,39 +1113,27 @@ export default class MapPredictiveMaintenanceWebPart extends BaseClientSideWebPa
 			animate()
 		}
 
-		function pushpinClicked(e: any): void {
-			const pushpin = e.target
-			const meta = (pushpin as any).metadata as IFormattedItem
+		function showDetailTooltip(pushpin: any, delay: number): void {
+			const meta = pushpin.metadata as IFormattedItem
 			if (!meta) return
-
 			const pushpinLocation = pushpin.getLocation()
-			smoothPanTo(pushpinLocation)
-
-			if (pushpinLocation.latitude > 60) {
-				tooltip.setOptions({ offset: new Microsoft.Maps.Point(20, -400) })
-			} else {
-				tooltip.setOptions({ offset: new Microsoft.Maps.Point(20, -100) })
-			}
-
+			setTooltipOffset(pushpinLocation)
 			infobox.setOptions({ visible: false })
-
 			const esc = (s: string) => self._escape(s)
-			const city = (() => {
-				const name = meta.siteName && meta.siteName !== '-' ? meta.siteName : ''
-				const bu =
-					meta.businessUnit && meta.businessUnit !== '-'
-						? meta.businessUnit
-						: ''
-				if (name && bu) return name + ' / ' + bu
-				return name || bu || ''
-			})()
 			const addressHtml = esc(meta.location).replace(/\n/g, '<br>')
 			const sectorCss = sectorColor(meta.sector).css
+			const phase = self._phaseStyle(meta.phase)
+			const phaseHtml = phase
+				? `<span class="map-phase-bubble" style="background:${phase.fill}">${esc(
+						phase.label,
+					)}</span>`
+				: ''
 			const htmlContent = `
         <div class="map-tooltip ${sectorCss}">
           <div class="map-tooltip-header">
-            <div class="map-tooltip-headline">${esc(city)}</div>
+            <div class="map-tooltip-headline">${esc(self._siteHeadline(meta))}</div>
             <span class="map-tooltip-close" id="closeInfoboxPm">×</span>
+            ${phaseHtml}
           </div>
           <div class="map-tooltip-body">
             <div class="map-tooltip-col">
@@ -872,38 +1152,281 @@ export default class MapPredictiveMaintenanceWebPart extends BaseClientSideWebPa
             </div>
           </div>
         </div>`
-
 			setTimeout(() => {
 				tooltip.setOptions({
 					location: pushpinLocation,
 					htmlContent,
 					visible: true,
 				})
-				const closeBtn = document.getElementById('closeInfoboxPm')
-				if (closeBtn) {
-					closeBtn.addEventListener('click', () =>
-						tooltip.setOptions({ visible: false }),
-					)
-				}
-			}, 500)
+				bindTooltipClose()
+			}, delay)
 		}
 
-		clearPushpins()
+		function showClusterList(
+			location: any,
+			pins: any[],
+			page?: number,
+		): void {
+			const pageSize = 5
+			const items = pins.filter((p: any) => p && p.metadata)
+			if (!items.length) return
+			const pageCount = Math.max(1, Math.ceil(items.length / pageSize))
+			const currentPage = Math.min(
+				Math.max(0, page || 0),
+				pageCount - 1,
+			)
+			const start = currentPage * pageSize
+			const slice = items.slice(start, start + pageSize)
+			const esc = (s: string) => self._escape(s)
+			const color = self._clusterFill(items)
+			const itemsHtml = slice
+				.map((pin: any, i: number) => {
+					const meta = pin.metadata as IFormattedItem
+					const fill = sectorColor(meta.sector).fill
+					const phase = self._phaseStyle(meta.phase)
+					const phaseHtml = phase
+						? `<span class="map-phase-bubble map-phase-bubble-sm" style="background:${phase.fill}">${esc(
+								phase.label,
+							)}</span>`
+						: ''
+					return `<li>
+            <button type="button" class="map-cluster-item" id="pm-cluster-item-${i}">
+              <span class="map-cluster-dot" style="background:${fill}"></span>
+              <span class="map-cluster-item-text">${esc(self._siteHeadline(meta))}</span>
+              ${phaseHtml}
+            </button>
+          </li>`
+				})
+				.join('')
+			const pagerHtml =
+				pageCount > 1
+					? `<div class="map-cluster-pager">
+            <button type="button" class="map-cluster-page-btn" id="pm-cluster-prev"${
+							currentPage === 0 ? ' disabled' : ''
+						}>‹</button>
+            <span class="map-cluster-page-label">${currentPage + 1} / ${pageCount}</span>
+            <button type="button" class="map-cluster-page-btn" id="pm-cluster-next"${
+							currentPage >= pageCount - 1 ? ' disabled' : ''
+						}>›</button>
+          </div>`
+					: ''
+			const htmlContent = `
+        <div class="map-tooltip map-tooltip-cluster ${color.css}">
+          <div class="map-tooltip-header">
+            <div class="map-tooltip-headline">${items.length} sites</div>
+            <span class="map-tooltip-close" id="closeInfoboxPm">×</span>
+          </div>
+          <ul class="map-cluster-list${
+						pageCount > 1 ? ' map-cluster-list-paged' : ''
+					}">${itemsHtml}</ul>
+          ${pagerHtml}
+        </div>`
+			setTooltipOffset(location, false)
+			tooltip.setOptions({
+				location,
+				htmlContent,
+				visible: true,
+			})
+			let attempt = 0
+			const bindListClicks = (): void => {
+				bindTooltipClose()
+				const first = document.getElementById('pm-cluster-item-0')
+				if (!first && attempt < 12) {
+					attempt++
+					setTimeout(bindListClicks, 50)
+					return
+				}
+				for (let i = 0; i < slice.length; i++) {
+					const el = document.getElementById('pm-cluster-item-' + i)
+					if (!el) continue
+					el.addEventListener('click', (ev) => {
+						ev.preventDefault()
+						ev.stopPropagation()
+						hideTooltip()
+						smoothPanTo(slice[i].getLocation())
+						showDetailTooltip(slice[i], 500)
+					})
+				}
+				const prev = document.getElementById('pm-cluster-prev')
+				const next = document.getElementById('pm-cluster-next')
+				if (prev) {
+					prev.addEventListener('click', (ev) => {
+						ev.preventDefault()
+						ev.stopPropagation()
+						if (currentPage > 0) {
+							showClusterList(location, items, currentPage - 1)
+						}
+					})
+				}
+				if (next) {
+					next.addEventListener('click', (ev) => {
+						ev.preventDefault()
+						ev.stopPropagation()
+						if (currentPage < pageCount - 1) {
+							showClusterList(location, items, currentPage + 1)
+						}
+					})
+				}
+			}
+			bindListClicks()
+		}
+
+		function handleClusterClick(cluster: any): void {
+			const pins = cluster.containedPushpins || []
+			if (!pins.length) return
+			showClusterList(cluster.getLocation(), pins)
+		}
+
+		function pushpinClicked(e: any): void {
+			const pushpin = e.target
+			if (pushpin && pushpin.containedPushpins) {
+				handleClusterClick(pushpin)
+				return
+			}
+			const meta = pushpin && (pushpin.metadata as IFormattedItem)
+			if (!meta) return
+			smoothPanTo(pushpin.getLocation())
+			showDetailTooltip(pushpin, 500)
+		}
+
+		function pinIconSize(count: number): number {
+			if (count >= 100) return 48
+			if (count >= 10) return 42
+			if (count >= 2) return 36
+			return 24
+		}
+
+		function clearPushpins(): void {
+			for (let i = map.entities.getLength() - 1; i >= 0; i--) {
+				const entity = map.entities.get(i)
+				if (entity && (entity as any).getLocation) {
+					map.entities.removeAt(i)
+				}
+			}
+		}
+
+		interface IOverlapGroup {
+			pins: any[]
+			loc: any
+			pixel: { x: number; y: number }
+			count: number
+		}
+
+		function clusterByPixelOverlap(sourcePins: any[]): IOverlapGroup[] {
+			const groups: IOverlapGroup[] = []
+			for (let i = 0; i < sourcePins.length; i++) {
+				const loc = sourcePins[i].getLocation()
+				const pixel =
+					map.tryLocationToPixel(
+						loc,
+						Microsoft.Maps.PixelReference.control,
+					) || { x: 0, y: 0 }
+				groups.push({
+					pins: [sourcePins[i]],
+					loc,
+					pixel: { x: pixel.x, y: pixel.y },
+					count: 1,
+				})
+			}
+
+			let merged = true
+			while (merged) {
+				merged = false
+				outer: for (let i = 0; i < groups.length; i++) {
+					for (let j = i + 1; j < groups.length; j++) {
+						const r1 = pinIconSize(groups[i].count) / 2
+						const r2 = pinIconSize(groups[j].count) / 2
+						const dx = groups[i].pixel.x - groups[j].pixel.x
+						const dy = groups[i].pixel.y - groups[j].pixel.y
+						if (dx * dx + dy * dy > (r1 + r2) * (r1 + r2)) continue
+						const a = groups[i]
+						const b = groups[j]
+						const n = a.count + b.count
+						groups[i] = {
+							pins: a.pins.concat(b.pins),
+							count: n,
+							loc: new Microsoft.Maps.Location(
+								(a.loc.latitude * a.count + b.loc.latitude * b.count) /
+									n,
+								(a.loc.longitude * a.count +
+									b.loc.longitude * b.count) /
+									n,
+							),
+							pixel: {
+								x: (a.pixel.x * a.count + b.pixel.x * b.count) / n,
+								y: (a.pixel.y * a.count + b.pixel.y * b.count) / n,
+							},
+						}
+						groups.splice(j, 1)
+						merged = true
+						break outer
+					}
+				}
+			}
+			return groups
+		}
+
+		function renderOverlapClusters(): void {
+			clearPushpins()
+			const groups = clusterByPixelOverlap(sourcePins)
+			for (let g = 0; g < groups.length; g++) {
+				const group = groups[g]
+				if (group.count === 1) {
+					const src = group.pins[0]
+					const meta = src.metadata as IFormattedItem
+					const size = pinIconSize(1)
+					const pin = new Microsoft.Maps.Pushpin(src.getLocation(), {
+						icon: createCircle(sectorColor(meta.sector).fill, size),
+						anchor: new Microsoft.Maps.Point(size / 2, size / 2),
+					})
+					;(pin as any).metadata = meta
+					Microsoft.Maps.Events.addHandler(pin, 'click', pushpinClicked)
+					map.entities.push(pin)
+					continue
+				}
+				const size = pinIconSize(group.count)
+				const color = self._clusterFill(group.pins)
+				const pin = new Microsoft.Maps.Pushpin(group.loc, {
+					icon: createCircle(color.fill, size, String(group.count)),
+					anchor: new Microsoft.Maps.Point(size / 2, size / 2),
+				})
+				;(pin as any).containedPushpins = group.pins
+				Microsoft.Maps.Events.addHandler(pin, 'click', pushpinClicked)
+				map.entities.push(pin)
+			}
+		}
+
 		const pinLocations: any[] = []
+		const sourcePins: any[] = []
 		for (const city of withCoords) {
 			const lat = Number(city.Lattitude)
 			const lng = Number(city.Longitude)
 			if (isNaN(lat) || isNaN(lng)) continue
 			const loc = new Microsoft.Maps.Location(lat, lng)
 			pinLocations.push(loc)
-			const pin = new Microsoft.Maps.Pushpin(loc, {
-				icon: createCircle(sectorColor(city.sector).fill),
-			})
+			const pin = new Microsoft.Maps.Pushpin(loc)
 			;(pin as any).metadata = city
-			Microsoft.Maps.Events.addHandler(pin, 'click', pushpinClicked)
-			map.entities.push(pin)
+			sourcePins.push(pin)
 		}
+
+		let lastClusterZoom = -1
+		function refreshClustersIfZoomChanged(): void {
+			const z = map.getZoom()
+			if (Math.abs(z - lastClusterZoom) < 0.01) return
+			lastClusterZoom = z
+			hideTooltip()
+			renderOverlapClusters()
+		}
+
+		Microsoft.Maps.Events.addHandler(
+			map,
+			'viewchangeend',
+			refreshClustersIfZoomChanged,
+		)
+		renderOverlapClusters()
+		lastClusterZoom = map.getZoom()
 		if (pinLocations.length > 1) {
+			lastClusterZoom = -1
 			map.setView({
 				bounds: Microsoft.Maps.LocationRect.fromLocations(pinLocations),
 				padding: 80,

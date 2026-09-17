@@ -1,0 +1,63 @@
+:root {
+  --accent: #0f69af;
+  --accent-hover: #0c5a96;
+  --accent-dark: #0a4a7a;
+  --sp-teal: #03787c;
+  --text: #242424;
+  --text-secondary: #5b5b5b;
+  --muted: #8a8886;
+  --canvas: #f4f6f8;
+  --surface: #ffffff;
+  --border: #e1e4e8;
+  --border-strong: #c8cdd3;
+  --success: #107c10;
+  --success-bg: #dff6dd;
+  --danger: #a4262c;
+  --danger-bg: #fde7e9;
+  --info-bg: #eef6fb;
+  --shadow: 0 8px 24px rgba(15, 32, 56, 0.07), 0 1px 3px rgba(15, 32, 56, 0.06);
+  --radius: 10px;
+  --font: "Segoe UI", "Segoe UI Web (West European)", Tahoma, Geneva, Verdana, sans-serif;
+  --suite-h: 48px;
+  --site-h: 56px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: var(--font);
+  color: var(--text);
+  background: var(--canvas);
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}

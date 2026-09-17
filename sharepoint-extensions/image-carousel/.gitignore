@@ -1,0 +1,28 @@
+# Dependencies
+node_modules
+
+# Build outputs
+lib
+dist
+temp
+release
+*.sppkg
+
+# Coverage and logs
+coverage
+*.log
+npm-debug.log*
+
+# Generated
+*.resx.ts
+*.scss.ts
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.ntvs_analysis.dat
+*.suo
+*.user
+.vs

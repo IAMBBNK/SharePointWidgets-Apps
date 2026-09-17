@@ -1,0 +1,16 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "version": "1.21.1",
+    "libraryName": "image-carousel",
+    "libraryId": "8d4f2a91-6c3e-4b7a-9e15-2f8c0d4a6b73",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "image-carousel",
+    "solutionShortDescription": "Button that opens a popup image carousel",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

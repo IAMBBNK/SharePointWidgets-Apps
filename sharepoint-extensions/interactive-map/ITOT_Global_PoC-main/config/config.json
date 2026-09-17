@@ -17,11 +17,20 @@
           "manifest": "./src/webparts/mapPredictiveMaintenance/MapPredictiveMaintenanceWebPart.manifest.json"
         }
       ]
+    },
+    "map-site-master-data-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/mapSiteMasterData/MapSiteMasterDataWebPart.js",
+          "manifest": "./src/webparts/mapSiteMasterData/MapSiteMasterDataWebPart.manifest.json"
+        }
+      ]
     }
   },
   "externals": {},
   "localizedResources": {
     "MapItotWebPartStrings": "lib/webparts/mapItot/loc/{locale}.js",
-    "MapPredictiveMaintenanceWebPartStrings": "lib/webparts/mapPredictiveMaintenance/loc/{locale}.js"
+    "MapPredictiveMaintenanceWebPartStrings": "lib/webparts/mapPredictiveMaintenance/loc/{locale}.js",
+    "MapSiteMasterDataWebPartStrings": "lib/webparts/mapSiteMasterData/loc/{locale}.js"
   }
 }

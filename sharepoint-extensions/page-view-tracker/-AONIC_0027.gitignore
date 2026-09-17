@@ -1,0 +1,27 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Dependency directories
+node_modules/
+
+# Build outputs
+lib/
+dist/
+temp/
+release/
+solution/
+*.sppkg
+
+# IDE / OS
+.DS_Store
+.vscode/
+*.suo
+*.user
+
+# SPFx toolchain
+.heft
+
+# Local build tools (portable Node)
+.tools/

@@ -124,9 +124,75 @@ export default class MapItotWebPart extends BaseClientSideWebPart<IMapItotWebPar
         color: white;
         text-decoration: none;
         border-radius: 10px;
-        font-size: 14px;
-        font-weight: 500;
         font-size: 12px;
+        font-weight: 500;
+      }
+      .map-tooltip.sector-mixed { border-top: 15px solid #503291; }
+      .map-tooltip.map-tooltip-cluster { width: 360px; }
+      .map-cluster-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .map-cluster-list-paged { min-height: 210px; }
+      .map-cluster-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+        margin: 0;
+        padding: 10px 6px;
+        border: none;
+        border-bottom: 1px solid #eee;
+        background: transparent;
+        text-align: left;
+        cursor: pointer;
+        font-family: inherit;
+        font-size: 14px;
+        color: #333;
+      }
+      .map-cluster-item:last-child { border-bottom: none; }
+      .map-cluster-item:hover { background: #f5f5f5; }
+      .map-cluster-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        border: 2px solid #0f69af;
+        flex-shrink: 0;
+        background: #eb3c96;
+      }
+      .map-cluster-item-text { min-width: 0; flex: 1; }
+      .map-cluster-pager {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        padding-top: 10px;
+        margin-top: 4px;
+        border-top: 1px solid #eee;
+      }
+      .map-cluster-page-btn {
+        width: 32px;
+        height: 32px;
+        padding: 0;
+        border: 1px solid #d0d0d0;
+        border-radius: 6px;
+        background: #fff;
+        color: #333;
+        font-size: 20px;
+        line-height: 1;
+        cursor: pointer;
+        font-family: inherit;
+      }
+      .map-cluster-page-btn:hover:not(:disabled) { background: #f5f5f5; }
+      .map-cluster-page-btn:disabled {
+        opacity: 0.35;
+        cursor: default;
+      }
+      .map-cluster-page-label {
+        font-size: 13px;
+        color: #555;
+        font-weight: 600;
       }
     `
 		this.domElement.appendChild(style)
@@ -527,6 +593,14 @@ export default class MapItotWebPart extends BaseClientSideWebPart<IMapItotWebPar
 		return healthcare
 	}
 
+	private _siteHeadline(meta: IFormattedSite): string {
+		const name = meta.SiteName && meta.SiteName !== '-' ? meta.SiteName : ''
+		const bu =
+			meta.BusinessUnit && meta.BusinessUnit !== '-' ? meta.BusinessUnit : ''
+		if (name && bu) return name + ' / ' + bu
+		return name || bu || 'Site'
+	}
+
 	private _loadBingAndInit(): void {
 		const self = this
 		window.initMapItot = function () {
@@ -596,21 +670,54 @@ export default class MapItotWebPart extends BaseClientSideWebPart<IMapItotWebPar
 			)
 		}
 
-		function createCircle(): string {
+		function createCircle(fill: string, size?: number, label?: string): string {
+			const dim = size || 24
 			const c = document.createElement('canvas')
-			c.width = 24
-			c.height = 24
+			c.width = dim
+			c.height = dim
 			const ctx = c.getContext('2d')
 			if (ctx) {
-				ctx.fillStyle = '#eb3c96'
+				ctx.fillStyle = fill
 				ctx.lineWidth = 2
 				ctx.strokeStyle = '#0f69af'
 				ctx.beginPath()
-				ctx.arc(c.width * 0.5, c.height * 0.5, 10, 0, 2 * Math.PI)
+				ctx.arc(c.width * 0.5, c.height * 0.5, dim * 0.5 - 2, 0, 2 * Math.PI)
 				ctx.fill()
 				ctx.stroke()
+				if (label) {
+					ctx.fillStyle = '#fff'
+					ctx.font =
+						'bold ' +
+						(dim >= 44 ? 16 : 13) +
+						'px Segoe UI, Tahoma, sans-serif'
+					ctx.textAlign = 'center'
+					ctx.textBaseline = 'middle'
+					ctx.fillText(label, c.width * 0.5, c.height * 0.5 + 0.5)
+				}
 			}
 			return c.toDataURL()
+		}
+
+		function hideTooltip(): void {
+			tooltip.setOptions({ visible: false })
+			infobox.setOptions({ visible: false })
+		}
+
+		function bindTooltipClose(): void {
+			const closeBtn = document.getElementById('closeInfobox')
+			if (closeBtn) {
+				closeBtn.addEventListener('click', () => hideTooltip())
+			}
+		}
+
+		function setTooltipOffset(location: any, tall?: boolean): void {
+			if (location.latitude > 60) {
+				tooltip.setOptions({ offset: new Microsoft.Maps.Point(20, -400) })
+			} else if (tall) {
+				tooltip.setOptions({ offset: new Microsoft.Maps.Point(20, -220) })
+			} else {
+				tooltip.setOptions({ offset: new Microsoft.Maps.Point(20, -100) })
+			}
 		}
 
 		function clearPushpins(): void {
@@ -651,28 +758,18 @@ export default class MapItotWebPart extends BaseClientSideWebPart<IMapItotWebPar
 			animate()
 		}
 
-		function pushpinClicked(e: any): void {
-			const pushpin = e.target
-			const meta = (pushpin as any).metadata as IFormattedSite
+		function showDetailTooltip(pushpin: any, delay: number): void {
+			const meta = pushpin.metadata as IFormattedSite
 			if (!meta) return
-
 			const pushpinLocation = pushpin.getLocation()
-			smoothPanTo(pushpinLocation)
-
-			if (pushpinLocation.latitude > 60) {
-				tooltip.setOptions({ offset: new Microsoft.Maps.Point(20, -400) })
-			} else {
-				tooltip.setOptions({ offset: new Microsoft.Maps.Point(20, -100) })
-			}
-
+			setTooltipOffset(pushpinLocation)
 			infobox.setOptions({ visible: false })
-
 			const detailUrl = `https://mdigital.sharepoint.com/sites/ITOTCommunityHub/Lists/Site%20Master%20Data/DispForm.aspx?ID=${meta.ID}`
 			const esc = (s: string) => self._escape(s)
 			const htmlContent = `
         <div class="map-tooltip sector-pink">
           <div class="map-tooltip-header">
-            <div class="map-tooltip-headline">${esc(meta.SiteName)} / ${esc(meta.BusinessUnit)}</div>
+            <div class="map-tooltip-headline">${esc(self._siteHeadline(meta))}</div>
             <span class="map-tooltip-close" id="closeInfobox">×</span>
           </div>
           <div class="map-tooltip-body">
@@ -695,34 +792,263 @@ export default class MapItotWebPart extends BaseClientSideWebPart<IMapItotWebPar
             <a class="see-all" href="${detailUrl}">See all details</a>
           </div>
         </div>`
-
 			setTimeout(() => {
 				tooltip.setOptions({
 					location: pushpinLocation,
 					htmlContent,
 					visible: true,
 				})
-				const closeBtn = document.getElementById('closeInfobox')
-				if (closeBtn) {
-					closeBtn.addEventListener('click', () =>
-						tooltip.setOptions({ visible: false }),
-					)
-				}
-			}, 500)
+				bindTooltipClose()
+			}, delay)
 		}
 
-		clearPushpins()
+		function showClusterList(
+			location: any,
+			pins: any[],
+			page?: number,
+		): void {
+			const pageSize = 5
+			const items = pins.filter((p: any) => p && p.metadata)
+			if (!items.length) return
+			const pageCount = Math.max(1, Math.ceil(items.length / pageSize))
+			const currentPage = Math.min(Math.max(0, page || 0), pageCount - 1)
+			const start = currentPage * pageSize
+			const slice = items.slice(start, start + pageSize)
+			const esc = (s: string) => self._escape(s)
+			const itemsHtml = slice
+				.map((pin: any, i: number) => {
+					const meta = pin.metadata as IFormattedSite
+					return `<li>
+            <button type="button" class="map-cluster-item" id="hc-cluster-item-${i}">
+              <span class="map-cluster-dot"></span>
+              <span class="map-cluster-item-text">${esc(self._siteHeadline(meta))}</span>
+            </button>
+          </li>`
+				})
+				.join('')
+			const pagerHtml =
+				pageCount > 1
+					? `<div class="map-cluster-pager">
+            <button type="button" class="map-cluster-page-btn" id="hc-cluster-prev"${
+							currentPage === 0 ? ' disabled' : ''
+						}>‹</button>
+            <span class="map-cluster-page-label">${currentPage + 1} / ${pageCount}</span>
+            <button type="button" class="map-cluster-page-btn" id="hc-cluster-next"${
+							currentPage >= pageCount - 1 ? ' disabled' : ''
+						}>›</button>
+          </div>`
+					: ''
+			const htmlContent = `
+        <div class="map-tooltip map-tooltip-cluster sector-mixed">
+          <div class="map-tooltip-header">
+            <div class="map-tooltip-headline">${items.length} sites</div>
+            <span class="map-tooltip-close" id="closeInfobox">×</span>
+          </div>
+          <ul class="map-cluster-list${
+						pageCount > 1 ? ' map-cluster-list-paged' : ''
+					}">${itemsHtml}</ul>
+          ${pagerHtml}
+        </div>`
+			setTooltipOffset(location, false)
+			tooltip.setOptions({
+				location,
+				htmlContent,
+				visible: true,
+			})
+			let attempt = 0
+			const bindListClicks = (): void => {
+				bindTooltipClose()
+				const first = document.getElementById('hc-cluster-item-0')
+				if (!first && attempt < 12) {
+					attempt++
+					setTimeout(bindListClicks, 50)
+					return
+				}
+				for (let i = 0; i < slice.length; i++) {
+					const el = document.getElementById('hc-cluster-item-' + i)
+					if (!el) continue
+					el.addEventListener('click', (ev) => {
+						ev.preventDefault()
+						ev.stopPropagation()
+						hideTooltip()
+						smoothPanTo(slice[i].getLocation())
+						showDetailTooltip(slice[i], 500)
+					})
+				}
+				const prev = document.getElementById('hc-cluster-prev')
+				const next = document.getElementById('hc-cluster-next')
+				if (prev) {
+					prev.addEventListener('click', (ev) => {
+						ev.preventDefault()
+						ev.stopPropagation()
+						if (currentPage > 0) {
+							showClusterList(location, items, currentPage - 1)
+						}
+					})
+				}
+				if (next) {
+					next.addEventListener('click', (ev) => {
+						ev.preventDefault()
+						ev.stopPropagation()
+						if (currentPage < pageCount - 1) {
+							showClusterList(location, items, currentPage + 1)
+						}
+					})
+				}
+			}
+			bindListClicks()
+		}
+
+		function handleClusterClick(cluster: any): void {
+			const pins = cluster.containedPushpins || []
+			if (!pins.length) return
+			showClusterList(cluster.getLocation(), pins)
+		}
+
+		function pushpinClicked(e: any): void {
+			const pushpin = e.target
+			if (pushpin && pushpin.containedPushpins) {
+				handleClusterClick(pushpin)
+				return
+			}
+			const meta = pushpin && (pushpin.metadata as IFormattedSite)
+			if (!meta) return
+			smoothPanTo(pushpin.getLocation())
+			showDetailTooltip(pushpin, 500)
+		}
+
+		function pinIconSize(count: number): number {
+			if (count >= 100) return 48
+			if (count >= 10) return 42
+			if (count >= 2) return 36
+			return 24
+		}
+
+		interface IOverlapGroup {
+			pins: any[]
+			loc: any
+			pixel: { x: number; y: number }
+			count: number
+		}
+
+		function clusterByPixelOverlap(sourcePins: any[]): IOverlapGroup[] {
+			const groups: IOverlapGroup[] = []
+			for (let i = 0; i < sourcePins.length; i++) {
+				const loc = sourcePins[i].getLocation()
+				const pixel =
+					map.tryLocationToPixel(
+						loc,
+						Microsoft.Maps.PixelReference.control,
+					) || { x: 0, y: 0 }
+				groups.push({
+					pins: [sourcePins[i]],
+					loc,
+					pixel: { x: pixel.x, y: pixel.y },
+					count: 1,
+				})
+			}
+
+			let merged = true
+			while (merged) {
+				merged = false
+				outer: for (let i = 0; i < groups.length; i++) {
+					for (let j = i + 1; j < groups.length; j++) {
+						const r1 = pinIconSize(groups[i].count) / 2
+						const r2 = pinIconSize(groups[j].count) / 2
+						const dx = groups[i].pixel.x - groups[j].pixel.x
+						const dy = groups[i].pixel.y - groups[j].pixel.y
+						if (dx * dx + dy * dy > (r1 + r2) * (r1 + r2)) continue
+						const a = groups[i]
+						const b = groups[j]
+						const n = a.count + b.count
+						groups[i] = {
+							pins: a.pins.concat(b.pins),
+							count: n,
+							loc: new Microsoft.Maps.Location(
+								(a.loc.latitude * a.count + b.loc.latitude * b.count) /
+									n,
+								(a.loc.longitude * a.count +
+									b.loc.longitude * b.count) /
+									n,
+							),
+							pixel: {
+								x: (a.pixel.x * a.count + b.pixel.x * b.count) / n,
+								y: (a.pixel.y * a.count + b.pixel.y * b.count) / n,
+							},
+						}
+						groups.splice(j, 1)
+						merged = true
+						break outer
+					}
+				}
+			}
+			return groups
+		}
+
+		function renderOverlapClusters(): void {
+			clearPushpins()
+			const groups = clusterByPixelOverlap(sourcePins)
+			for (let g = 0; g < groups.length; g++) {
+				const group = groups[g]
+				if (group.count === 1) {
+					const src = group.pins[0]
+					const meta = src.metadata as IFormattedSite
+					const size = pinIconSize(1)
+					const pin = new Microsoft.Maps.Pushpin(src.getLocation(), {
+						icon: createCircle('#eb3c96', size),
+						anchor: new Microsoft.Maps.Point(size / 2, size / 2),
+					})
+					;(pin as any).metadata = meta
+					Microsoft.Maps.Events.addHandler(pin, 'click', pushpinClicked)
+					map.entities.push(pin)
+					continue
+				}
+				const size = pinIconSize(group.count)
+				const pin = new Microsoft.Maps.Pushpin(group.loc, {
+					icon: createCircle('#503291', size, String(group.count)),
+					anchor: new Microsoft.Maps.Point(size / 2, size / 2),
+				})
+				;(pin as any).containedPushpins = group.pins
+				Microsoft.Maps.Events.addHandler(pin, 'click', pushpinClicked)
+				map.entities.push(pin)
+			}
+		}
+
+		const pinLocations: any[] = []
+		const sourcePins: any[] = []
 		for (const city of withCoords) {
 			const lat = Number(city.Lattitude)
 			const lng = Number(city.Longitude)
 			if (isNaN(lat) || isNaN(lng)) continue
-			const pin = new Microsoft.Maps.Pushpin(
-				{ latitude: lat, longitude: lng },
-				{ icon: createCircle() },
-			)
+			const loc = new Microsoft.Maps.Location(lat, lng)
+			pinLocations.push(loc)
+			const pin = new Microsoft.Maps.Pushpin(loc)
 			;(pin as any).metadata = city
-			Microsoft.Maps.Events.addHandler(pin, 'click', pushpinClicked)
-			map.entities.push(pin)
+			sourcePins.push(pin)
+		}
+
+		let lastClusterZoom = -1
+		function refreshClustersIfZoomChanged(): void {
+			const z = map.getZoom()
+			if (Math.abs(z - lastClusterZoom) < 0.01) return
+			lastClusterZoom = z
+			hideTooltip()
+			renderOverlapClusters()
+		}
+
+		Microsoft.Maps.Events.addHandler(
+			map,
+			'viewchangeend',
+			refreshClustersIfZoomChanged,
+		)
+		renderOverlapClusters()
+		lastClusterZoom = map.getZoom()
+		if (pinLocations.length > 1) {
+			lastClusterZoom = -1
+			map.setView({
+				bounds: Microsoft.Maps.LocationRect.fromLocations(pinLocations),
+				padding: 80,
+			})
 		}
 	}
 

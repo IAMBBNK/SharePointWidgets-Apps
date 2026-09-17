@@ -1,0 +1,26 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "3e7b9c14-5a2d-4f81-b6c0-8d4e1a9f2756",
+  "alias": "ImageCarouselWebPart",
+  "componentType": "WebPart",
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart", "TeamsPersonalApp", "TeamsTab", "SharePointFullPage"],
+  "supportsThemeVariants": true,
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "group": { "default": "Advanced" },
+    "title": { "default": "Image Carousel" },
+    "description": { "default": "A button that opens a popup carousel of images and descriptions" },
+    "officeFabricIconFontName": "PhotoCollection",
+    "properties": {
+      "buttonText": "View gallery",
+      "buttonIcon": "",
+      "buttonColor": "#0f69af",
+      "buttonAlign": "left",
+      "visibleCount": "3",
+      "slidesJson": "[\n  {\n    \"image\": \"https://picsum.photos/id/1015/900/560\",\n    \"title\": \"Autumn\",\n    \"description\": \"Autumn, a season full of great things.\"\n  },\n  {\n    \"image\": \"https://picsum.photos/id/1025/900/560\",\n    \"title\": \"Big Buck Bunny\",\n    \"description\": \"A short computer animated film by the Blender Institute.\"\n  },\n  {\n    \"image\": \"https://picsum.photos/id/1019/900/560\",\n    \"title\": \"Night in The City\",\n    \"description\": \"Silent and beautiful night in the city\"\n  },\n  {\n    \"image\": \"https://picsum.photos/id/1036/900/560\",\n    \"title\": \"Mountain lake\",\n    \"description\": \"Calm water and a wide view across the valley.\"\n  },\n  {\n    \"image\": \"https://picsum.photos/id/1043/900/560\",\n    \"title\": \"Forest path\",\n    \"description\": \"A quiet walk through dense trees and soft light.\"\n  }\n]"
+    }
+  }]
+}

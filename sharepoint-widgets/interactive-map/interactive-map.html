@@ -1,0 +1,266 @@
+<head>
+    <script src="./dummy.js"></script>
+    <script src="https://mdigital.sharepoint.com/sites/ITOTCommunityHub/SiteAssets/ExternalLibs/jquery371.min.js"></script>
+    <script
+      type="text/javascript"
+      src="https://www.bing.com/api/maps/mapcontrol?key=AgJMis6__ur7UfvExgEQb3R3EWCwZTTAYvhjRDPtG9ad-JlxHO3WzhzLIc9DHRzw&callback=initMap"
+    ></script>
+  
+    <style>
+      #missingCredential {
+        display: none;
+      }
+  
+      .filter-container {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+        margin-bottom: 15px;
+        font-weight: bold;
+        justify-content: center;
+      }
+  
+      .sector-icons {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+      }
+  
+      .life-science-icon {
+        background-color: #ffc832;
+      }
+  
+      .healthcare-icon {
+        background-color: #eb3c96;
+      }
+  
+      .electronics-icon {
+        background-color: #4ca5e9;
+      }
+  
+      .sector-filter,
+      .accordion,
+      .apply-filter {
+        background-color: #1872b9;
+        padding: 15px;
+        color: white;
+        text-transform: uppercase;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+  
+      .sector-filter {
+        display: flex;
+        gap: 10px;
+      }
+  
+      .active-filter {
+        background-color: #419ce3;
+      }
+  
+      .accordion-container {
+        position: relative;
+        width: 330px;
+      }
+  
+      .accordion {
+        cursor: pointer;
+        transition: 0.4s;
+      }
+  
+      .accordion.active {
+        border-radius: 5px 5px 0px 0px;
+      }
+  
+      .accordion:after {
+        content: url(https://mdigital.sharepoint.com/sites/ITOTCommunityHub/SiteAssets/Visuals/Buttons%20%26%20Icons/dropdown.png);
+        float: left;
+        margin-top: 10px;
+        margin-right: 25px;
+        zoom: 25%;
+      }
+  
+      .active:after {
+        transform: rotate(180deg);
+      }
+  
+      .panel {
+        padding: 15px;
+        display: none;
+        background-color: #419ce3;
+        color: white;
+        overflow: hidden;
+        flex-direction: column;
+        gap: 5px;
+        position: absolute;
+        width: 300px;
+        white-space: nowrap;
+        left: 0px;
+        z-index: 1003;
+        border-radius: 0px 0px 5px 5px;
+      }
+  
+      .panel-item {
+        display: flex;
+        gap: 5px;
+        align-items: center;
+      }
+  
+      .apply-filter {
+        margin-top: 10px;
+        width: fit-content;
+      }
+  
+      #map {
+        height: 700px;
+        width: 100%;
+      }
+  
+      .map-tooltip {
+        background-color: white;
+        color: black;
+        height: auto;
+        width: auto;
+        padding: 15px;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 500px;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+  
+      .map-tooltip-items {
+        display: flex;
+        margin-top: 5px;
+        gap: 25px;
+      }
+  
+      .map-tooltip-block {
+        flex: 1;
+      }
+  
+      .map-tooltip-item {
+        display: flex;
+        gap: 5px;
+        align-items: center;
+        margin-bottom: 5px;
+      }
+  
+      .map-tooltip-item img {
+        width: 35px;
+        object-fit: contain;
+      }
+  
+      #closeInfobox {
+        position: absolute;
+        font-weight: 600;
+        font-size: 25px;
+        top: 15px;
+        right: 15px;
+        cursor: pointer;
+      }
+  
+      .infobox-headline {
+        font-size: 20px;
+        font-weight: 600;
+      }
+  
+      .Completed-progress {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: #0f69af;
+        border: 2px solid #0f69af;
+      }
+  
+      .Ongoing-progress {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: #81aed1;
+        border: 2px solid #0f69af;
+      }
+  
+      .Planning-progress {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: #bbd1e3;
+        border: 2px solid #0f69af;
+      }
+  
+      .N\/A-progress,
+      .--progress {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: #ffffff;
+        border: 2px solid #0f69af;
+      }
+  
+      .tooltip-legend {
+        justify-content: center;
+        background-color: #f4f4f4;
+        padding: 10px;
+        border-radius: 10px;
+        display: flex;
+        gap: 10px;
+        flex: 1;
+      }
+  
+      .tooltip-legend > div {
+        display: flex;
+        gap: 10px;
+        font-size: 11px;
+        align-items: center;
+      }
+  
+      .see-all {
+        padding: 8px 15px;
+        background-color: #0f69af;
+        cursor: pointer;
+        text-decoration: none;
+        color: white;
+        border-radius: 10px;
+        font-size: 12px;
+      }
+  
+      .sector-yellow {
+        border-top: 15px solid #ffc832;
+      }
+  
+      .sector-blue {
+        border-top: 15px solid #4ca5e9;
+      }
+  
+      .sector-pink {
+        border-top: 15px solid #eb3c96;
+      }
+    </style>
+  </head>
+  <div class="filter-container">
+    <div>Select a sector:</div>
+    <div class="sector-filter filter-option active-filter" data-id="all">All</div>
+    <div class="sector-filter filter-option" data-id="Life Science">
+      <div class="sector-icons life-science-icon"></div>
+      Life Science
+    </div>
+    <div class="sector-filter filter-option" data-id="Healthcare">
+      <div class="sector-icons healthcare-icon"></div>
+      Healthcare
+    </div>
+    <div class="sector-filter filter-option" data-id="Electronics">
+      <div class="sector-icons electronics-icon"></div>
+      Electronics
+    </div>
+    <div class="accordion-container">
+      <div class="accordion">Select a Business Unit</div>
+      <div class="panel" id="dynamic-unit">
+        <div class="apply-filter">Apply</div>
+      </div>
+    </div>
+  </div>
+  <div id="map"></div>
+  <script src="https://mdigital.sharepoint.com/sites/ITOTCommunityHub/SiteAssets/scripts/itot-map.js"></script>
+  
